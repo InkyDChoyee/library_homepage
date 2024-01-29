@@ -22,7 +22,7 @@ public class SecurityConfig {
 
         http
                 .authorizeHttpRequests(authroize -> authroize
-                        .requestMatchers("/", "/css/**", "/images/**", "/js/**").permitAll()
+                        .requestMatchers("/", "/css/**", "/images/**", "/js/**", "/error").permitAll()
                         .requestMatchers("/board/write").authenticated()
                         .requestMatchers("/member/list").hasAnyAuthority("Admin")
                         .requestMatchers("/member/**", "/board/**").permitAll()
@@ -33,12 +33,12 @@ public class SecurityConfig {
                                 .defaultSuccessUrl("/")
                 );
 
-        //접근권한 페이지
-        http.exceptionHandling().accessDeniedPage("/auth/accessDenied");
-        http.logout().logoutUrl("/member/logout")
-                .logoutRequestMatcher(new AntPathRequestMatcher("/member/logout"))
-                .invalidateHttpSession(true)
-                .logoutSuccessUrl("/");
+            //접근권한 페이지
+            http.exceptionHandling().accessDeniedPage("/auth/accessDenied");
+            http.logout().logoutUrl("/member/logout")
+                    .logoutRequestMatcher(new AntPathRequestMatcher("/member/logout"))
+                    .invalidateHttpSession(true)
+                    .logoutSuccessUrl("/");
         return http.build();
     }
     
