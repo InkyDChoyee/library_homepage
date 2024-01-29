@@ -27,8 +27,8 @@ public class MemberDTO {
 
     private Role role;
 
-    private Timestamp createdDtae;
-    private Timestamp updatedDtae;
+    private Timestamp createdDate;
+    private Timestamp updatedDate;
 
 
     public static MemberDTO toSaveDTO(Member member){
@@ -41,8 +41,8 @@ public class MemberDTO {
                 .rentalCount(member.getRentalCount())
                 .rentalAble(member.getRentalAble())
                 .role(member.getRole())
-                .createdDtae(member.getCreatedDate())
-                .updatedDtae(member.getUpdatedDate())
+                .createdDate(member.getCreatedDate())
+                .updatedDate(member.getUpdatedDate())
                 .build();
         return memberDTO;
     }
