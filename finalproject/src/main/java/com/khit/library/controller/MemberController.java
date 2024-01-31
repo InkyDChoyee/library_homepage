@@ -23,7 +23,7 @@ public class MemberController {
     //회원가입 폼
     @GetMapping("/member/join")
     public String joinForm(MemberDTO memberDTO){
-        return "/member/join";
+        return "member/join";
     }
     //회원가입 처리
     @PostMapping("/member/join")
@@ -32,12 +32,12 @@ public class MemberController {
         return "redirect:/";
     }
     //로그인 폼
-    @GetMapping("/member/login")
+    @GetMapping("/login")
     public String loginForm(){
-        return "/member/login";
+        return "login";
     }
     //로그아웃
-    @GetMapping("/member/logout")
+    @GetMapping("/logout")
     public String logout(){
         return "redirect:/";
     }
@@ -46,14 +46,14 @@ public class MemberController {
     public String getList(Model model){
         List<MemberDTO> memberDTOList = memberService.findAll();
         model.addAttribute("memberList", memberDTOList);
-        return "/member/list";
+        return "member/list";
     }
     //회원 상세보기
     @GetMapping("/member/{memberId}")
     public String getMember(@PathVariable Long memberId, Model model){
         MemberDTO memberDTO = memberService.findById(memberId);
         model.addAttribute("member", memberDTO);
-        return "/member/detail";
+        return "member/detail";
     }
     //회원삭제
     @GetMapping("/member/delete/{memberId}")
@@ -66,7 +66,7 @@ public class MemberController {
     public String updateForm(@AuthenticationPrincipal SecurityUser principal, Model model){
         MemberDTO memberDTO = memberService.findByMid(principal);
         model.addAttribute("member", memberDTO);
-        return "/member/update";
+        return "member/update";
     }
     //회원수정 처리
     @PostMapping("/member/update")
