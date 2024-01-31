@@ -24,19 +24,20 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authroize -> authroize
                         .requestMatchers("/", "/css/**", "/images/**", "/js/**", "/error").permitAll()
                         .requestMatchers("/board/write").authenticated()
-                        .requestMatchers("/member/list").hasAnyAuthority("Admin")
-                        .requestMatchers("/member/**", "/board/**").permitAll()
+                        .requestMatchers("/member/list", "/book/register").hasAnyAuthority("Admin")
+                        .requestMatchers("/member/**", "/board/**", "/book/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form ->
-                        form.loginPage("/member/login")
+                        form.loginPage("/login")
                                 .defaultSuccessUrl("/")
+                                .permitAll()
                 );
 
             //접근권한 페이지
             http.exceptionHandling().accessDeniedPage("/auth/accessDenied");
-            http.logout().logoutUrl("/member/logout")
-                    .logoutRequestMatcher(new AntPathRequestMatcher("/member/logout"))
+            http.logout().logoutUrl("/logout")
+                    .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                     .invalidateHttpSession(true)
                     .logoutSuccessUrl("/");
         return http.build();

@@ -16,7 +16,7 @@ public class BoardController {
     //글쓰기
     @GetMapping("/board/write")
     public String writeForm(){
-        return "/board/write";
+        return "board/write";
     }
     @PostMapping("/board/write")
     public String write(@ModelAttribute Board board){
