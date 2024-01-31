@@ -30,4 +30,6 @@ public class FreeBoard extends BaseEntity{
 	
 	@Column(nullable = true)
 	private Integer hit;  //조회수
+
+
 }
