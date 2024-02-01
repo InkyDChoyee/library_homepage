@@ -25,4 +25,35 @@ public class FreeBoardController {
 		fboardService.insert(fboard);
 		return "redirect:/";
 	}
+	@GetMapping("/freeboard/update")
+	public String updateForm() {
+		return "freeboard/update";
+	}
+	// 글 수정 처리
+    @PostMapping("/freeboard/update")
+    public String update() {
+    	return "redirect:/freeboard/"; // hopeboardDTO.getId();
+    }
+    
+    // 글 전체 목록
+    @GetMapping("/freeboard/pagelist")
+    public String getAllList() {
+    	return "freeboard/pagelist";
+    }
+    
+    // 글 하나 상세보기
+    @GetMapping("/freeboard/detail")
+    public String getDetail() {
+    	return "freeboard/detail";
+    }
 }
+
+
+
+
+
+
+
+
+
+
