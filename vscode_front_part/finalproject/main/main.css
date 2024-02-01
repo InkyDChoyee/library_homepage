@@ -165,6 +165,17 @@ button:hover {
     animation: rotateBorder 5s linear infinite; 
 }
 
+.main_new_timer {
+    width: 100px;
+    height: 100px;
+    border: 15px solid #555;
+    border-radius: 100%;
+    position: absolute;
+    bottom: 100px;
+    left: 150px;
+    animation: newRotateBorder 5s linear infinite; 
+}
+
 .main_timer_pointer {
     position: absolute;
     top: -15px;
@@ -177,7 +188,20 @@ button:hover {
 
 @keyframes rotateBorder {
     0% {
-      transform: rotate(0deg); 
+      transform: rotate(0deg);
+      border-color: #555;
+    }
+    
+    100% {
+        transform: rotate(360deg);
+        border-color: #fff;
+    }
+}
+
+@keyframes newRotateBorder {
+    0% {
+      transform: rotate(0deg);
+      border-color: #555;
     }
     
     100% {
