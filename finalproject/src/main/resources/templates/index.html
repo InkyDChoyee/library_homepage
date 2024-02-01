@@ -9,7 +9,7 @@
 <body>
 <div id="container">
     <section id="main">
-        <h2>선유도서관</h2>
+        <h2>선유책숲</h2>
         <div class="main_img">
             <img th:src="@{/images/B3.jpg}" alt="석민이형">
         </div>
@@ -22,19 +22,9 @@
             <a th:href="@{/logout}"><button type="button">로그아웃</button></a>
             <a th:href="@{/book/list}"><button type="button">책목록</button></a>
             <a th:href="@{/member/update}"><button type="button">나의정보</button></a>
-            <a th:href="@{/member/list}"><button type="button">회원목록</button></a>
-            <a th:href="@{/book/register}" sec:authorize="hasAnyAuthority('Admin')"><button type="button">책등록</button></a>
+            <a th:href="@{/member/list}" sec:authorize="hasAnyAuthority('Admin')"><button type="button">회원목록</button></a> <!--관리자 로그인시 보임-->
+            <a th:href="@{/book/register}" sec:authorize="hasAnyAuthority('Admin')"><button type="button">책등록</button></a> <!--관리자 로그인시 보임-->
         </th:block>
-
-
-    </section>
-    <section id="test">
-    	<div>
-    		<a th:href="@{/hopeboard/write}">글쓰기</a>
-    		<a th:href="@{/hopeboard/update}">수정</a>
-    		<a th:href="@{/hopeboard/pagelist}">페이지리스트</a>
-    		<a th:href="@{/hopeboard/detail}">상세보기</a>
-    	</div>
     </section>
 </div>
 </body>
