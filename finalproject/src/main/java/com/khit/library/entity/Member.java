@@ -51,8 +51,8 @@ public class Member extends BaseEntity{
     @OneToMany(mappedBy="member", cascade = CascadeType.ALL)
     private List<HopeBoard> hopeBoardList = new ArrayList<>();
 
-//    @OneToMany(mappedBy="member", cascade = CascadeType.ALL)
-//    private List<HopeReply> hopeReplyList = new ArrayList<>();
+    @OneToMany(mappedBy="member", cascade = CascadeType.ALL)
+    private List<HopeReply> hopeReplyList = new ArrayList<>();
     
     public static Member toSaveEntity(MemberDTO memberDTO){
         Member member = Member.builder()
@@ -87,9 +87,6 @@ public class Member extends BaseEntity{
     private List<RentalReturn> rentalReturnList = new ArrayList<>();
 
     /*@OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
-    private List<HopeBoard> hopeBoardList = new ArrayList<>();
-
-    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<FreeBoard> freeBoardList = new ArrayList<>();
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
