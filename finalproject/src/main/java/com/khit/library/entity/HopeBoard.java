@@ -28,7 +28,7 @@ public class HopeBoard extends BaseEntity{
 	@Column(length = 2000, nullable = false)
 	private String hbcontent; // 글 내용
 	
-	@Column(nullable = true)
+	@Column
 	private Integer hbhit;  // 조회수
 	
 	@ManyToOne(fetch = FetchType.LAZY)  // 글쓴이 - 외래키
@@ -43,7 +43,7 @@ public class HopeBoard extends BaseEntity{
 	public static HopeBoard toSaveEntity(HopeBoardDTO hopeBoardDTO) {
 		HopeBoard hopeBoard = HopeBoard.builder().hbtitle(hopeBoardDTO.getHbtitle())
 												 .hbcontent(hopeBoardDTO.getHbcontent())
-												 .hbhit(hopeBoardDTO.getHbhit())
+												 .hbhit(0)
 												 .member(hopeBoardDTO.getMember())
 												 .build();
 		return hopeBoard;

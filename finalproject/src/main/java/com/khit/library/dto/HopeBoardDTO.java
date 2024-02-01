@@ -22,7 +22,7 @@ public class HopeBoardDTO {
 	private Timestamp createdDate;   // 작성일
 	private Timestamp updatedDate;   // 수정일
 	
-	private int hbhit;    // 조회수
+	private Integer hbhit;    // 조회수
 	
 	// entity -> dto
 	public static HopeBoardDTO toSaveDTO(HopeBoard hopeBoard) {
