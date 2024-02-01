@@ -28,31 +28,31 @@ public class FreeBoard extends BaseEntity{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;  //자유게시판 번호
+	private Long fbid;  //자유게시판 번호
 	
 	@Column(nullable = false)
-	private String title; //자유게시판 제목
+	private String fbtitle; //자유게시판 제목
 	
 	@Column(length = 2000, nullable = false)
-	private String content; //자유게시판 내용
+	private String fbcontent; //자유게시판 내용
 	
 	@Column(nullable = true)
-	private Integer hit;  //조회수
+	private Integer fbhit;  //조회수
 	
 	public static FreeBoard toSaveEntity(FreeBoardDTO fboardDTO) {
 		FreeBoard fboard = FreeBoard.builder()
-				.title(fboardDTO.getTitle())
-				.content(fboardDTO.getContent())
-				.hit(fboardDTO.getHit())
+				.fbtitle(fboardDTO.getFbtitle())
+				.fbcontent(fboardDTO.getFbcontent())
+				.fbhit(fboardDTO.getFbhit())
 				.build();
 		return fboard;
 	}
 	public static FreeBoard toUpdateEntity(FreeBoardDTO fboardDTO) {
 		FreeBoard fboard = FreeBoard.builder()
-				.id(fboardDTO.getId())
-				.title(fboardDTO.getTitle())
-				.content(fboardDTO.getContent())
-				.hit(fboardDTO.getHit())
+				.fbid(fboardDTO.getFbid())
+				.fbtitle(fboardDTO.getFbtitle())
+				.fbcontent(fboardDTO.getFbcontent())
+				.fbhit(fboardDTO.getFbhit())
 				.build();
 		return fboard;
 	}
