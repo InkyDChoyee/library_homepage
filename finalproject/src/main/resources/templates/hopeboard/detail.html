@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
 xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
-<meta charset="EUC-KR">
+<meta charset="utf-8">
 <title>Hope for the library : DETAIL</title>
 </head>
 <body>
@@ -26,5 +26,6 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 			</tr>
 		</tbody>
 	</table>
+	<a th:href="@{|/hopeboard/update/${hbid}|}">수정</a>
 </body>
 </html>
