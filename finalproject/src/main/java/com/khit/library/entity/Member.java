@@ -1,5 +1,8 @@
 package com.khit.library.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.khit.library.dto.MemberDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -41,7 +44,13 @@ public class Member extends BaseEntity{
 
     @Enumerated(EnumType.STRING)
     private Role role;
+    
+    @OneToMany(mappedBy="member", cascade = CascadeType.ALL)
+    private List<HopeBoard> hopeBoardList = new ArrayList<>();
 
+    @OneToMany(mappedBy="member", cascade = CascadeType.ALL)
+    private List<HopeReply> hopeReplyList = new ArrayList<>();
+    
     public static Member toSaveEntity(MemberDTO memberDTO){
         Member member = Member.builder()
                 .mid(memberDTO.getMid())
@@ -66,5 +75,6 @@ public class Member extends BaseEntity{
                 .build();
         return member;
     }
+    
 }
 
