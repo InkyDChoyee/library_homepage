@@ -19,7 +19,7 @@ import lombok.RequiredArgsConstructor;
 public class FreeReplyController {
 	private final FreeBoardService fboardService;
 	
-	@PostMapping("/freeReply/{fboardId")
+	@PostMapping("/freeReply/{fboardId}")
 	@ResponseBody
 	public String insertReply(@PathVariable Long fboardId,
 							  @RequestBody FreeReply freeReply,

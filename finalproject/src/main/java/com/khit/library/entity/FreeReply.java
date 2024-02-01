@@ -24,12 +24,12 @@ public class FreeReply extends BaseEntity {
 	private String frcontent;
 
 	// 회원 한명이 여러 개의 댓글 작성 가능
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn
 	private Member member;
 
 	// 게시글 하나에 여러 개의 댓글 작성 가능
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn
 	private FreeBoard freeboard;
 
