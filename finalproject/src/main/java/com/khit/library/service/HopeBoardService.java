@@ -43,4 +43,9 @@ public class HopeBoardService {
 	public void deleteById(Long hbid) {
 		hopeBoardRepository.deleteById(hbid);
 	}
+
+	public void update(HopeBoardDTO hopeBoardDTO) {
+		HopeBoard hopeBoard = HopeBoard.toUpdateEntity(hopeBoardDTO);
+		hopeBoardRepository.save(hopeBoard);
+	}
 }

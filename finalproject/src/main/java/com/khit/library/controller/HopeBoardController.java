@@ -39,15 +39,18 @@ public class HopeBoardController {
     }
 
     // update page 글 수정
-    @GetMapping("/hopeboard/update")
-    public String updateForm() {
+    @GetMapping("/hopeboard/update/{hbid}")
+    public String updateForm(@PathVariable Long hbid, Model model) {
+    	HopeBoardDTO hopeBoardDTO = hopeBoardService.findById(hbid);
+    	model.addAttribute("hopeBoard", hopeBoardDTO);
     	return "hopeboard/update";
     }
     
     // 글 수정 처리
-    @PostMapping("/hopeboard/update")
-    public String update() {
-    	return "redirect:/hopeboard/"; // hopeboardDTO.getId();
+    @PostMapping("/hopeboard/update/{hbid}")
+    public String update(@ModelAttribute HopeBoardDTO hopeBoardDTO) {
+    	hopeBoardService.update(hopeBoardDTO);
+    	return "redirect:/hopeboard/" + hopeBoardDTO.getHbid();
     }
     
     // 글 전체 목록
