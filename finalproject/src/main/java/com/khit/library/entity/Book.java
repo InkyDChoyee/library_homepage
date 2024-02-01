@@ -7,6 +7,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Data
 @Table(name = "book")
@@ -45,4 +48,11 @@ public class Book extends BaseEntity{
                 .build();
         return book;
     }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn
+    private Member member;
+
+    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
+    private List<RentalReturn> rentalReturnList = new ArrayList<>();
 }

@@ -10,6 +10,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Data
 @Builder
@@ -22,7 +25,7 @@ public class Member extends BaseEntity{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long memberId;
 
-    @Column(name = "mId", unique = true)
+    @Column(unique = true)
     private String mid;
 
     @Column(nullable = false)
@@ -48,8 +51,8 @@ public class Member extends BaseEntity{
     @OneToMany(mappedBy="member", cascade = CascadeType.ALL)
     private List<HopeBoard> hopeBoardList = new ArrayList<>();
 
-    @OneToMany(mappedBy="member", cascade = CascadeType.ALL)
-    private List<HopeReply> hopeReplyList = new ArrayList<>();
+//    @OneToMany(mappedBy="member", cascade = CascadeType.ALL)
+//    private List<HopeReply> hopeReplyList = new ArrayList<>();
     
     public static Member toSaveEntity(MemberDTO memberDTO){
         Member member = Member.builder()
@@ -75,6 +78,22 @@ public class Member extends BaseEntity{
                 .build();
         return member;
     }
-    
+
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<Book> bookList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<RentalReturn> rentalReturnList = new ArrayList<>();
+
+    /*@OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<HopeBoard> hopeBoardList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<FreeBoard> freeBoardList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<NoticeBoard> noticeBoardList = new ArrayList<>();*/
+
 }
 
