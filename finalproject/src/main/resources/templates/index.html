@@ -20,11 +20,13 @@
         <th:block sec:authorize="isAuthenticated()">
             <a th:href="@{/board/write}"><button type="button">글쓰기</button></a>
             <a th:href="@{/logout}"><button type="button">로그아웃</button></a>
-            <a th:href="@{/book/register}"><button type="button">책등록</button></a>
             <a th:href="@{/book/list}"><button type="button">책목록</button></a>
             <a th:href="@{/member/update}"><button type="button">나의정보</button></a>
             <a th:href="@{/member/list}"><button type="button">회원목록</button></a>
+            <a th:href="@{/book/register}" sec:authorize="hasAnyAuthority('Admin')"><button type="button">책등록</button></a>
         </th:block>
+
+
     </section>
 </div>
 </body>
