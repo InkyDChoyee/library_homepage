@@ -1,5 +1,7 @@
 package com.khit.library.entity;
 
+import java.util.List;
+
 import com.khit.library.dto.HopeBoardDTO;
 
 import jakarta.persistence.*;
@@ -33,6 +35,8 @@ public class HopeBoard extends BaseEntity{
 	@JoinColumn(name = "mId")
 	private Member member;
 	
+	@OneToMany(mappedBy="hopeboard", cascade = CascadeType.ALL)
+	private List<HopeReply> hopeReplyList;
 	
 	// dto -> entity
 	// insert

@@ -1,9 +1,12 @@
 package com.khit.library.controller;
 
+import com.khit.library.config.SecurityUser;
 import com.khit.library.entity.HopeBoard;
 import com.khit.library.service.HopeBoardService;
 
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -22,7 +25,10 @@ public class HopeBoardController {
     
     // 글쓰기 처리
     @PostMapping("/hopeboard/write")
-    public String write() {
+    public String write(@ModelAttribute HopeBoard hopeBoard,
+    				    @AuthenticationPrincipal SecurityUser principal) {
+    	hopeBoard.setMember(principal.getMember());
+    	hopeBoardService.save(hopeBoard);
     	return "redirect:/hopeboard/pagelist";
     }
 
