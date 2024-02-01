@@ -1,29 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HEADER</title>
+    <link rel="stylesheet" href="header.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <body>
     <div id="header">
         <section class="header">
             <div class="header_logo_box">
-                <img class="header_logo" src="#" alt="logo">
+                <img class="header_logo" src="/img/logo.png" alt="logo">
                 <p class="header_library_name">선유책숲</p>
             </div>
             <div class="header_links">
                 <div class="header_link">
-                    <a class="header_link_search" href="#"></a>
-                    <a class="header_link_open_space" href="#"></a>
-                    <a class="header_link_library_info" href="#"></a>
-                    <a class="header_link_study_room" href="#"></a>
-                    <a class="header_link_my_labrary" href="#"></a>
+                    <div class="header_link_search">
+                        <a href="#">도서검색</a>
+                    </div>
+                    <div class="header_link_open_space">
+                        <a href="#">열린공간</a>
+                    </div>
+                    <div class="header_link_library_info">
+                        <a href="#">도서관안내</a>
+                    </div>
+                    <div class="header_link_study_room">
+                        <a href="#">열람실</a>
+                    </div>
+                    <div class="header_link_my_labrary">
+                        <a href="#">나의책숲</a>
+                    </div>
                 </div>
             </div>
             <div class="header_member">
-                <div class="header_member_login"></div>
-                <div class="header_member_join"></div>
+                <a class="header_member_login" href="#">로그인</a> |
+                <a class="header_member_join" href="#">회원가입</a>
             </div>
             <!-- when login, change div element -->
             <!-- <div class="header_member">

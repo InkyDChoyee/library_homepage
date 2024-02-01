@@ -1,5 +1,7 @@
 package com.khit.library.entity;
 
+import java.util.List;
+
 import com.khit.library.dto.HopeBoardDTO;
 
 import jakarta.persistence.*;
@@ -26,20 +28,22 @@ public class HopeBoard extends BaseEntity{
 	@Column(length = 2000, nullable = false)
 	private String hbcontent; // 글 내용
 	
-	@Column(nullable = true)
+	@Column
 	private Integer hbhit;  // 조회수
 	
 	@ManyToOne(fetch = FetchType.LAZY)  // 글쓴이 - 외래키
 	@JoinColumn(name = "mId")
 	private Member member;
 	
+	@OneToMany(mappedBy="hopeboard", cascade = CascadeType.ALL)
+	private List<HopeReply> hopeReplyList;
 	
 	// dto -> entity
 	// insert
 	public static HopeBoard toSaveEntity(HopeBoardDTO hopeBoardDTO) {
 		HopeBoard hopeBoard = HopeBoard.builder().hbtitle(hopeBoardDTO.getHbtitle())
 												 .hbcontent(hopeBoardDTO.getHbcontent())
-												 .hbhit(hopeBoardDTO.getHbhit())
+												 .hbhit(0)
 												 .member(hopeBoardDTO.getMember())
 												 .build();
 		return hopeBoard;
