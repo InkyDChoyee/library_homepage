@@ -4,23 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <title>선유도서관</title>
-    <link rel="stylesheet" th:href="@{/css/main.css}">
-    <link rel="stylesheet" th:href="@{/css/header.css}">
-    <link rel="stylesheet" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+	<link rel="preconnect" href="@{https://fonts.googleapis.com">
+    <link rel="preconnect" href="@{https://fonts.gstatic.com}" crossorigin>
+    <link href="@{https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap}" rel="stylesheet">
 </head>
 <body>
 <div th:replace="~{header::header-fragment}"></div>
 <div id="container">
     <section class="main">
-
         <div class="main_top">
 
             <div class="main_pic_box">
-                <img class="main_pic active" src="/images/main_library_picture1.PNG" alt="">
-                <img class="main_pic" src="/images/main_library_picture2.PNG" alt="">
-                <img class="main_pic" src="/images/main_library_picture3.PNG" alt="">
-                <img class="main_pic" src="/images/main_library_picture4.PNG" alt="">
-                <img class="main_pic" src="/images/main_library_picture5.PNG" alt="">
+                <img class="main_pic active" th:src="@{/images/main_library_picture1.PNG}" alt="">
+                <img class="main_pic" th:src="@{/images/main_library_picture2.PNG}" alt="">
+                <img class="main_pic" th:src="@{/images/main_library_picture3.PNG}" alt="">
+                <img class="main_pic" th:src="@{/images/main_library_picture4.PNG}" alt="">
+                <img class="main_pic" th:src="@{/images/main_library_picture5.PNG}" alt="">
             </div>
 
             <div class="main_welcome">
@@ -41,11 +41,12 @@
 
             <div class="main_search">
                 <input class="main_search_input" type="text" placeholder="Seacrh">
-                <img class="main_search_icon" src="/img/magnifying.png">
+                <img class="main_search_icon" th:src="@{/img/magnifying.png}">
             </div>
 
         </div>
 
+		<a th:href="@{/test}">test</a>
         <div class="main_mid">
 
             <div class="main_mid_text_box">
@@ -86,19 +87,19 @@
         <div class="main_icons">
 
             <div class="main_use_info">
-                <img class="use_info_icon" src="#" alt="">
+                <img class="use_info_icon" th:src="@{#}" alt="">
             </div>
             <div class="main_reading_event">
-                <img class="reading_event_icon" src="#" alt="">
+                <img class="reading_event_icon" th:src="@{#}" alt="">
             </div>
             <div class="main_study_room">
-                <img class="study_room_icon" src="#" alt="">
+                <img class="study_room_icon" th:src="@{#}" alt="">
             </div>
             <div class="main_request_book">
-                <img class="request_book_icon" src="#" alt="">
+                <img class="request_book_icon" th:src="@{#}" alt="">
             </div>
             <div class="main_my_library">
-                <img class="my_library_icon" src="#" alt="">
+                <img class="my_library_icon" th:src="@{#}" alt="">
             </div>
 
         </div>
@@ -111,27 +112,27 @@
 
             <div class="main_bottom_recommend_books">
                 <div class="main_best_book">
-                    <img class="main_best_book_img" src="#" alt="#">
+                    <img class="main_best_book_img" th:src="@{#}" alt="#">
                     <p class="main_best_book_title"></p>
                     <p class="main_best_book_author"></p>
                 </div>
                 <div class="main_best_book">
-                    <img class="main_best_book_img" src="#" alt="#">
+                    <img class="main_best_book_img" th:src="@{#}" alt="#">
                     <p class="main_best_book_title"></p>
                     <p class="main_best_book_author"></p>
                 </div>
                 <div class="main_best_book">
-                    <img class="main_best_book_img" src="#" alt="#">
+                    <img class="main_best_book_img" th:src="@{#}" alt="#">
                     <p class="main_best_book_title"></p>
                     <p class="main_best_book_author"></p>
                 </div>
                 <div class="main_best_book">
-                    <img class="main_best_book_img" src="#" alt="#">
+                    <img class="main_best_book_img" th:src="@{#}" alt="#">
                     <p class="main_best_book_title"></p>
                     <p class="main_best_book_author"></p>
                 </div>
                 <div class="main_best_book">
-                    <img class="main_best_book_img" src="#" alt="#">
+                    <img class="main_best_book_img" th:src="@{#}" alt="#">
                     <p class="main_best_book_title"></p>
                     <p class="main_best_book_author"></p>
                 </div>
