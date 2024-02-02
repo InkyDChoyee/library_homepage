@@ -8,6 +8,7 @@
 	<link rel="preconnect" href="@{https://fonts.googleapis.com">
     <link rel="preconnect" href="@{https://fonts.gstatic.com}" crossorigin>
     <link href="@{https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap}" rel="stylesheet">
+
 </head>
 <body>
 <div th:replace="~{header::header-fragment}"></div>
@@ -41,7 +42,8 @@
 
             <div class="main_search">
                 <input class="main_search_input" type="text" placeholder="Seacrh">
-                <img class="main_search_icon" th:src="@{/img/magnifying.png}">
+
+                <img class="main_search_icon" th:src="@{/images/magnifying.png}">
             </div>
 
         </div>
@@ -87,6 +89,7 @@
         <div class="main_icons">
 
             <div class="main_use_info">
+
                 <img class="use_info_icon" th:src="@{#}" alt="">
             </div>
             <div class="main_reading_event">
@@ -151,6 +154,5 @@
     </section>
 </div>
 <div th:replace="~{footer::footer-fragment}"></div>
-<script th:src="@{/js/script.js}"></script>
 </body>
 </html>
