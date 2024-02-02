@@ -1,15 +1,13 @@
 package com.khit.library.dto;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 import com.khit.library.entity.Member;
 import com.khit.library.entity.NoticeBoard;
 
 import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
 @Builder
@@ -35,6 +33,8 @@ public class NoticeBoardDTO {
 																.member(noticeBoard.getMember())
 																.nbtitle(noticeBoard.getNbtitle())
 																.nbcontent(noticeBoard.getNbcontent())
+																.createdDate(noticeBoard.getCreatedDate())
+																.updatedDate(noticeBoard.getUpdatedDate())
 																.nbhit(noticeBoard.getNbhit())
 																.build();
 		return noticeBoardDTO;
