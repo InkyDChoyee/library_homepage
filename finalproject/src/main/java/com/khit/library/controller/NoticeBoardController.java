@@ -1,5 +1,7 @@
 package com.khit.library.controller;
 
+import java.util.List;
+
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.khit.library.config.SecurityUser;
+import com.khit.library.dto.HopeBoardDTO;
 import com.khit.library.dto.NoticeBoardDTO;
 import com.khit.library.entity.NoticeBoard;
 import com.khit.library.service.NoticeBoardService;
@@ -51,5 +54,28 @@ public class NoticeBoardController {
 		noticeBoardService.update(noticeBoardDTO);
 		return "redirect:/noticeboard/" + noticeBoardDTO.getNbid();
 	}
+	
+	 //글 전체 목록
+    @GetMapping("/notice/pagelist")
+    public String getAllList(Model model) {
+    	List<NoticeBoardDTO> noticeBoardDTOList = noticeBoardService.findAll();
+    	model.addAttribute("noticeBoardList", noticeBoardDTOList);
+    	return "notice/pagelist";
+    }
+	
+    //상세보기
+    @GetMapping("/notice/{nbid}")
+    public String getDetail(@PathVariable Long nbid, Model model) {
+    	NoticeBoardDTO noticeBoardDTO = noticeBoardService.findById(nbid);
+    	model.addAttribute("noticeBoard", noticeBoardDTO);
+    	return "notice/detail";
+    }
+	
+	//삭제
+	@GetMapping("/notice/delete/{nbid}")
+	public String deleteHopeBoard(@PathVariable Long nbid) {
+    	noticeBoardService.deleteById(nbid);
+    	return "redirect:/notice/pagelist";
+    }
 			
 }

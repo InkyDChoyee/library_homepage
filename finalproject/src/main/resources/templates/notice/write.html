@@ -6,35 +6,34 @@
     <title>공지사항</title>
 </head>
 <body>
-<div class="wrap">
     <h2>글 작성</h2>
-    <form th:action="@{/notice/write}" method="post">
-        <table class="tbl_write">
-            <tbody>
-            <tr>
-                <td>
-                    <input type="text" name="nbtitle" placeholder="글제목" required>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="text" name="nbwriter" placeholder="글쓴이" required>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <textarea rows="5" cols="50" name="nbcontent" placeholder="글내용" required></textarea>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <button type="submit">등록</button>
-                    <a th:href="@{/}"><button type="button">취소</button></a>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </form>
-</div>
+  <div>
+		<form th:action="@{/notice/write}" method="post">
+			<table>
+				<tbody>
+					<tr>
+						<td>
+							<input type="text" name="nbtitle">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div sec:authorize="isAuthenticated()">
+								<span sec:authentication="principal.member.name"></span>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<textarea rows="5" cols="30" name="nbcontent"></textarea>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div>
+				<button type="submit">작성</button>
+			</div>
+		</form>
+	</div>
 </body>
 </html>
