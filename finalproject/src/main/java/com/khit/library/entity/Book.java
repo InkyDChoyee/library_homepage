@@ -1,5 +1,6 @@
 package com.khit.library.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.khit.library.dto.BookDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -31,11 +32,13 @@ public class Book extends BaseEntity{
     @Column(nullable = false, length = 30)
     private String author; //도서저자
 
+
     public static Book toSaveEntity(BookDTO bookDTO){
         Book book = Book.builder()
                 .bname(bookDTO.getBname())
                 .bnumber(bookDTO.getBnumber())
                 .author(bookDTO.getAuthor())
+                .rentalReturnList(bookDTO.getRentalReturnList())
                 .build();
         return book;
     }
@@ -45,10 +48,12 @@ public class Book extends BaseEntity{
                 .bname(bookDTO.getBname())
                 .bnumber(bookDTO.getBnumber())
                 .author(bookDTO.getAuthor())
+                .rentalReturnList(bookDTO.getRentalReturnList())
                 .build();
         return book;
     }
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
     private Member member;
