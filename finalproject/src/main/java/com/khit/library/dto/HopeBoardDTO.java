@@ -1,8 +1,10 @@
 package com.khit.library.dto;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import com.khit.library.entity.HopeBoard;
+import com.khit.library.entity.HopeReply;
 import com.khit.library.entity.Member;
 
 import lombok.Builder;
@@ -24,6 +26,8 @@ public class HopeBoardDTO {
 	
 	private Integer hbhit;    // 조회수
 	
+	private List<HopeReply> hopeReplyList;
+	
 	// entity -> dto
 	public static HopeBoardDTO toSaveDTO(HopeBoard hopeBoard) {
 		HopeBoardDTO hopeBoardDTO = HopeBoardDTO.builder().hbid(hopeBoard.getHbid())
@@ -33,6 +37,7 @@ public class HopeBoardDTO {
 														  .createdDate(hopeBoard.getCreatedDate())
 														  .updatedDate(hopeBoard.getUpdatedDate())
 														  .hbhit(hopeBoard.getHbhit())
+														  .hopeReplyList(hopeBoard.getHopeReplyList())
 														  .build();
 		return hopeBoardDTO;
 	}
