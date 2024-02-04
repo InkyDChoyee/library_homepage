@@ -36,6 +36,7 @@ public class HopeBoard extends BaseEntity{
 	private Member member;
 	
 	@OneToMany(mappedBy="hopeboard", cascade = CascadeType.ALL)
+	@OrderBy("hrid desc")
 	private List<HopeReply> hopeReplyList;
 	
 	// dto -> entity

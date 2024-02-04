@@ -55,7 +55,7 @@ public class Member extends BaseEntity{
 
 
     @OneToMany(mappedBy="member", cascade = CascadeType.ALL)
-    private List<HopeReply> hopeReplyList = new ArrayList<>();
+    private List<HopeReply> hopeReplyList;
     
 
     public static Member toSaveEntity(MemberDTO memberDTO){
