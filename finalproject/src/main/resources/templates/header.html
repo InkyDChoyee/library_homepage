@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>선유도서관</title>
     <link rel="stylesheet" th:href="@{/css/header.css}">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 </head>
 <header th:fragment="header-fragment">
     <div id="header">
@@ -41,6 +42,7 @@
                     <a th:href="@{/logout}"><button type="button">로그아웃</button></a>
                     <a th:href="@{/book/list}"><button type="button">책목록</button></a>
                     <a th:href="@{/member/update}"><button type="button">나의정보</button></a>
+                    <a th:href="@{/rentalReturn/list}" sec:authorize="hasAnyAuthority('Admin')"><button type="button">대출정보</button></a>
                     <a th:href="@{/member/list}" sec:authorize="hasAnyAuthority('Admin')"><button type="button">회원목록</button></a> <!--관리자 로그인시 보임-->
                     <a th:href="@{/book/register}" sec:authorize="hasAnyAuthority('Admin')"><button type="button">책등록</button></a> <!--관리자 로그인시 보임-->
                 </th:block>
