@@ -28,6 +28,7 @@ public class SecurityConfig {
                         .requestMatchers("/member/**", "/board/**", "/book/**").permitAll()
                         .anyRequest().authenticated()
                 )
+                .csrf().disable()
                 .formLogin(form ->
                         form.loginPage("/login")
                                 .defaultSuccessUrl("/")

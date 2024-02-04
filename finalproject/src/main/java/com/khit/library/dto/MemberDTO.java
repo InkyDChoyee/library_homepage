@@ -24,7 +24,6 @@ public class MemberDTO {
     private Integer rentalCount;
 
     private Boolean rentalAble;
-
     private Role role;
 
     private Timestamp createdDate;
