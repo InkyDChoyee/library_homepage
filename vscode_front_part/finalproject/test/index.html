@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TEST</title>
+    <title>MAIN</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,8 +13,10 @@
     <div id="header">
         <section class="header">
             <div class="header_logo_box">
-                <img class="header_logo" src="/img/logo.png" alt="logo">
-                <p class="header_library_name">선유책숲</p>
+                <a href="#">
+                    <img class="header_logo" src="/img/main_logo.png" alt="logo">
+                    <!-- <p class="header_library_name">선유책숲</p> -->
+                </a>
             </div>
             <div class="header_links">
                 <div class="header_link">
@@ -51,25 +53,38 @@
             <div class="main_top">
 
                 <div class="main_pic_box">
-                    <img class="main_pic" src="#" alt="">
+                    <img class="main_pic active" src="/img/main_library_picture1.PNG" alt="">
+                    <img class="main_pic" src="/img/main_library_picture2.PNG" alt="">
+                    <img class="main_pic" src="/img/main_library_picture3.PNG" alt="">
+                    <img class="main_pic" src="/img/main_library_picture4.PNG" alt="">
+                    <img class="main_pic" src="/img/main_library_picture5.PNG" alt="">
                 </div>
 
                 <div class="main_welcome">
-                    <p class="main_big_welcome"></p>
-                    <p class="main_small_welcom"></p>
+                    <p class="main_big_welcome">
+                        도서관에서 여러분의 다음 책을 만나보세요
+                    </p>
+                    <p class="main_small_welcom">
+                        모든 이야기가 당신을 기다립니다
+                    </p>
                 </div>
 
-                <div class="main_timer">
-                    <div class="main_timer_circle">||</div>
+                <div class="timer main_timer">
+                    <div class="main_timer_pointer"></div>
+                </div>
+                <div class="main_timer_circle">
+                    <button class="main_toggle_btn">||</button>
                 </div>
 
                 <div class="main_search">
-                    <i class="main_search_icon"></i>
-                    <input class="main_search_input" type="text">
+                    <input class="main_search_input" type="text" placeholder="Seacrh">
+                    <img class="main_search_icon" src="/img/magnifying3.png">
                 </div>
 
             </div>
 
+
+            
             <div class="main_mid">
 
                 <div class="main_mid_text_box">
@@ -187,6 +202,7 @@
             </div>
         </section>
     </div>
+    <script src="/script/script.js"></script>
 </body>
 </html>
 
