@@ -8,8 +8,9 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <body>
 	<h1>Hope for the library : UPDATE</h1>
 	<div>
-		<form th:action="@{/hopeboard/write}" method="post">
-			<input type="hidden" name="hbid" th:value="${hopeBoard.hbid}" autofocus>
+		<form th:action="@{/hopeboard/write}" method="post"
+			  enctype="multipart/form-data">
+			<input type="hidden" name="hbid" th:value="${hopeBoard.hbid}">
 			<table>
 				<tbody>
 					<tr>
@@ -27,6 +28,12 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 					<tr>
 						<td>
 							<textarea rows="5" cols="30" name="hbcontent" th:text="${hopeBoard.hbcontent}"></textarea>
+							<img th:src="${hopeBoard.hopeFilepath}"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="file" name="hopeBoardFile">
 						</td>
 					</tr>
 				</tbody>
