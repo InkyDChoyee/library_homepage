@@ -53,17 +53,18 @@ public class HopeBoardController {
     }
     
     // 글 수정 처리
-    @PostMapping("/hopeboard/update")
+    @PostMapping("/hopeboard/update/{hbid}")
     public String update(@ModelAttribute HopeBoardDTO hopeBoard,
+    					
     		             MultipartFile hopeBoardFile,
     		             @AuthenticationPrincipal SecurityUser principal,
     		             Model model) throws IOException, Exception {
     	hopeBoard.setMember(principal.getMember());
     	HopeBoardDTO upHopeBoard =  hopeBoardService.update(hopeBoard, hopeBoardFile);
     	model.addAttribute("hopeBoard", upHopeBoard);
-    	System.out.println("Received mid: " + hopeBoard.getMember().getMid());
-    	//return "redirect:/hopeboard/" + upHopeBoard.getHbid();
-    	return "hopeboard/detail";
+    	//System.out.println("Received mid: " + hopeBoard.getMember().getMid());
+    	return "redirect:/hopeboard/" + upHopeBoard.getHbid();
+    	//return "hopeboard/detail";
     }
     
     // 글 전체 목록
