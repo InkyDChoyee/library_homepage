@@ -1,16 +1,21 @@
 package com.khit.library.service;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.khit.library.dto.HopeBoardDTO;
 import com.khit.library.entity.HopeBoard;
 import com.khit.library.repository.HopeBoardRepository;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -18,7 +23,18 @@ import lombok.RequiredArgsConstructor;
 public class HopeBoardService {
 	private final HopeBoardRepository hopeBoardRepository;
 
-	public void save(HopeBoard hopeBoard) {
+	public void save(HopeBoard hopeBoard, MultipartFile hopeBoardFile) throws Exception, IOException {
+		String hopeFilepath = "C:\\Final_project\\final-project\\finalproject\\src\\main\\resources\\static\\upload\\";
+		UUID uuid = UUID.randomUUID();
+		String hopeFilename = uuid + "_" + hopeBoardFile.getOriginalFilename();
+		
+		File savedHopeFile = new File(hopeFilepath, hopeFilename);
+		hopeBoardFile.transferTo(savedHopeFile);
+		
+		hopeBoard.setHopeFilename(hopeFilename);
+		hopeBoard.setHopeFilepath("/upload/" + hopeFilename);
+		
+		
 		hopeBoardRepository.save(hopeBoard);
 	}
 
@@ -44,8 +60,26 @@ public class HopeBoardService {
 		hopeBoardRepository.deleteById(hbid);
 	}
 
-	public void update(HopeBoardDTO hopeBoardDTO) {
-		HopeBoard hopeBoard = HopeBoard.toUpdateEntity(hopeBoardDTO);
+	public void update(HopeBoardDTO hopeBoardDTO, MultipartFile hopeBoardFile) throws Exception, IOException {
+		HopeBoard hopeBoard = null;
+		if(!hopeBoardFile.isEmpty()) {
+			String hopeFilepath = "C:\\Final_project\\final-project\\finalproject\\src\\main\\resources\\static\\upload\\";
+			UUID uuid = UUID.randomUUID();
+			String hopeFilename = uuid + "_" + hopeBoardFile.getOriginalFilename();
+			
+			File savedHopeFile = new File(hopeFilepath, hopeFilename);
+			hopeBoardFile.transferTo(savedHopeFile);
+			
+			hopeBoard.setHopeFilename(hopeFilename);
+			hopeBoard.setHopeFilepath("/upload/" + hopeFilename);
+		}else {
+			hopeBoard.setHopeFilepath(findById(hopeBoard.getHbid()).getHopeFilepath());
+		}
 		hopeBoardRepository.save(hopeBoard);
+	}
+	
+	@Transactional
+	public void updateHits(Long hbid) {
+		hopeBoardRepository.updateHits(hbid);
 	}
 }

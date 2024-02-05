@@ -20,13 +20,19 @@ crossorigin="anonymous"></script>
 				<td><input type="text" name="member" th:value="${hopeBoard.member.name}" readonly></td>			
 			</tr>
 			<tr>
-				<td><textarea rows="5" cols="30" name="hbcontent" th:text="${hopeBoard.hbcontent}" readonly></textarea></td>
+				<td>
+					<textarea rows="5" cols="30" name="hbcontent" th:text="${hopeBoard.hbcontent}" readonly></textarea>
+					<img th:src="${hopeBoard.hopeFilepath}"/>
+				</td>
 			</tr>
 			<tr>
 				<td><p th:text="${hopeBoard.hbhit}"></td>
 			</tr>
 			<tr>
-				<td><p th:text="'date: ' + ${#dates.format(hopeBoard.createdDate, 'yyyy-MM-dd')}"></p>
+				<td>
+					<p th:if="${hopeBoard.updatedDate != empty}" th:text="'date: ' + ${#dates.format(hopeBoard.updatedDate, 'yyyy-MM-dd')}">
+					<p th:unless="${hopeBoard.updatedDate != empty}" th:text="'date: ' + ${#dates.format(hopeBoard.createdDate, 'yyyy-MM-dd')}">
+				</p>
 			</tr>
 		</tbody>
 	</table>
@@ -46,15 +52,15 @@ crossorigin="anonymous"></script>
 						<a th:href="'#'" th:onClick="replyObject.deleteReply([[${hopeBoard.hbid}]], [[${hopeReply.hrid}]])">삭제</a>
 					</p>
 				</div>
-<div id="replyModal" class="modal" style="display: none;">
-  <div class="modal-content">
-    <div style="display: none;" id="originalContent" th:text="${hopeReply.hrcontent}">
-    </div> <!-- 기존 댓글 내용을 표시할 곳 -->
-    <textarea id="replyContent" rows="4" cols="50"></textarea>
-    <button id="updateReplyBtn_confirm">수정 확인</button>
-    <button id="updateReplyBtn_cancel" type="reset">수정 취소</button>
-  </div>
-</div>
+				<div id="replyModal" class="modal" style="display: none;">
+				  <div class="modal-content">
+				    <div style="display: none;" id="originalContent" th:text="${hopeReply.hrcontent}">
+				    </div> <!-- 기존 댓글 내용을 표시할 곳 -->
+				    <textarea id="replyContent" rows="4" cols="50"></textarea>
+				    <button id="updateReplyBtn_confirm">수정 확인</button>
+				    <button id="updateReplyBtn_cancel" type="reset">수정 취소</button>
+				  </div>
+				</div>
 			</th:block>
 		</div>
 	</div>
@@ -70,6 +76,7 @@ crossorigin="anonymous"></script>
 	
 
 	<a th:href="@{|/hopeboard/update/${hbid}|}">게시글 수정</a>
+	<a th:href="@{|/hopeboard/delete/${hbid}|}">게시글 삭제</a>
 	<script th:src="@{/js/reply.js}"></script>
 </body>
 </html>
