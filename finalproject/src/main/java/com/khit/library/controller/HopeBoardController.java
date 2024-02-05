@@ -52,11 +52,16 @@ public class HopeBoardController {
     }
     
     // 글 수정 처리
-    @PostMapping("/hopeboard/update/{hbid}")
+    @PostMapping("/hopeboard/update")
     public String update(@ModelAttribute HopeBoardDTO hopeBoardDTO,
-    		             MultipartFile hopeBoardFile) throws IOException, Exception {
-    	hopeBoardService.update(hopeBoardDTO, hopeBoardFile);
-    	return "redirect:/hopeboard/" + hopeBoardDTO.getHbid();
+    		             MultipartFile hopeBoardFile,
+    		             @AuthenticationPrincipal SecurityUser principal,
+    		             Model model) throws IOException, Exception {
+    	HopeBoardDTO upHopeBoardDTO =  hopeBoardService.update(hopeBoardDTO, hopeBoardFile);
+    	hopeBoardDTO.setMember(principal.getMember());
+    	model.addAttribute("hopeBoard", upHopeBoardDTO);
+    	return "hopeboard/detail";
+    	//return "hopeboard/" + hopeBoardDTO.getHbid();
     }
     
     // 글 전체 목록

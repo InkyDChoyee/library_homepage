@@ -60,8 +60,7 @@ public class HopeBoardService {
 		hopeBoardRepository.deleteById(hbid);
 	}
 
-	public void update(HopeBoardDTO hopeBoardDTO, MultipartFile hopeBoardFile) throws Exception, IOException {
-		HopeBoard hopeBoard = null;
+	public HopeBoardDTO update(HopeBoardDTO hopeBoardDTO, MultipartFile hopeBoardFile) throws Exception, IOException {
 		if(!hopeBoardFile.isEmpty()) {
 			String hopeFilepath = "C:\\Final_project\\final-project\\finalproject\\src\\main\\resources\\static\\upload\\";
 			UUID uuid = UUID.randomUUID();
@@ -70,12 +69,14 @@ public class HopeBoardService {
 			File savedHopeFile = new File(hopeFilepath, hopeFilename);
 			hopeBoardFile.transferTo(savedHopeFile);
 			
-			hopeBoard.setHopeFilename(hopeFilename);
-			hopeBoard.setHopeFilepath("/upload/" + hopeFilename);
+			hopeBoardDTO.setHopeFilename(hopeFilename);
+			hopeBoardDTO.setHopeFilepath("/upload/" + hopeFilename);
 		}else {
-			hopeBoard.setHopeFilepath(findById(hopeBoard.getHbid()).getHopeFilepath());
+			hopeBoardDTO.setHopeFilepath(findById(hopeBoardDTO.getHbid()).getHopeFilepath());
 		}
+		HopeBoard hopeBoard = HopeBoard.toUpdateEntity(hopeBoardDTO);
 		hopeBoardRepository.save(hopeBoard);
+		return findById(hopeBoardDTO.getHbid());
 	}
 	
 	@Transactional
