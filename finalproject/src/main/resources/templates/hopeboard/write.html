@@ -20,7 +20,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 					<tr>
 						<td>
 							<div sec:authorize="isAuthenticated()">
-								<span sec:authentication="principal.member.name"></span>
+								<span sec:authentication="principal.member.mid"></span>
 							</div>
 						</td>
 					</tr>

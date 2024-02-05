@@ -8,21 +8,15 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <body>
 	<h1>Hope for the library : UPDATE</h1>
 	<div>
-		<form th:action="@{/hopeboard/write}" method="post"
+		<form th:action="@{/hopeboard/update}" method="post"
 			  enctype="multipart/form-data">
 			<input type="hidden" name="hbid" th:value="${hopeBoard.hbid}">
+			<input type="hidden" name="hbhit" th:value="${hopeBoard.hbhit}">
 			<table>
 				<tbody>
 					<tr>
 						<td>
 							<input type="text" name="hbtitle" th:value="${hopeBoard.hbtitle}">
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<div>
-								<span th:text="${hopeBoard.member.name}"></span>
-							</div>
 						</td>
 					</tr>
 					<tr>
