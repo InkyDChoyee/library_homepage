@@ -30,6 +30,34 @@ a {
     text-decoration: none;
 }
 
+/* admin_menu */
+.admin_box {
+	height: 100%;
+	display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.admin_menu {
+	position: absolute;
+	width: 100px;
+	display: none;
+    top: 75px;
+    left: -30px;
+}
+
+.admin_box:hover .admin_menu {
+	width: 100px;
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.admin_box .admin_menu a {
+	font-size: 1rem;
+}
+
+
 /* header */
 #header{
     width: 100%;
@@ -96,13 +124,18 @@ a {
 /* header_member */
 .header_member {
     width: 15%;
+    height: 100%;
     color: #A5B569;
+    display: flex;
+    align-items: center;
 }
 
 .header_member a {
     font-size: 0.7rem;
     color: #A5B569;
     text-decoration: none;
+    padding-right: 5px;
+    padding-left: 5px;
 }
 
 /* header_sub_menu */
@@ -906,6 +939,96 @@ select:focus{
     font-size: 0.8rem;
     font-weight: 500;
     box-shadow: 1px 1px 3px #543;
+}
+
+
+
+/* write form */
+.page_title_box {
+    padding-right: 20px;
+}
+
+.page_title_box img {
+    width: 30px;
+    opacity: 60%;
+}
+
+.writepage_table {
+    width: 100%;
+    border-top: 3px solid #efefef;
+    border-collapse: collapse;
+}
+
+.writepage_table td{
+    padding-top: 0;
+}
+
+.writepage_table tbody tr td{
+    padding-top: 20px;
+}
+
+.write_page_title_input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #efefef;
+}
+
+.write_page_title_input:focus {
+    outline: none;
+}
+
+.writepage_table_body textarea {
+    width: 100%;
+    height: 300px;
+    border: 2px solid #efefef;
+    border-radius: 15px;
+    padding: 10px;
+    resize: none;
+}
+
+.writepage_table_body textarea:focus {
+    outline: none;
+}
+
+.select_file {
+    display: none;
+}
+
+.file_upload_btn {
+    border: 1px solid #ccc;
+    padding-top: 5px;
+    padding-right: 5%;
+    padding-bottom: 5px;
+    padding-left: 5%;
+    border-radius: 10px;
+    background-color: #efefef;
+    font-size: 0.8rem;
+}
+
+.file_upload_btn:hover {
+    cursor: pointer;
+}
+
+.write_form_btn_box {
+    width: 100%;
+    display: flex;
+    justify-content: right;
+}
+
+.write_form_btn_box button {
+    padding: 15px;
+    border-radius: 100%;
+    width: 75px;
+    height: 75px;
+    margin-right: 20px;
+}
+.write_btn { 
+    border: 1px solid #dcffe6;
+}
+
+.cancel_btn {
+    border: 1px solid rgb(255, 228, 202)
 }
 
 

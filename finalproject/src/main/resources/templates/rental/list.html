@@ -50,7 +50,7 @@
 			let rentalId = $(this).data("rental-id");
 			console.log(rentalId);
 			$.ajax({
-				type: "put",
+				type: "PUT",
 				contentType: 'application/json; charset=utf-8',
 				url: "/rentalReturn/return",
 				dataType: 'json',
