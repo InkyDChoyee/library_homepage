@@ -64,5 +64,12 @@ public class BookController {
         bookService.deleteById(bookId);
         return "redirect:/book/list";
     }
+    //책 검색
+    @GetMapping("/search")
+    public String search(@RequestParam String keyword, Model model) {
+        List<BookDTO> searchResults = bookService.search(keyword);
+        model.addAttribute("searchResults", searchResults);
+        return "book/searchResults";
+    }
 
 }

@@ -62,4 +62,16 @@ public class BookService {
 
     public void rentBook(Long bookId, MemberDTO memberDTO) {
     }
+    
+    public List<BookDTO> search(String keyword) {
+        List<Book> searchResults = bookRepository.findByBnameContainingIgnoreCaseOrAuthorContainingIgnoreCase(keyword);
+        List<BookDTO> bookDTOList = new ArrayList<>();
+
+        for (Book book : searchResults) {
+            BookDTO bookDTO = BookDTO.toSaveDTO(book);
+            bookDTOList.add(bookDTO);
+        }
+
+        return bookDTOList;
+    }
 }
