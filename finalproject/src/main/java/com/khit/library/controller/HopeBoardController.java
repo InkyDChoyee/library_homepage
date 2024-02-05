@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
@@ -53,15 +54,16 @@ public class HopeBoardController {
     
     // 글 수정 처리
     @PostMapping("/hopeboard/update")
-    public String update(@ModelAttribute HopeBoardDTO hopeBoardDTO,
+    public String update(@ModelAttribute HopeBoardDTO hopeBoard,
     		             MultipartFile hopeBoardFile,
     		             @AuthenticationPrincipal SecurityUser principal,
     		             Model model) throws IOException, Exception {
-    	HopeBoardDTO upHopeBoardDTO =  hopeBoardService.update(hopeBoardDTO, hopeBoardFile);
-    	hopeBoardDTO.setMember(principal.getMember());
-    	model.addAttribute("hopeBoard", upHopeBoardDTO);
+    	hopeBoard.setMember(principal.getMember());
+    	HopeBoardDTO upHopeBoard =  hopeBoardService.update(hopeBoard, hopeBoardFile);
+    	model.addAttribute("hopeBoard", upHopeBoard);
+    	System.out.println("Received mid: " + hopeBoard.getMember().getMid());
+    	//return "redirect:/hopeboard/" + upHopeBoard.getHbid();
     	return "hopeboard/detail";
-    	//return "hopeboard/" + hopeBoardDTO.getHbid();
     }
     
     // 글 전체 목록
