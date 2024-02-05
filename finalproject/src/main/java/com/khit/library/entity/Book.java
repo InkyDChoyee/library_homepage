@@ -1,12 +1,10 @@
 package com.khit.library.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.khit.library.dto.BookDTO;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,12 +30,23 @@ public class Book extends BaseEntity{
     @Column(nullable = false, length = 30)
     private String author; //도서저자
 
+    @Column(nullable = false)
+    private String publisher; //출판사
+
+    @Column
+    private String bfilename;
+    @Column
+    private String bfilepath;
+
 
     public static Book toSaveEntity(BookDTO bookDTO){
         Book book = Book.builder()
                 .bname(bookDTO.getBname())
                 .bnumber(bookDTO.getBnumber())
                 .author(bookDTO.getAuthor())
+                .publisher(bookDTO.getPublisher())
+                .bfilename(bookDTO.getBfilename())
+                .bfilepath(bookDTO.getBfilepath())
                 .rentalReturnList(bookDTO.getRentalReturnList())
                 .build();
         return book;
@@ -48,14 +57,17 @@ public class Book extends BaseEntity{
                 .bname(bookDTO.getBname())
                 .bnumber(bookDTO.getBnumber())
                 .author(bookDTO.getAuthor())
+                .publisher(bookDTO.getPublisher())
+                .bfilename(bookDTO.getBfilename())
+                .bfilepath(bookDTO.getBfilepath())
                 .rentalReturnList(bookDTO.getRentalReturnList())
                 .build();
         return book;
     }
 
-    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
+    @JsonIgnore
     private Member member;
 
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
