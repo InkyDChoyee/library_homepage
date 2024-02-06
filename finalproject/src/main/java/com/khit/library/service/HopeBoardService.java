@@ -24,9 +24,11 @@ public class HopeBoardService {
 	private final HopeBoardRepository hopeBoardRepository;
 
 	public void save(HopeBoard hopeBoard, MultipartFile hopeBoardFile) throws Exception, IOException {
+
 		if(!hopeBoardFile.isEmpty()) { 
-		String hopeFilepath = "C:\\Final_project\\final-project\\finalproject\\src\\main\\resources\\static\\upload\\";
-		UUID uuid = UUID.randomUUID();
+		<!-- String hopeFilepath = "C:\\Final_project\\final-project\\finalproject\\src\\main\\resources\\static\\upload\\"; -->
+		String hopeFilepath = "C:\\final-project\\finalproject\\src\\main\\resources\\static\\upload";
+    UUID uuid = UUID.randomUUID();
 		String hopeFilename = uuid + "_" + hopeBoardFile.getOriginalFilename();
 		
 		File savedHopeFile = new File(hopeFilepath, hopeFilename);
@@ -63,7 +65,7 @@ public class HopeBoardService {
 
 	public HopeBoardDTO update(HopeBoardDTO hopeBoardDTO, MultipartFile hopeBoardFile) throws Exception, IOException {
 		if(!hopeBoardFile.isEmpty()) {
-			String hopeFilepath = "C:\\Final_project\\final-project\\finalproject\\src\\main\\resources\\static\\upload\\";
+			String hopeFilepath = "C:\\final-project\\finalproject\\src\\main\\resources\\static\\upload";
 			UUID uuid = UUID.randomUUID();
 			String hopeFilename = uuid + "_" + hopeBoardFile.getOriginalFilename();
 			
