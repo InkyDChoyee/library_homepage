@@ -161,7 +161,7 @@ a {
 .nav_top_title {
     margin: 0 15px;
     padding: 10px;
-    border-bottom: 2px solid #999;
+    border-bottom: 2px solid #efefef;
 }
 
 .nav_top_title p{
@@ -337,6 +337,200 @@ a {
     font-weight: 500;
     box-shadow: 1px 1px 3px #543;
 }
+
+.page_textarea_img_box {
+	border: 2px solid #efefef;
+	border-radius: 15px;
+	padding: 10px;
+    background-color: #efefef;
+}
+
+.page_title_box {
+    padding-right: 20px;
+}
+
+.page_title_box img {
+    width: 30px;
+    opacity: 60%;
+}
+
+.writepage_table {
+    width: 100%;
+    border-top: 3px solid #efefef;
+    border-collapse: collapse;
+}
+
+.writepage_table td{
+    padding-top: 0;
+}
+
+.writepage_table tbody tr td{
+    padding-top: 20px;
+}
+
+.write_page_title_input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #efefef;
+}
+
+.write_page_title_input:focus {
+    outline: none;
+}
+
+.writepage_table_body textarea {
+    width: 100%;
+    height: 300px;
+    border: 2px solid #efefef;
+    border-radius: 15px;
+    padding: 10px;
+    resize: none;
+}
+
+.writepage_table_body textarea:focus {
+    outline: none;
+}
+
+.select_file {
+    display: none;
+}
+
+.file_upload_btn:hover {
+    cursor: pointer;
+}
+
+.file_upload_btn {
+    border: 1px solid #ccc;
+    padding-top: 5px;
+    padding-right: 5%;
+    padding-bottom: 5px;
+    padding-left: 5%;
+    border-radius: 10px;
+    background-color: #efefef;
+    font-size: 0.8rem;
+}
+
+.write_form_btn_box {
+    width: 100%;
+    display: flex;
+    justify-content: right;
+}
+
+.write_form_btn_box button {
+    padding: 15px;
+    border-radius: 100%;
+    width: 75px;
+    height: 75px;
+    margin-right: 20px;
+}
+.write_btn { 
+    border: 1px solid #dcffe6;
+}
+
+.cancel_btn {
+    border: 1px solid rgb(255, 228, 202)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* detail page */
+.detailpage_table {
+    width: 100%;
+    border-top: 3px solid #efefef;
+    border-collapse: collapse;
+}
+
+.detailpage_table td{
+    padding-top: 0;
+}
+
+.detailpage_table tbody tr td{
+    padding-top: 10px;
+}
+
+.detail_page_info_input {
+    width: 100%;
+    padding-top: 5px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    border-radius: 10px;
+    border: 2px solid #efefef;
+    font-size: 0.8rem;
+}
+
+.detail_page_title_input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #efefef;
+}
+
+
+.detail_page_title_input:focus {
+    outline: none;
+}
+
+.detailpage_table_body textarea {
+    width: 100%;
+    height: 300px;
+    border: 2px solid #efefef;
+    border-radius: 15px;
+    padding: 10px;
+    resize: none;
+}
+
+.detailpage_table_body textarea:focus {
+    outline: none;
+}
+
+.detail_btn_box {
+    width: 100%;
+    padding: 20px;
+    border-bottom: 3px solid #efefef;
+    display: flex;
+    justify-content: right;
+}
+
+.detail_btn_box button {
+    width: 50px;
+    padding: 3px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+.page_reply {
+    width: 100%;
+    background-color: #000;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
