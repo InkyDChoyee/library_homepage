@@ -61,7 +61,7 @@ public class MemberService {
     public void update(MemberDTO memberDTO) {
         String encPw = pwEncoder.encode(memberDTO.getPassword());
         memberDTO.setPassword(encPw);
-        memberDTO.setRole(Role.Member);
+        memberDTO.setRole(Role.Admin);
 
         Member member = Member.toUpdateEntity(memberDTO);
         memberRepository.save(member);
@@ -79,5 +79,20 @@ public class MemberService {
 
     public MemberDTO findByUsername(String username) {
         return null;
+    }
+
+    //아이디 중복검사
+    public String checkId(String mid) {
+        Optional<Member> findMember = memberRepository.findByMid(mid);
+        if(mid.length() < 6){
+            return "len";
+        }else if(mid.length() > 15){
+            return "len";
+        }
+        if(findMember.isEmpty()){
+            return "OK";
+        }else{
+            return "NO";
+        }
     }
 }

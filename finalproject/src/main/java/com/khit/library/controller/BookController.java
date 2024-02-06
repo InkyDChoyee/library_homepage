@@ -43,17 +43,16 @@ public class BookController {
     }
     //책 상세
     @GetMapping("/detail/{bookId}")
-    public String detail(@PathVariable Long bookId, Model model){
+    public String detail(@PathVariable Long bookId, Model model, @AuthenticationPrincipal SecurityUser principal){
         BookDTO bookDTO = bookService.findById(bookId);
         model.addAttribute("book", bookDTO);
-        /*if(principal == null){
+        if(principal == null){
             return "book/detail";
         }else{
             MemberDTO memberDTO = memberService.findByMid(principal);
             model.addAttribute("member", memberDTO);
             return "book/detail";
-        }*/
-        return "book/detail";
+        }
     }
     //책 수정
     @GetMapping("/update/{bookId}")

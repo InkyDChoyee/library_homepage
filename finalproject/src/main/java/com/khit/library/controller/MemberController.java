@@ -10,10 +10,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -93,5 +90,12 @@ public class MemberController {
         memberService.update(memberDTO);
         log.info("dto : " + memberDTO);
         return "redirect:/member/" + memberDTO.getMemberId();
+    }
+
+    //아이디 중복검사
+    @PostMapping("/member/check-id")
+    public @ResponseBody String checkId(@RequestParam("mid") String mid){
+        String resultText = memberService.checkId(mid);
+        return resultText;
     }
 }
