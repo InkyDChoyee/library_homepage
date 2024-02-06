@@ -77,9 +77,11 @@ public class HopeBoardController {
     
     // 글 하나 상세보기
     @GetMapping("/hopeboard/{hbid}")
-    public String getDetail(@PathVariable Long hbid, Model model) {
+    public String getDetail(@PathVariable Long hbid, Model model,
+    						@AuthenticationPrincipal SecurityUser principal) {
     	hopeBoardService.updateHits(hbid);
     	HopeBoardDTO hopeBoardDTO = hopeBoardService.findById(hbid);
+    	hopeBoardDTO.setMember(principal.getMember());
     	model.addAttribute("hopeBoard", hopeBoardDTO);
     	return "hopeboard/detail";
     }
