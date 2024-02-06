@@ -10,7 +10,6 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 	<div>
 		<form th:action="@{/hopeboard/update}" method="post"
 			  enctype="multipart/form-data">
-			<input type="hidden" name="hbid" th:value="${hopeBoard.hbid}">
 			<input type="hidden" name="hbhit" th:value="${hopeBoard.hbhit}">
 			<table>
 				<tbody>
