@@ -62,7 +62,7 @@
                 </th:block>
                 <th:block sec:authorize="isAuthenticated()">
                     <!--<a class="header_member_join" th:href="@{/board/write}">글쓰기</a>-->
-                    <!--<p class="header_member_join" th:text="${member.name} + '님 환영합니다.'"></p>--> |
+                    <p class="header_member_join" th:text="${member.name} + '님 환영합니다.'"></p> |
                     <a class="header_member_login" th:href="@{/logout}">로그아웃</a>
                     <!-- <a th:href="@{/book/list}"><button type="button">책목록</button></a>
                     <a th:href="@{/member/update}"><button type="button">나의정보</button></a> -->
