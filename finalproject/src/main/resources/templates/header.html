@@ -61,6 +61,10 @@
                     <a class="header_member_login" th:href="@{/member/join}">회원가입</a>
                 </th:block>
                 <th:block sec:authorize="isAuthenticated()">
+
+                    <!--<a class="header_member_join" th:href="@{/board/write}">글쓰기</a>-->
+                    <!--<p class="header_member_join" th:text="${member.name} + '님 환영합니다.'"></p>--> |
+
                 <div class="admin_box">
                 	<a class="header_member_admin" th:href="@{/member/detail}">관리자</a> | 
      	        	<div class="admin_menu">
