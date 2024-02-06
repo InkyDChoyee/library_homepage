@@ -23,6 +23,19 @@ import java.util.List;
 public class MemberController {
     private final MemberService memberService;
 
+    //헤더 로그인 맴버
+    @GetMapping("/")
+    public String main(Model model, @AuthenticationPrincipal SecurityUser principal){
+        if(principal == null){
+            return "index";
+        }else{
+            MemberDTO memberDTO = memberService.findByMid(principal);
+            model.addAttribute("member", memberDTO);
+            return "index";
+        }
+    }
+
+
     //회원가입 폼
     @GetMapping("/member/join")
     public String joinForm(MemberDTO memberDTO){

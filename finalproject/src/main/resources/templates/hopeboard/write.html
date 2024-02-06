@@ -1,52 +1,51 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
-    <meta charset="UTF-8">
-    <title>선유도서관_게시판</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}">
-	<link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
-    <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
-    <link th:href="@{https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap}" rel="stylesheet">
+<meta charset="UTF-8">
+<title>Hope for the library : PAGE_LIST</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+<link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
+<link rel="preconnect" th:href="@{https://fonts.gstatic.com}"
+	crossorigin>
+<link
+	th:href="@{https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap}"
+	rel="stylesheet">
 </head>
 <body>
-<div th:replace="~{header::header-fragment}"></div>
+	<div th:replace="~{header::header-fragment}"></div>
 	<div id="container">
-        <section class="page">
+		<section class="page">
 
-            <div class="page_top">
-                <div class="page_top_imgbox">
-                    <div class="page_img">
-                        <img th:src="@{/images/main_library_picture1.PNG}" alt="img">
-                    </div>
-                    <div class="page_title">
-                        <p>PAGE TITLE</p>
-                    </div>
-                </div>
-            </div>
+			<div class="page_top">
+				<div class="page_top_imgbox">
+					<div class="page_img">
+						<img th:src="@{/images/main_library_picture1.PNG}" alt="img">
+					</div>
+					<div class="page_title">
+						<p>도서관에 바란다</p>
+					</div>
+				</div>
+			</div>
 
 
-            <div class="page_content_box">
-                <nav class="page_side_nav">
-                    <div class="nav_content">
-                        <div class="nav_content_top">
-                            <div class="nav_top_title">
-                                <p>BOARD_TILTE</p>
-                            </div>
-                        </div>
-                        <div class="nav_content_mid">
-                            <div class="nav_links">
-                                <a class="nav_menu selected_menu" th:href="@{#}">게시판 메뉴1</a>
-                                <a class="nav_menu" th:href="@{#}">게시판 메뉴2</a>
-                                <a class="nav_menu" th:href="@{#}">게시판 메뉴3</a>
-                                <a class="nav_menu" th:href="@{#}">게시판 메뉴4</a>
-                                <a class="nav_menu" th:href="@{#}">게시판 메뉴2</a>
-                                <a class="nav_menu" th:href="@{#}">게시판 메뉴3</a>
-                                <a class="nav_menu" th:href="@{#}">게시판 메뉴4</a>
-                            </div>
-                        </div>
-                    </div>
-                </nav>
+			<div class="page_content_box">
+				<nav class="page_side_nav">
+					<div class="nav_content">
+						<div class="nav_content_top">
+							<div class="nav_top_title">
+								<p>열린 공간</p>
+							</div>
+						</div>
+						<div class="nav_content_mid">
+							<div class="nav_links">
+								<a class="nav_menu selected_menu" th:href="@{#}">도서관에 바란다</a> <a
+									class="nav_menu" th:href="@{#}">자유 게시판</a> <a class="nav_menu"
+									th:href="@{#}">도서관 이벤트</a>
+							</div>
+						</div>
+					</div>
+				</nav>
                 
                 
                 <div class="page_content">
@@ -85,7 +84,7 @@
                                 </table>
                                 <div class="write_form_btn_box">
                                     <button type="submit" class="write_btn">등록</button>
-                                    <a th:href="@{/hopeboard/pagelist}"><button class="cancel_btn">취소</button></a>
+                                    <a th:href="@{/hopeboard/pagelist}"><button type="button" class="cancel_btn">취소</button></a>
                                 </div>
                             </form>
                         </div>
