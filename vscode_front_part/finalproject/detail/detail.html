@@ -89,186 +89,88 @@
                     </div>
                 </nav>
                 
+
+
                 <div class="page_content">
                     <div class="page_content_top">
-                        <!-- <div class="page_menu_title">
-                            <p>게시판 메뉴1</p>
-                        </div> -->
                         <div class="page_menu_search">
-                            <div class="page_menu_search_box">
-                                <select class="page_menu_search_select">
-                                    <option value="title">제목</option>
-                                    <option value="author">글쓴이</option>
-                                </select>
-                                <input class="page_menu_search_input" type="text">
-                                <button class="page_menu_input_btn" type="submit">
-                                    <img class="page_menu_search_img" src="/img/magnifying4.png" alt="">
-                                </button>
+                            <div class="page_title_box">
+                                <img src="/img/write.png" alt="">
                             </div>
                         </div>
                     </div>
                     <div class="page_content_mid">
                         <div class="page_table_box">
-                            <table class="page_table">
-                                <thead class="page_table_head">
+                            <table class="detailpage_table">
+                                <tbody class="detailpage_table_body">
                                     <tr>
-                                        <th class="page_table_no">번호</th>
-                                        <th class="page_table_title">제목</th>
-                                        <th class="page_table_writer">작성자</th>
-                                        <th class="page_table_date">작성일</th>
-                                        <th calss="page_table_hit">조회수</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="page_table_body">
-                                    <tr>
-                                        <td>27</td>
-                                        <td>리부트 서버 재오픈 건의</td>
-                                        <td>김지성</td>
-                                        <td>2024.02.01</td>
-                                        <td>265</td>
+                                        <td>
+                                            <input class="detail_page_info_input" type="text" name="hbtitle" readonly>
+                                        </td>
                                     </tr>
                                     <tr>
-                                        <td>26</td>
-                                        <td>맥북 아니면 도서관 오면 안되는거 아닌가요?</td>
-                                        <td>김희린</td>
-                                        <td>2024.01.28</td>
-                                        <td>489</td>
+                                        <td>
+                                            <input class="detail_page_title_input" type="text" name="hbtitle" readonly>
+                                        </td>
                                     </tr>
                                     <tr>
-                                        <td>25</td>
-                                        <td>피자먹고싶은데 휴게실에서 배달..</td>
-                                        <td>이성재</td>
-                                        <td>2024.01.27</td>
-                                        <td>99</td>
-                                    </tr>
-                                    <tr>
-                                        <td>24</td>
-                                        <td>히히 재밌당 코딩 너무 재미따</td>
-                                        <td>최동현</td>
-                                        <td>2024.01.25</td>
-                                        <td>1</td>
-                                    </tr>
-                                    <tr>
-                                        <td>27</td>
-                                        <td>리부트 서버 재오픈 건의</td>
-                                        <td>김지성</td>
-                                        <td>2024.02.01</td>
-                                        <td>265</td>
-                                    </tr>
-                                    <tr>
-                                        <td>26</td>
-                                        <td>맥북 아니면 도서관 오면 안되는거 아닌가요?</td>
-                                        <td>김희린</td>
-                                        <td>2024.01.28</td>
-                                        <td>489</td>
-                                    </tr>
-                                    <tr>
-                                        <td>25</td>
-                                        <td>피자먹고싶은데 휴게실에서 배달..</td>
-                                        <td>이성재</td>
-                                        <td>2024.01.27</td>
-                                        <td>99</td>
-                                    </tr>
-                                    <tr>
-                                        <td>24</td>
-                                        <td>히히 재밌당 코딩 너무 재미따</td>
-                                        <td>최동현</td>
-                                        <td>2024.01.25</td>
-                                        <td>1</td>
-                                    </tr>
-                                    <tr>
-                                        <td>27</td>
-                                        <td>리부트 서버 재오픈 건의</td>
-                                        <td>김지성</td>
-                                        <td>2024.02.01</td>
-                                        <td>265</td>
-                                    </tr>
-                                    <tr>
-                                        <td>26</td>
-                                        <td>맥북 아니면 도서관 오면 안되는거 아닌가요?</td>
-                                        <td>김희린</td>
-                                        <td>2024.01.28</td>
-                                        <td>489</td>
-                                    </tr>
-                                    <tr>
-                                        <td>25</td>
-                                        <td>피자먹고싶은데 휴게실에서 배달..</td>
-                                        <td>이성재</td>
-                                        <td>2024.01.27</td>
-                                        <td>99</td>
-                                    </tr>
-                                    <tr>
-                                        <td>24</td>
-                                        <td>히히 재밌당 코딩 너무 재미따</td>
-                                        <td>최동현</td>
-                                        <td>2024.01.25</td>
-                                        <td>1</td>
-                                    </tr>
-                                    <tr>
-                                        <td>27</td>
-                                        <td>리부트 서버 재오픈 건의</td>
-                                        <td>김지성</td>
-                                        <td>2024.02.01</td>
-                                        <td>265</td>
-                                    </tr>
-                                    <tr>
-                                        <td>26</td>
-                                        <td>맥북 아니면 도서관 오면 안되는거 아닌가요?</td>
-                                        <td>김희린</td>
-                                        <td>2024.01.28</td>
-                                        <td>489</td>
-                                    </tr>
-                                    <tr>
-                                        <td>25</td>
-                                        <td>피자먹고싶은데 휴게실에서 배달..</td>
-                                        <td>이성재</td>
-                                        <td>2024.01.27</td>
-                                        <td>99</td>
-                                    </tr>
-                                    <tr>
-                                        <td>24</td>
-                                        <td>히히 재밌당 코딩 너무 재미따</td>
-                                        <td>최동현</td>
-                                        <td>2024.01.25</td>
-                                        <td>1</td>
+                                        <td>
+                                            <textarea rows="5" cols="30" name="hbcontent" readonly></textarea>
+                                            <div class="page_textarea_img_box">
+                                                <img src=""/>
+                                            </div>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
-                            <div class="page_write_btn_box">
-                                <a href="#"><button type="button" class="page_write_btn">글쓰기</button></a>
+                            <div class="detail_btn_box">
+                                <a href=""><button type="button" class="page_go_list">목록</button></a>
+                                <a href=""><button type="button" class="page_go_update">수정</button></a>
+                                <a href=""><button type="button" class="page_go_delete">삭제</button></a>
                             </div>
                         </div>
                     </div>
-                    <div class="page_content_bottom">
-                        <div class="page_paging">
-                            <span class="page_paging_prev">
-                                <
-                            </span>
-                            <span class="page_paging_number">
-                                <a href="">1</a>
-                                <a href="">2</a>
-                                <a href="">3</a>
-                                <a href="">4</a>
-                                <a href="">5</a>
-                                <a href="">6</a>
-                                <a href="">7</a>
-                                <a href="">8</a>
-                                <a href="">9</a>
-                            </span>
-                            <span class="page_paging_next">
-                                >
-                            </span>
+
+                    <!-- page_reply -->
+                    <div class="page_reply">
+                        <div class="page_reply_list_box">
+                            <div class="page_reply_list">
+                                <p class="hope_reply_content" th:text="${hopeReply.hrcontent}"></p>
+                                <span class="hope_reply_writer" th:text="'작성자: ' + ${hopeReply.member.mid} + '(작성일: ' + ${hopeReply.createdDate} + ')'"></span>
+                                <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.getPrincipal.getUsername()} == ${hopeBoard.member.mid}">
+                                    <div class="hope_reply_update">
+                                        <p>
+                                            <a th:href="'#'" th:onClick="replyObject.updateReply([[${hopeBoard.hbid}]], [[${hopeReply.hrid}]])">수정</a> | 
+                                            <a th:href="'#'" th:onClick="replyObject.deleteReply([[${hopeBoard.hbid}]], [[${hopeReply.hrid}]])">삭제</a>
+                                        </p>
+                                    </div>
+                                    <div id="replyModal" class="modal" style="display: none;">
+                                    <div class="modal_content">
+                                        <div style="display: none;" id="originalContent" th:text="${hopeReply.hrcontent}">
+                                        </div> 
+                                        <textarea id="replyContent" rows="4" cols="50"></textarea>
+                                        <button id="updateReplyBtn_confirm">수정 확인</button>
+                                        <button id="updateReplyBtn_cancel" type="reset">수정 취소</button>
+                                    </div>
+                                    </div>
+                                </th:block>
+                            </div>
+                        </div>
+                        <div class="hope_reply_insert">
+                            <input type="hidden" id="board_id" th:value="${hopeBoard.hbid}">
+                            <p>
+                                <textarea id="reply_content" rows="3" cols="50" placeholder="댓글을 남겨주세요"></textarea>
+                            </p>
+                            <button id="save_reply_btn">댓글 등록</button>
                         </div>
                     </div>
+
                 </div>
             </div>
-
         </section>
     </div>
     
     
-    
-
     <div id="footer">
         <section class="footer">
             <div class="footer_top">
