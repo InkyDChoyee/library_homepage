@@ -1,7 +1,5 @@
 package com.khit.library.controller;
 
-import java.util.List;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -14,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.khit.library.config.SecurityUser;
-import com.khit.library.dto.HopeBoardDTO;
 import com.khit.library.dto.NoticeBoardDTO;
 import com.khit.library.entity.NoticeBoard;
 import com.khit.library.service.NoticeBoardService;
