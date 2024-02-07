@@ -15,7 +15,4 @@ public class WebConfig implements WebMvcConfigurer{
 		registry.addResourceHandler(resourcePath)   // view에 접근할 경로
 			    .addResourceLocations(savePath);    // 실제 저장 파일 위치
 	}
-	
-	
-	
 }
