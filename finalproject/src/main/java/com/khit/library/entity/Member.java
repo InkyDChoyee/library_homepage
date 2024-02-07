@@ -6,7 +6,10 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.khit.library.dto.MemberDTO;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,10 +26,10 @@ public class Member extends BaseEntity{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long memberId;
 
-    @Column(unique = true, name="mid")
+    @Column(unique = true)
     private String mid;
 
-    @Column(nullable = false, length = 2000)
+    @Column(nullable = false)
     private String password;
 
     @Column(nullable = false)
@@ -46,6 +49,7 @@ public class Member extends BaseEntity{
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    @JsonIgnore
     @OneToMany(mappedBy="member", cascade = CascadeType.ALL)
     private List<HopeBoard> hopeBoardList = new ArrayList<>();
 
