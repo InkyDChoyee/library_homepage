@@ -2,12 +2,16 @@ package com.khit.library.controller;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.khit.library.config.SecurityUser;
 import com.khit.library.dto.HopeBoardDTO;
@@ -52,15 +56,27 @@ public class NoticeBoardController {
 	@PostMapping("/notice/update/{nbid}")
 	public String update(@ModelAttribute NoticeBoardDTO noticeBoardDTO) {
 		noticeBoardService.update(noticeBoardDTO);
-		return "redirect:/noticeboard/" + noticeBoardDTO.getNbid();
+		return "redirect:/notice/" + noticeBoardDTO.getNbid();
 	}
 	
-	 //글 전체 목록
+//	//글 전체 목록
+//	@GetMapping("/notice/pagelist")
+//	public String getAllList(Model model) {
+//	    List<NoticeBoardDTO> noticeBoardDTOList = noticeBoardService.findAll();
+//	    model.addAttribute("noticeBoardList", noticeBoardDTOList);
+//	    return "notice/pagelist";
+//	}
+	
+	//페이징, 글 목록
     @GetMapping("/notice/pagelist")
-    public String getAllList(Model model) {
-    	List<NoticeBoardDTO> noticeBoardDTOList = noticeBoardService.findAll();
-    	model.addAttribute("noticeBoardList", noticeBoardDTOList);
-    	return "notice/pagelist";
+    public String pagelist(
+            @RequestParam(value = "page", defaultValue = "0") int page,
+            @RequestParam(value = "size", defaultValue = "10") int size,
+            Model model) {
+        Pageable pageable = PageRequest.of(page, size);
+        Page<NoticeBoardDTO> noticeBoardPage = noticeBoardService.paging(pageable);
+        model.addAttribute("noticeBoardPage", noticeBoardPage);
+        return "notice/pagelist";
     }
 	
     //상세보기
