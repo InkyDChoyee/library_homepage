@@ -22,7 +22,20 @@ import lombok.RequiredArgsConstructor;
 public class HopeBoardService {
 	private final HopeBoardRepository hopeBoardRepository;
 
-	public void save(HopeBoard hopeBoard) {
+
+	public void save(HopeBoard hopeBoard, MultipartFile hopeBoardFile) throws Exception, IOException {
+
+		if(!hopeBoardFile.isEmpty()) {
+            UUID uuid = UUID.randomUUID();
+            String hopeFilename = uuid + "_" + hopeBoardFile.getOriginalFilename();
+            String hopeFilepath ="C:/projectfiles/" + hopeFilename;
+
+            File savedHopeFile = new File(hopeFilepath); //실제 저장된 파일
+            hopeBoardFile.transferTo(savedHopeFile);
+
+            hopeBoard.setHopeFilename(hopeFilename);
+            hopeBoard.setHopeFilepath(hopeFilepath); //파일 경로 설정
+		}
 		hopeBoardRepository.save(hopeBoard);
 	}
 
@@ -48,7 +61,22 @@ public class HopeBoardService {
 		hopeBoardRepository.deleteById(hbid);
 	}
 
-	public void update(HopeBoardDTO hopeBoardDTO) {
+	public HopeBoardDTO update(HopeBoardDTO hopeBoardDTO, MultipartFile hopeBoardFile) throws Exception, IOException {
+		if(!hopeBoardFile.isEmpty()) {
+            UUID uuid = UUID.randomUUID();
+            String hopeFilename = uuid + "_" + hopeBoardFile.getOriginalFilename();
+            String hopeFilepath ="C:/projectfiles/" + hopeFilename;
+
+            File savedHopeFile = new File(hopeFilepath); //실제 저장된 파일
+            hopeBoardFile.transferTo(savedHopeFile);
+
+			hopeBoardDTO.setHopeFilename(hopeFilename);
+			hopeBoardDTO.setHopeFilepath(hopeFilepath);
+		}else {
+			hopeBoardDTO.setHopeFilename(findById(hopeBoardDTO.getHbid()).getHopeFilename());
+			hopeBoardDTO.setHopeFilepath(findById(hopeBoardDTO.getHbid()).getHopeFilepath());
+		}
+
 		HopeBoard hopeBoard = HopeBoard.toUpdateEntity(hopeBoardDTO);
 		hopeBoardRepository.save(hopeBoard);
 	}

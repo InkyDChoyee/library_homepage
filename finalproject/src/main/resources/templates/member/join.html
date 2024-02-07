@@ -4,12 +4,21 @@
 <meta charset="UTF-8">
 <title>회원가입</title>
 <link rel="stylesheet" th:href="@{/css/style.css}">
+
+    <style>
+        #container ul li{padding: 10px;}
+        .join_logo{width: 150px; height: 60px;}
+    </style>
+
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 </head>
 <body>
 	<div id="container">
-		<h2>회원가입</h2>
-		<form th:action="@{/member/join}" method="post" class="joinform">
+
+        <img class="join_logo" th:src="@{/images/join-logo1.png}">
+		<!--<h2>회원가입</h2>-->
+		<form th:action="@{/member/join}" method="post" th:object="${memberDTO}" class="joinform">
+
 			<fieldset>
 				<ul>
 					<li>
