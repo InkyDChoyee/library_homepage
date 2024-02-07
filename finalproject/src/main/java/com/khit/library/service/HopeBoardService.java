@@ -26,18 +26,18 @@ public class HopeBoardService {
 	public void save(HopeBoard hopeBoard, MultipartFile hopeBoardFile) throws Exception, IOException {
 
 		if(!hopeBoardFile.isEmpty()) { 
-		/*String hopeFilepath = "C:\\Final_project\\final-project\\finalproject\\src\\main\\resources\\static\\upload\\";*/
-		String hopeFilepath = "C:\\final-project\\finalproject\\src\\main\\resources\\static\\upload";
-    UUID uuid = UUID.randomUUID();
-		String hopeFilename = uuid + "_" + hopeBoardFile.getOriginalFilename();
-		
-		File savedHopeFile = new File(hopeFilepath, hopeFilename);
-		hopeBoardFile.transferTo(savedHopeFile);
-		
-		hopeBoard.setHopeFilename(hopeFilename);
-		hopeBoard.setHopeFilepath("/upload/" + hopeFilename);
+		//String hopeFilepath = "C:\\Final_project\\final-project\\finalproject\\src\\main\\resources\\static\\upload\\";
+		//String hopeFilepath = "C:\\final-project\\finalproject\\src\\main\\resources\\static\\upload";
+			UUID uuid = UUID.randomUUID();
+			String hopeFilename = uuid + "_" + hopeBoardFile.getOriginalFilename();
+			String hopeFilepath = "C:/springfiles/" + hopeFilename;
+			
+			File savedHopeFile = new File(hopeFilepath);  // 실제 저장되는 파일
+			hopeBoardFile.transferTo(savedHopeFile);
+			
+			hopeBoard.setHopeFilename(hopeFilename);
+			hopeBoard.setHopeFilepath(hopeFilepath);
 		}
-		
 		hopeBoardRepository.save(hopeBoard);
 	}
 
@@ -65,15 +65,15 @@ public class HopeBoardService {
 
 	public HopeBoardDTO update(HopeBoardDTO hopeBoardDTO, MultipartFile hopeBoardFile) throws Exception, IOException {
 		if(!hopeBoardFile.isEmpty()) {
-			String hopeFilepath = "C:\\final-project\\finalproject\\src\\main\\resources\\static\\upload";
 			UUID uuid = UUID.randomUUID();
 			String hopeFilename = uuid + "_" + hopeBoardFile.getOriginalFilename();
+			String hopeFilepath = "C:/springfiles/" + hopeFilename;
 			
-			File savedHopeFile = new File(hopeFilepath, hopeFilename);
+			File savedHopeFile = new File(hopeFilepath);
 			hopeBoardFile.transferTo(savedHopeFile);
 			
 			hopeBoardDTO.setHopeFilename(hopeFilename);
-			hopeBoardDTO.setHopeFilepath("/upload/" + hopeFilename);
+			hopeBoardDTO.setHopeFilepath(hopeFilepath);
 		}else {
 			hopeBoardDTO.setHopeFilename(findById(hopeBoardDTO.getHbid()).getHopeFilename());
 			hopeBoardDTO.setHopeFilepath(findById(hopeBoardDTO.getHbid()).getHopeFilepath());
