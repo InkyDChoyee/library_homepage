@@ -73,8 +73,10 @@
 	                    <a th:href="@{/book/register}" sec:authorize="hasAnyAuthority('Admin')">책등록</a> <!--관리자 로그인시 보임-->
                     </div>
                 </div>
+
           
                      | <a class="header_member_login" th:href="@{/logout}">로그아웃</a>
+
                     <!-- <a th:href="@{/book/list}"><button type="button">책목록</button></a>
                     <a th:href="@{/member/update}"><button type="button">나의정보</button></a> -->
 
