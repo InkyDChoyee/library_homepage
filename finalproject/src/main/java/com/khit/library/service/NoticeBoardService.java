@@ -9,9 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import com.khit.library.dto.HopeBoardDTO;
 import com.khit.library.dto.NoticeBoardDTO;
-import com.khit.library.entity.HopeBoard;
 import com.khit.library.entity.NoticeBoard;
 import com.khit.library.repository.NoticeBoardRepository;
 
