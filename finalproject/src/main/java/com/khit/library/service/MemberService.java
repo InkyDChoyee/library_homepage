@@ -28,14 +28,6 @@ public class MemberService {
         Member member = Member.toSaveEntity(memberDTO);
         memberRepository.save(member);
     }
-    public Member login(Member member){
-        Optional<Member> findMember = memberRepository.findByMid(member.getMid());
-        if(findMember.isPresent()){
-            return findMember.get();
-        }else{
-            return null;
-        }
-    }
 
     public MemberDTO findByMid(SecurityUser principal){
         Optional<Member> member = memberRepository.findByMid(principal.getUsername());
@@ -61,7 +53,7 @@ public class MemberService {
     public void update(MemberDTO memberDTO) {
         String encPw = pwEncoder.encode(memberDTO.getPassword());
         memberDTO.setPassword(encPw);
-        memberDTO.setRole(Role.Admin);
+        memberDTO.setRole(Role.Member);
 
         Member member = Member.toUpdateEntity(memberDTO);
         memberRepository.save(member);
@@ -79,20 +71,5 @@ public class MemberService {
 
     public MemberDTO findByUsername(String username) {
         return null;
-    }
-
-    //아이디 중복검사
-    public String checkId(String mid) {
-        Optional<Member> findMember = memberRepository.findByMid(mid);
-        if(mid.length() < 6){
-            return "len";
-        }else if(mid.length() > 15){
-            return "len";
-        }
-        if(findMember.isEmpty()){
-            return "OK";
-        }else{
-            return "NO";
-        }
     }
 }
