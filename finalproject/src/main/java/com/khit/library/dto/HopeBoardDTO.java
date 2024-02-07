@@ -26,9 +26,6 @@ public class HopeBoardDTO {
 	
 	private Integer hbhit;    // 조회수
 	
-	private String hopeFilename;
-	private String hopeFilepath;
-	
 	private List<HopeReply> hopeReplyList;
 	
 	// entity -> dto
@@ -40,8 +37,6 @@ public class HopeBoardDTO {
 														  .createdDate(hopeBoard.getCreatedDate())
 														  .updatedDate(hopeBoard.getUpdatedDate())
 														  .hbhit(hopeBoard.getHbhit())
-														  .hopeFilename(hopeBoard.getHopeFilename())
-														  .hopeFilepath(hopeBoard.getHopeFilepath())
 														  .hopeReplyList(hopeBoard.getHopeReplyList())
 														  .build();
 		return hopeBoardDTO;
