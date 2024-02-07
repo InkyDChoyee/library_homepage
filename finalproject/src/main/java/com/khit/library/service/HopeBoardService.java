@@ -1,21 +1,20 @@
 package com.khit.library.service;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.khit.library.dto.HopeBoardDTO;
+import com.khit.library.dto.NoticeBoardDTO;
 import com.khit.library.entity.HopeBoard;
+import com.khit.library.entity.NoticeBoard;
 import com.khit.library.repository.HopeBoardRepository;
 
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -23,21 +22,20 @@ import lombok.RequiredArgsConstructor;
 public class HopeBoardService {
 	private final HopeBoardRepository hopeBoardRepository;
 
+
 	public void save(HopeBoard hopeBoard, MultipartFile hopeBoardFile) throws Exception, IOException {
 
-		if(!hopeBoardFile.isEmpty()) { 
-		/*String hopeFilepath = "C:\\Final_project\\final-project\\finalproject\\src\\main\\resources\\static\\upload\\";*/
-		String hopeFilepath = "C:\\final-project\\finalproject\\src\\main\\resources\\static\\upload";
-    UUID uuid = UUID.randomUUID();
-		String hopeFilename = uuid + "_" + hopeBoardFile.getOriginalFilename();
-		
-		File savedHopeFile = new File(hopeFilepath, hopeFilename);
-		hopeBoardFile.transferTo(savedHopeFile);
-		
-		hopeBoard.setHopeFilename(hopeFilename);
-		hopeBoard.setHopeFilepath("/upload/" + hopeFilename);
+		if(!hopeBoardFile.isEmpty()) {
+            UUID uuid = UUID.randomUUID();
+            String hopeFilename = uuid + "_" + hopeBoardFile.getOriginalFilename();
+            String hopeFilepath ="C:/projectfiles/" + hopeFilename;
+
+            File savedHopeFile = new File(hopeFilepath); //실제 저장된 파일
+            hopeBoardFile.transferTo(savedHopeFile);
+
+            hopeBoard.setHopeFilename(hopeFilename);
+            hopeBoard.setHopeFilepath(hopeFilepath); //파일 경로 설정
 		}
-		
 		hopeBoardRepository.save(hopeBoard);
 	}
 
@@ -65,26 +63,26 @@ public class HopeBoardService {
 
 	public HopeBoardDTO update(HopeBoardDTO hopeBoardDTO, MultipartFile hopeBoardFile) throws Exception, IOException {
 		if(!hopeBoardFile.isEmpty()) {
-			String hopeFilepath = "C:\\final-project\\finalproject\\src\\main\\resources\\static\\upload";
-			UUID uuid = UUID.randomUUID();
-			String hopeFilename = uuid + "_" + hopeBoardFile.getOriginalFilename();
-			
-			File savedHopeFile = new File(hopeFilepath, hopeFilename);
-			hopeBoardFile.transferTo(savedHopeFile);
-			
+            UUID uuid = UUID.randomUUID();
+            String hopeFilename = uuid + "_" + hopeBoardFile.getOriginalFilename();
+            String hopeFilepath ="C:/projectfiles/" + hopeFilename;
+
+            File savedHopeFile = new File(hopeFilepath); //실제 저장된 파일
+            hopeBoardFile.transferTo(savedHopeFile);
+
 			hopeBoardDTO.setHopeFilename(hopeFilename);
-			hopeBoardDTO.setHopeFilepath("/upload/" + hopeFilename);
+			hopeBoardDTO.setHopeFilepath(hopeFilepath);
 		}else {
 			hopeBoardDTO.setHopeFilename(findById(hopeBoardDTO.getHbid()).getHopeFilename());
 			hopeBoardDTO.setHopeFilepath(findById(hopeBoardDTO.getHbid()).getHopeFilepath());
 		}
+
 		HopeBoard hopeBoard = HopeBoard.toUpdateEntity(hopeBoardDTO);
 		hopeBoardRepository.save(hopeBoard);
-		return findById(hopeBoardDTO.getHbid());
 	}
-	
-	@Transactional
-	public void updateHits(Long hbid) {
-		hopeBoardRepository.updateHits(hbid);
-	}
+
+	public Page<HopeBoardDTO> paging(Pageable pageable) {
+		Page<HopeBoard> hopeBoardPage = hopeBoardRepository.findAll(pageable);
+        return hopeBoardPage.map(hopeBoard -> HopeBoardDTO.toSaveDTO(hopeBoard));
+    }
 }

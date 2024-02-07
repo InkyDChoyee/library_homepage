@@ -319,26 +319,6 @@ a {
     justify-content: space-around;
 }
 
-.page_write_btn_box {
-    width: 100%;
-    margin-top: 16px;
-    padding-right: 20px;
-    display: flex;
-    justify-content: right;
-}
-
-.page_write_btn {
-    border: 1px solid #cfc;
-    border-radius: 15px 5px 15px 10px;
-    padding: 5px;
-    background-color: #efffef;
-    color: #543;
-    font-size: 0.8rem;
-    font-weight: 500;
-    box-shadow: 1px 1px 3px #543;
-}
-
-
 
 /* footer */
 #footer{
