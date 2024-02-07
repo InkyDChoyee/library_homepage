@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -42,15 +44,18 @@ public class NoticeBoardService {
 		
 	}
 	
-	public List<NoticeBoardDTO> findAll() {
-		List<NoticeBoard> noticeBoardList = noticeBoardRepository.findAll(Sort.by(Sort.Direction.DESC, "nbid"));
-		List<NoticeBoardDTO> noticeBoardDTOList = new ArrayList<>();
-		
-		for(NoticeBoard noticeBoard : noticeBoardList) {
-			NoticeBoardDTO noticeBoardDTO = NoticeBoardDTO.toSaveDTO(noticeBoard);
-			noticeBoardDTOList.add(noticeBoardDTO);
-		}
-		
-		return noticeBoardDTOList;
+//	public List<NoticeBoardDTO> findAll(Pageable pageable) {
+//	    Page<NoticeBoard> page = noticeBoardRepository.findAll(pageable);
+//	    List<NoticeBoardDTO> noticeBoardDTOList = new ArrayList<>();
+//	    for (NoticeBoard noticeBoard : page.getContent()) {
+//	        NoticeBoardDTO noticeBoardDTO = NoticeBoardDTO.toSaveDTO(noticeBoard);
+//	        noticeBoardDTOList.add(noticeBoardDTO);
+//	    }
+//	    return noticeBoardDTOList;
+//	}
+	
+	public Page<NoticeBoardDTO> findAll(Pageable pageable) {
+	    Page<NoticeBoard> noticeBoards = noticeBoardRepository.findAll(pageable);
+	    return noticeBoards.map(noticeBoard -> NoticeBoardDTO.toSaveDTO(noticeBoard));
 	}
 }
