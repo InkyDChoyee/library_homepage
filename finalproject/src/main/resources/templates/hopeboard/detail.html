@@ -10,41 +10,19 @@ integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
 crossorigin="anonymous"></script>
 </head>
 <body>
-	<h1>Hope for the library : DETAIL</h1>
-	<table>
-		<tbody>
-			<tr>
-				<td><input type="text" name="hbtitle" th:value="${hopeBoard.hbtitle}" readonly></td>			
-			</tr>
-			<tr>
-				<td><input type="text" name="member" th:value="${hopeBoard.member.name}" readonly></td>			
-			</tr>
-			<tr>
-				<td><textarea rows="5" cols="30" name="hbcontent" th:text="${hopeBoard.hbcontent}" readonly></textarea></td>
-			</tr>
-			<tr>
-				<td><p th:text="${hopeBoard.hbhit}"></td>
-			</tr>
-			<tr>
-				<td><p th:text="'date: ' + ${#dates.format(hopeBoard.createdDate, 'yyyy-MM-dd')}"></p>
-			</tr>
-		</tbody>
-	</table>
-	
-	<!-- 댓글 -->
-	<div class="hope_reply">
-		<div class="hope_reply_box" th:each="hopeReply:${hopeBoard.hopeReplyList}">
-			<p class="hope_reply_content" th:text="${hopeReply.hrcontent}">
-			</p>
-			<span class="hope_reply_writer" th:text="'작성자: ' + ${hopeReply.member.mid} + '(작성일: ' + ${hopeReply.createdDate} + ')'"></span>
-   		  	<th:block sec:authorize="isAuthenticated()"
-      		  	      th:if="${#authentication.getPrincipal.getUsername()} == ${hopeBoard.member.mid}">
-				<div class="hope_reply_update">
-					<p>
-						<a th:href="'#'" th:onClick="replyObject.updateReply([[${hopeBoard.hbid}]], [[${hopeReply.hrid}]])">수정</a> | 
-						<!-- 자바스크립트에서 자료형 값을 유지 해야 할 경우 = [[자료]] 의 형식으로 쓴다 -->
-						<a th:href="'#'" th:onClick="replyObject.deleteReply([[${hopeBoard.hbid}]], [[${hopeReply.hrid}]])">삭제</a>
-					</p>
+
+	<div th:replace="~{header::header-fragment}"></div>
+	<div id="container">
+		<section class="page">
+
+			<div class="page_top">
+				<div class="page_top_imgbox">
+					<div class="page_img">
+						<img th:src="@{/images/main_library_picture1.PNG}" alt="img">
+					</div>
+					<div class="page_title">
+						<p>도서관에 바란다33</p>
+					</div>
 				</div>
 
 			</div>
