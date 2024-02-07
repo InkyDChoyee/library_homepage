@@ -4,11 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.khit.library.dto.HopeBoardDTO;
+import com.khit.library.dto.NoticeBoardDTO;
 import com.khit.library.entity.HopeBoard;
+import com.khit.library.entity.NoticeBoard;
 import com.khit.library.repository.HopeBoardRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -48,4 +52,9 @@ public class HopeBoardService {
 		HopeBoard hopeBoard = HopeBoard.toUpdateEntity(hopeBoardDTO);
 		hopeBoardRepository.save(hopeBoard);
 	}
+
+	public Page<HopeBoardDTO> paging(Pageable pageable) {
+		Page<HopeBoard> hopeBoardPage = hopeBoardRepository.findAll(pageable);
+        return hopeBoardPage.map(hopeBoard -> HopeBoardDTO.toSaveDTO(hopeBoard));
+    }
 }

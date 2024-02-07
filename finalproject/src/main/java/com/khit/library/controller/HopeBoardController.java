@@ -2,6 +2,7 @@ package com.khit.library.controller;
 
 import com.khit.library.config.SecurityUser;
 import com.khit.library.dto.HopeBoardDTO;
+import com.khit.library.dto.NoticeBoardDTO;
 import com.khit.library.entity.HopeBoard;
 import com.khit.library.service.HopeBoardService;
 
@@ -9,6 +10,9 @@ import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +20,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequiredArgsConstructor
@@ -53,12 +58,24 @@ public class HopeBoardController {
     	return "redirect:/hopeboard/" + hopeBoardDTO.getHbid();
     }
     
-    // 글 전체 목록
+//    // 글 전체 목록
+//    @GetMapping("/hopeboard/pagelist")
+//    public String getAllList(Model model) {
+//    	List<HopeBoardDTO> hopeBoardDTOList = hopeBoardService.findAll();
+//    	model.addAttribute("hopeBoardList", hopeBoardDTOList);
+//    	return "hopeboard/pagelist";
+//    }
+    
+	//페이징, 글 목록
     @GetMapping("/hopeboard/pagelist")
-    public String getAllList(Model model) {
-    	List<HopeBoardDTO> hopeBoardDTOList = hopeBoardService.findAll();
-    	model.addAttribute("hopeBoardList", hopeBoardDTOList);
-    	return "hopeboard/pagelist";
+    public String pagelist(
+            @RequestParam(value = "page", defaultValue = "0") int page,
+            @RequestParam(value = "size", defaultValue = "10") int size,
+            Model model) {
+        Pageable pageable = PageRequest.of(page, size);
+        Page<HopeBoardDTO> hopeBoardPage = hopeBoardService.paging(pageable);
+        model.addAttribute("hopeBoardPage", hopeBoardPage);
+        return "hopeboard/pagelist";
     }
     
     // 글 하나 상세보기

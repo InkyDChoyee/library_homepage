@@ -44,18 +44,20 @@ public class NoticeBoardService {
 		
 	}
 	
-//	public List<NoticeBoardDTO> findAll(Pageable pageable) {
-//	    Page<NoticeBoard> page = noticeBoardRepository.findAll(pageable);
-//	    List<NoticeBoardDTO> noticeBoardDTOList = new ArrayList<>();
-//	    for (NoticeBoard noticeBoard : page.getContent()) {
-//	        NoticeBoardDTO noticeBoardDTO = NoticeBoardDTO.toSaveDTO(noticeBoard);
-//	        noticeBoardDTOList.add(noticeBoardDTO);
-//	    }
-//	    return noticeBoardDTOList;
-//	}
-	
-	public Page<NoticeBoardDTO> findAll(Pageable pageable) {
-	    Page<NoticeBoard> noticeBoards = noticeBoardRepository.findAll(pageable);
-	    return noticeBoards.map(noticeBoard -> NoticeBoardDTO.toSaveDTO(noticeBoard));
+	public List<NoticeBoardDTO> findAll() {
+		List<NoticeBoard> noticeBoardList = noticeBoardRepository.findAll(Sort.by(Sort.Direction.DESC, "nbid"));
+		List<NoticeBoardDTO> noticeBoardDTOList = new ArrayList<>();
+		
+		for(NoticeBoard noticeBoard : noticeBoardList) {
+			NoticeBoardDTO noticeBoardDTO = NoticeBoardDTO.toSaveDTO(noticeBoard);
+			noticeBoardDTOList.add(noticeBoardDTO);
+		}
+		
+		return noticeBoardDTOList;
 	}
+	//페이징
+	public Page<NoticeBoardDTO> paging(Pageable pageable) {
+        Page<NoticeBoard> noticeBoardPage = noticeBoardRepository.findAll(pageable);
+        return noticeBoardPage.map(noticeBoard -> NoticeBoardDTO.toSaveDTO(noticeBoard));
+    }
 }

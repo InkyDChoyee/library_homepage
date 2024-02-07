@@ -77,32 +77,18 @@
 					<th>Del</th>
 				</tr>
 			</thead>
-			<!--             <tbody>
-                <tr th:each="noticeBoard : ${noticeBoardList}">
-                    <td th:text="${noticeBoard.nbid}"></td>
-                    <td>
-                        <a th:href="@{|/notice/${noticeBoard.nbid}|}"
-                           th:text="${noticeBoard.nbtitle}"></a>
-                    </td>
-                    <td th:text="${noticeBoard.member.name}"></td>
-                    <td th:text="${noticeBoard.nbcontent}"></td>
-                    <td th:text="${noticeBoard.nbhit}"></td>
-                    <td th:text="${#dates.format(noticeBoard.createdDate, 'yyyy-MM-dd')}"></td>
-                    <td><a th:href="@{|/notice/delete/${noticeBoard.nbid}|}">삭제</a></td>
-                </tr>
-            </tbody> -->
-			<!-- notice/pagelist.html -->
 			<tbody>
 				<tr th:each="noticeBoard : ${noticeBoardPage.content}">
 					<td th:text="${noticeBoard.nbid}"></td>
-					<td><a th:href="@{/notice/${noticeBoard.nbid}}"
+					<td><a th:href="@{/notice/{nbid}(nbid=${noticeBoard.nbid})}"
 						th:text="${noticeBoard.nbtitle}"></a></td>
 					<td th:text="${noticeBoard.member.name}"></td>
 					<td th:text="${noticeBoard.nbcontent}"></td>
 					<td th:text="${noticeBoard.nbhit}"></td>
 					<td
 						th:text="${#dates.format(noticeBoard.createdDate, 'yyyy-MM-dd')}"></td>
-					<td><a th:href="@{/notice/delete/${noticeBoard.nbid}}">삭제</a></td>
+					<td><a
+						th:href="@{/notice/delete/{nbid}(nbid=${noticeBoard.nbid})}">삭제</a></td>
 				</tr>
 			</tbody>
 		</table>

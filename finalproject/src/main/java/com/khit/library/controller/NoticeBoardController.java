@@ -59,28 +59,25 @@ public class NoticeBoardController {
 		return "redirect:/notice/" + noticeBoardDTO.getNbid();
 	}
 	
-	//글 전체 목록
-	//페이징
+//	//글 전체 목록
 //	@GetMapping("/notice/pagelist")
-//	public String getAllList(
-//	    @RequestParam(value = "page", defaultValue = "0") int page,
-//	    @RequestParam(value = "size", defaultValue = "10") int size,
-//	    Model model) {
-//	    Pageable pageable = PageRequest.of(page, size);
-//	    List<NoticeBoardDTO> noticeBoardDTOList = noticeBoardService.findAll(pageable);
+//	public String getAllList(Model model) {
+//	    List<NoticeBoardDTO> noticeBoardDTOList = noticeBoardService.findAll();
 //	    model.addAttribute("noticeBoardList", noticeBoardDTOList);
 //	    return "notice/pagelist";
 //	}
 	
-	@GetMapping("/notice/pagelist")
-	public String getAllList(@RequestParam(value = "page", defaultValue = "0") int page,
-	                         @RequestParam(value = "size", defaultValue = "10") int size,
-	                         Model model) {
-	    Pageable pageable = PageRequest.of(page, size);
-	    Page<NoticeBoardDTO> noticeBoardPage = noticeBoardService.findAll(pageable);
-	    model.addAttribute("noticeBoardPage", noticeBoardPage);
-	    return "notice/pagelist";
-	}
+	//페이징, 글 목록
+    @GetMapping("/notice/pagelist")
+    public String pagelist(
+            @RequestParam(value = "page", defaultValue = "0") int page,
+            @RequestParam(value = "size", defaultValue = "10") int size,
+            Model model) {
+        Pageable pageable = PageRequest.of(page, size);
+        Page<NoticeBoardDTO> noticeBoardPage = noticeBoardService.paging(pageable);
+        model.addAttribute("noticeBoardPage", noticeBoardPage);
+        return "notice/pagelist";
+    }
 	
     //상세보기
     @GetMapping("/notice/{nbid}")

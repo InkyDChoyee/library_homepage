@@ -878,12 +878,13 @@ select:focus{
 }
 
 .page_paging {
+	width: 80%;
     display: flex;
     justify-content: space-around;
 }
 
 .page_paging_number {
-    width: 80%;
+
     margin: 0;
     display: flex;
     justify-content: space-around;
