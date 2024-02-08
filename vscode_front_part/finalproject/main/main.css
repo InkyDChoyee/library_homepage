@@ -289,6 +289,20 @@ select:focus{
     margin: 0 auto;
 }
 
+.welcome_box_visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.welcome_box_hidden {
+    opacity: 0;
+    transform: translateY(200px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+
+
 .main_mid_text_box {
     width: 50%;
     height: 250px;
@@ -320,18 +334,49 @@ select:focus{
     justify-content: right;
 }
 
+.board_box_visible {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.board_box_hidden {
+    opacity: 0;
+    transform: translateX(-300px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
 /* main_mid_schedule */
 .main_mid_schedule {
     width: 27.5%;
     height: 350px;
     background-color: #fff;
     margin-right: 50px;
+    border: 1px solid #fff;
     border-radius: 25px;
     padding-top: 20px;
     padding-right: 10px;
     padding-left: 10px;
     padding-bottom: 10px;
     box-shadow: 5px 5px 5px #ccc;
+    transition: width 0.5s ease-in-out;
+}
+
+
+.main_mid_schedule:hover {
+    width:37%;
+    border: 5px solid #745b3d;
+    transition: width 0.5s ease-in-out, border 0.5s ease-in-out;
+}
+
+.main_mid_schedule:hover .main_usable_time_table tbody tr td {
+    font-size: 1.2rem;
+    transition: font-size 0.5s ease-in-out;
+}
+
+.main_mid_schedule:hover .main_schedule_title {
+    font-size: 0.1rem;
+    transition: font-size 0.5s ease-in-out;
 }
 
 .main_schedule_title {
@@ -341,6 +386,7 @@ select:focus{
     color: #6A5C40;
     font-weight: 600;
     position: relative;
+    transition: font-size 0.5s ease-in-out;
 }
 
 .main_schedule_mark {
@@ -369,6 +415,7 @@ select:focus{
     padding-bottom: 10px;
     font-size: 0.8rem;
     font-weight: 500;
+    transition: font-size 0.5s ease-in-out;
 }
 
 .main_usable_time_table tbody tr td:nth-child(3),
@@ -376,6 +423,7 @@ select:focus{
     font-weight: 500;
     font-size: 0.9rem;
     text-align: center;
+    transition: font-size 0.5s ease-in-out;
 }
 
 .holiday_date {
@@ -391,13 +439,30 @@ select:focus{
     height: 350px;
     background-color: #fff;
     margin-right: 50px;
+    border: 1px solid #fff;
     border-radius: 25px;
     padding-top: 20px;
     padding-right: 10px;
     padding-left: 10px;
     padding-bottom: 10px;
     box-shadow: 5px 5px 5px #ccc;
+    transition: width 0.5s ease-in-out;
+}
 
+.main_mid_openspace:hover {
+    width:37%;
+    border: 5px solid #745b3d;
+    transition: width 0.5s ease-in-out, border 0.5s ease-in-out;
+}
+
+.main_mid_openspace:hover .main_openspace_board_table tbody tr td {
+    font-size: 1.2rem;
+    transition: font-size 0.5s ease-in-out;
+}
+
+.main_mid_openspace:hover .main_openspace_title {
+    font-size: 0.1rem;
+    transition: font-size 0.5s ease-in-out;
 }
 
 .main_openspace_title {
@@ -407,6 +472,7 @@ select:focus{
     color: #6A5C40;
     font-weight: 600;
     position: relative;
+    transition: font-size 0.5s ease-in-out;
 }
 
 .main_openspace_mark {
@@ -426,7 +492,6 @@ select:focus{
 .main_openspace_board_table thead tr th{
     padding-top: 15px;
     padding-bottom: 15px;
-
 }
 
 .main_openspace_board_table tbody tr td:nth-child(1),
@@ -435,12 +500,14 @@ select:focus{
     padding-bottom: 10px;
     font-size: 0.8rem;
     font-weight: 500;
+    transition: font-size 0.5s ease-in-out;
 }
 
 .main_openspace_board_table tbody tr td:nth-child(2) {
     font-weight: 500;
     font-size: 0.9rem;
     text-align: center;
+    transition: font-size 0.5s ease-in-out;
 }
 
 /* main_mid_free */
@@ -448,13 +515,32 @@ select:focus{
     width: 27.5%;
     height: 350px;
     background-color: #fff;
+    border: 1px solid #fff;
     border-radius: 25px;
     padding-top: 20px;
     padding-right: 10px;
     padding-left: 10px;
     padding-bottom: 10px;
     box-shadow: 5px 5px 5px #ccc;
+    transition: width 0.5s ease-in-out, border 0.5s ease-in-out;
 }
+
+.main_mid_free:hover {
+    width:37%;
+    border: 5px solid #745b3d;
+    transition: width 0.5s ease-in-out, border 0.5s ease-in-out;
+}
+
+.main_mid_free:hover .main_free_board_table tbody tr td {
+    font-size: 1.2rem;
+    transition: font-size 0.5s ease-in-out;
+}
+
+.main_mid_free:hover .main_free_title {
+    font-size: 0.1rem;
+    transition: font-size 0.5s ease-in-out;
+}
+
 
 .main_free_title {
     border-bottom: 2px solid #555;
@@ -462,6 +548,7 @@ select:focus{
     padding-left: 20px;
     color: #6A5C40;
     font-weight: 600;
+    transition: font-size 0.5s ease-in-out;
     position: relative;
 }
 
@@ -490,22 +577,26 @@ select:focus{
     padding-top: 10px;
     padding-bottom: 10px;
     font-size: 0.8rem;
+    transition: font-size 0.5s ease-in-out;
     font-weight: 500;
 }
 
 .main_free_board_table tbody tr td:nth-child(2) {
     font-weight: 500;
     font-size: 0.9rem;
+    transition: font-size 0.5s ease-in-out;
     text-align: center;
 }
 
 /* main_icons */
 .main_icons {
     width: 83.5%;
-    padding: 50px;
+    padding: 0 50px;
+    height: 300px;
     margin: 0 auto;
     display: flex;
     justify-content: space-around;
+    align-items: center;
     /* border-radius: 100px;
     background-color: #fff; */
 }
@@ -516,13 +607,97 @@ select:focus{
     border-radius: 100%;
     background-color: #fff;
     box-shadow: 5px 5px 5px #ccc;
+    transition: width 0.5s ease-in-out, border 0.5s ease-in-out;
 }
 
 .main_icons div p {
     text-align: center;
-    font-size: 1.rem;
+    font-size: 1rem;
     color: #529e52;
 }
+
+.use_info_icon:hover,
+.reading_event_icon:hover,
+.study_room_icon:hover,
+.request_book_icon:hover,
+.my_library_icon:hover{
+    width: 300px;
+    border: 5px solid #80b174;
+    transition: width 0.5s ease-in-out, border 0.5s ease-in-out;
+}
+
+
+.icon1_visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 1s ease, transform 1s ease;
+}
+.icon1_hidden {
+    opacity: 0;
+    transform: translateY(100px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.icon2_visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 1s ease, transform 1s ease;
+    transition-delay: 0.2s;
+}
+.icon2_hidden {
+    opacity: 0;
+    transform: translateY(100px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transition-delay: 0.2s;
+
+}
+
+.icon3_visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 1s ease, transform 1s ease;
+    transition-delay: 0.4s;
+    
+}
+.icon3_hidden {
+    opacity: 0;
+    transform: translateY(100px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transition-delay: 0.4s;
+
+}
+
+.icon4_visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 1s ease, transform 1s ease;
+    transition-delay: 0.6s;
+}
+.icon4_hidden {
+    opacity: 0;
+    transform: translateY(100px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transition-delay: 0.6s;
+
+}
+
+.icon5_visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 1s ease, transform 1s ease;
+    transition-delay: 0.8s;
+}
+.icon5_hidden {
+    opacity: 0;
+    transform: translateY(100px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transition-delay: 0.8s;
+
+}
+
+
+
+
 
 /* main_bottom */
 .main_bottom {
@@ -540,6 +715,90 @@ select:focus{
     margin-bottom: 100px;
     color: #56432C;
 }
+
+
+
+.book_text_box_visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.book_text_box_hidden {
+    opacity: 0;
+    transform: translateY(200px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.book1_visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 1s ease, transform 1s ease;
+}
+.book1_hidden {
+    opacity: 0;
+    transform: translateY(100px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.book2_visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 1s ease, transform 1s ease;
+    transition-delay: 0.2s;
+}
+.book2_hidden {
+    opacity: 0;
+    transform: translateY(100px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transition-delay: 0.2s;
+
+}
+
+.book3_visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 1s ease, transform 1s ease;
+    transition-delay: 0.4s;
+    
+}
+.book3_hidden {
+    opacity: 0;
+    transform: translateY(100px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transition-delay: 0.4s;
+
+}
+
+.book4_visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 1s ease, transform 1s ease;
+    transition-delay: 0.6s;
+}
+.book4_hidden {
+    opacity: 0;
+    transform: translateY(100px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transition-delay: 0.6s;
+
+}
+
+.book5_visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 1s ease, transform 1s ease;
+    transition-delay: 0.8s;
+}
+.book5_hidden {
+    opacity: 0;
+    transform: translateY(100px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transition-delay: 0.8s;
+
+}
+
+
 
 .main_bottom_small_text {
     font-size: 0.9rem;
