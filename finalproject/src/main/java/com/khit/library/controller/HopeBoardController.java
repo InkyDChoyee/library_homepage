@@ -128,11 +128,11 @@ public class HopeBoardController {
     	HopeBoardDTO hopeBoardDTO = hopeBoardService.findById(hbid);
     	model.addAttribute("hopeBoard", hopeBoardDTO);
         if(principal == null){
-            return "hopeboard/pagelist";
+            return "hopeboard/detail";
         }else{
             MemberDTO memberDTO = memberService.findByMid(principal);
             model.addAttribute("member", memberDTO);
-            return "hopeboard/pagelist";
+            return "hopeboard/detail";
         }
     }
     
