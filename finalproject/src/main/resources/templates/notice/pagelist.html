@@ -1,69 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
 <meta charset="utf-8">
 <title>공지사항</title>
-<style>
-/* 페이징 가로 정렬 */
-.pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    list-style: none;
-    padding: 0;
-    margin-top: 20px;
-}
-
-.pagination ul {
-	display: flex; /* ul 내부를 가로로 정렬 */
-    padding: 0;
-    margin: 0;
-}
-
-.pagination li {
-    margin: 0;
-    text-align: center;
-}
-
-.pagination a {
-    display: block;
-    padding: 5px 10px;
-    background-color: grey;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-.pagination a:hover {
-    background-color: #999;
-}
-
-/* 이전 및 다음 버튼 */
-.pagination .prev,
-.pagination .next {
-    background-color: #f1f1f1;
-    color: #333;
-}
-
-/* 비활성화된 버튼 */
-.pagination .disabled {
-    pointer-events: none;
-    background-color: #ddd;
-    color: #999;
-}
-
-/* 목록 아이템의 마커 제거 */
-.pagination li {
-    margin: 0;
-    text-align: center;
-    list-style-type: none; /* 마커 제거 */
-}
-</style>
 </head>
 <body>
 	<h1>전체 글 목록</h1>
+	
 	<div>
 		<table>
 			<thead>
@@ -78,43 +22,20 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="noticeBoard : ${noticeBoardPage.content}">
+				<tr th:each="noticeBoard : ${noticeBoardList}">
 					<td th:text="${noticeBoard.nbid}"></td>
-					<td><a th:href="@{/notice/{nbid}(nbid=${noticeBoard.nbid})}"
-						th:text="${noticeBoard.nbtitle}"></a></td>
+					<td>
+						<a th:href="@{|/noticeboard/${noticeBoard.nbid}|}"
+						   th:text="${noticeBoard.nbtitle}"></a>
+					</td>
 					<td th:text="${noticeBoard.member.name}"></td>
 					<td th:text="${noticeBoard.nbcontent}"></td>
 					<td th:text="${noticeBoard.nbhit}"></td>
-					<td
-						th:text="${#dates.format(noticeBoard.createdDate, 'yyyy-MM-dd')}"></td>
-					<td><a
-						th:href="@{/notice/delete/{nbid}(nbid=${noticeBoard.nbid})}">삭제</a></td>
+					<td th:text="${#dates.format(noticeBoard.createdDate, 'yyyy-MM-dd')}"></td>
+					<td><a th:href="@{|/notice/delete/${noticeBoard.nbid}|}">삭제</a></td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
-
-	<!-- 페이지네이션 -->
-	<div class="pagination">
-		<ul>
-			<!-- 이전 페이지 -->
-			<li th:if="${noticeBoardPage.hasPrevious()}"><a
-				th:href="@{|/notice/pagelist?page=${noticeBoardPage.pageable.pageNumber-1}|}">이전</a>
-			</li>
-
-			<!-- 페이지 번호 -->
-			<li
-				th:each="pageNum : ${#numbers.sequence(0, noticeBoardPage.totalPages-1)}">
-				<a th:href="@{|/notice/pagelist?page=${pageNum}|}"
-				th:text="${pageNum + 1}"></a>
-			</li>
-
-			<!-- 다음 페이지 -->
-			<li th:if="${noticeBoardPage.hasNext()}"><a
-				th:href="@{|/notice/pagelist?page=${noticeBoardPage.pageable.pageNumber+1}|}">다음</a>
-			</li>
-		</ul>
-	</div>
-
 </body>
 </html>
