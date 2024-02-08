@@ -36,8 +36,9 @@ public class HopeBoard extends BaseEntity{
 	@Column
 	private String hopeFilepath;
 	
+	
 	@ManyToOne(fetch = FetchType.LAZY)  // 글쓴이 - 외래키
-	@JoinColumn(name = "mId")
+	@JoinColumn(name="mid")
 	private Member member;
 	
 	@OneToMany(mappedBy="hopeboard", cascade = CascadeType.ALL)

@@ -15,7 +15,6 @@ import lombok.NoArgsConstructor;
 @Data
 @Table(name = "noticeboard")
 public class NoticeBoard extends BaseEntity {
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long nbid; // 공지사항 글 번

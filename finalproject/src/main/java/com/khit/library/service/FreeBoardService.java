@@ -67,3 +67,4 @@ public class FreeBoardService {
         return searchResults.map(FreeBoardDTO::toSaveDTO);
     }
 }
+

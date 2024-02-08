@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import com.khit.library.dto.HopeBoardDTO;
 import com.khit.library.dto.NoticeBoardDTO;
+import com.khit.library.entity.HopeBoard;
 import com.khit.library.entity.NoticeBoard;
 import com.khit.library.repository.NoticeBoardRepository;
 
@@ -53,9 +53,4 @@ public class NoticeBoardService {
 		
 		return noticeBoardDTOList;
 	}
-	//페이징
-	public Page<NoticeBoardDTO> paging(Pageable pageable) {
-        Page<NoticeBoard> noticeBoardPage = noticeBoardRepository.findAll(pageable);
-        return noticeBoardPage.map(noticeBoard -> NoticeBoardDTO.toSaveDTO(noticeBoard));
-    }
 }
