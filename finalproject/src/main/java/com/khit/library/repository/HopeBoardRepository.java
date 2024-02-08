@@ -7,8 +7,10 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import com.khit.library.entity.HopeBoard;
+import com.khit.library.entity.NoticeBoard;
 
 public interface HopeBoardRepository extends JpaRepository<HopeBoard, Long>{
+
 	Page<HopeBoard> findAll(Pageable pageable); // 페이징 처리를 위한 메서드
 	
 	@Modifying

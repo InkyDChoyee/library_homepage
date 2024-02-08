@@ -2,23 +2,20 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
-<meta charset="UTF-8">
-<title>선유도서관</title>
-<link rel="stylesheet" th:href="@{/css/style.css}">
-<link rel="preconnect" href="@{https://fonts.googleapis.com">
-<link rel="preconnect" href="@{https://fonts.gstatic.com}" crossorigin>
-<link
-	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
-	rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>선유도서관</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+  <link rel="preconnect" href="@{https://fonts.googleapis.com">
+  <link rel="preconnect" href="@{https://fonts.gstatic.com}" crossorigin>
+  <link	href="@{https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap}" rel="stylesheet">
 
 </head>
 <body>
-
 	<div th:replace="~{header::header-fragment}"></div>
 	<div id="container">
 		<section class="main">
+      
 			<div class="main_top">
-
 				<div class="main_pic_box">
 					<img class="main_pic active"
 						th:src="@{/images/main_library_picture1.PNG}" alt=""> <img

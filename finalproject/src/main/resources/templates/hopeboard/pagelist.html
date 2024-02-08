@@ -4,6 +4,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Hope for the library : PAGE_LIST</title>
+<style>
+
+</style>
 <link rel="stylesheet" th:href="@{/css/style.css}">
 <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
 <link rel="preconnect" th:href="@{https://fonts.gstatic.com}"
@@ -89,7 +92,6 @@
 										<td th:text="${hopeBoard.hbhit}"></td>
 										<!-- <td><a th:href="@{|/hopeboard/delete/${hopeBoard.hbid}|}">삭제</a></td> -->
 									</tr>
-
 								</tbody>
 							</table>
                             <div class="page_write_btn_box">
@@ -98,6 +100,7 @@
 						</div>
 					</div>
 					<div class="page_content_bottom">
+
 						<div class="page_paging">
 							<!-- 페이지네이션 -->
 							<div class="pagination">
@@ -118,6 +121,7 @@
 									</li>
 								</ul>
 							</div>
+
 						</div>
 					</div>
 				</div>
@@ -127,4 +131,3 @@
 
 	<div th:replace="~{footer::footer-fragment}"></div>
 </body>
-</html>

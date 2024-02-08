@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.khit.library.config.SecurityUser;
@@ -25,9 +24,9 @@ import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/freeboard")
 public class FreeBoardController {
 	private final FreeBoardService freeBoardService;
+
 	private final MemberService memberService;
 	
 	// write page 글쓰기
@@ -132,4 +131,15 @@ public class FreeBoardController {
 	    model.addAttribute("freeBoardList", searchResults);
 	    return "freeboard/pagelist";
 	}
+
 }
+
+
+
+
+
+
+
+
+
+

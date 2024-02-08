@@ -62,21 +62,19 @@
                 </th:block>
                 <th:block sec:authorize="isAuthenticated()">
 
-
                     <a class="header_member_join" th:href="'#'" th:text="${member.name} + '님 환영합니다.'"></a> |
 
-
-                <div class="admin_box">
-                  <a class="header_member_admin"  th:href="@{/member/detail}" sec:authorize="hasAnyAuthority('Admin')" th:text="관리자"></a>
-     	        	<div class="admin_menu">
-        	            <a th:href="@{/rentalReturn/list}" sec:authorize="hasAnyAuthority('Admin')">대출정보</a>
-    	                <a th:href="@{/member/list}" sec:authorize="hasAnyAuthority('Admin')">회원목록</a> <!--관리자 로그인시 보임-->
-	                    <a th:href="@{/book/register}" sec:authorize="hasAnyAuthority('Admin')">책등록</a> <!--관리자 로그인시 보임-->
-                    </div>
-                </div>
+	                <div class="admin_box">
+	                  <a class="header_member_admin"  th:href="@{/member/detail}" sec:authorize="hasAnyAuthority('Admin')" th:text="관리자"></a>
+	     	        	<div class="admin_menu">
+	        	            <a th:href="@{/rentalReturn/list}" sec:authorize="hasAnyAuthority('Admin')">대출정보</a>
+	    	                <a th:href="@{/member/list}" sec:authorize="hasAnyAuthority('Admin')">회원목록</a> <!--관리자 로그인시 보임-->
+		                    <a th:href="@{/book/register}" sec:authorize="hasAnyAuthority('Admin')">책등록</a> <!--관리자 로그인시 보임-->
+	                    </div>
+	                </div>
 
                     <a class="header_member_login" th:href="@{/logout}">로그아웃</a>
-
+       
                 </th:block>
             </div>
         </section>

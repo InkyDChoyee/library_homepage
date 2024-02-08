@@ -4,8 +4,10 @@ import java.sql.Timestamp;
 import java.util.List;
 
 import com.khit.library.entity.FreeBoard;
+
 import com.khit.library.entity.FreeReply;
 import com.khit.library.entity.Member;
+
 
 import lombok.Builder;
 import lombok.Data;
@@ -15,18 +17,16 @@ import lombok.Data;
 public class FreeBoardDTO {
 	
 	private Long fbid;  //자유게시판 번호
-	
-	private Member member;  // foreign key
-	
+	private Member member;
 	private String fbtitle;  //자유게시판 제목
 	
 	private String fbcontent; //자유게시판 내용
-	
 	private Integer fbhit;  //조회수
 	
 	private Timestamp createdDate;
 	private Timestamp updatedDate;
 	
+
 	private String freeFilename;
 	private String freeFilepath;
 	
@@ -40,8 +40,6 @@ public class FreeBoardDTO {
 				.fbtitle(freeBoard.getFbtitle())
 				.fbcontent(freeBoard.getFbcontent())
 				.fbhit(freeBoard.getFbhit())
-				.freeFilename(freeBoard.getFreeFilename())
-				.freeFilepath(freeBoard.getFreeFilepath())
 				.createdDate(freeBoard.getCreatedDate())
 				.updatedDate(freeBoard.getUpdatedDate())
 				.freeReplyList(freeBoard.getFreeReplyList())

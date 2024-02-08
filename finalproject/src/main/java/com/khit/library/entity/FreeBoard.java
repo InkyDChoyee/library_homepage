@@ -30,19 +30,21 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class FreeBoard extends BaseEntity {
-
+public class FreeBoard extends BaseEntity{
+	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long fbid; // 자유게시판 번호
-
+	private Long fbid;  //자유게시판 번호
+	
 	@Column(nullable = false)
-	private String fbtitle; // 자유게시판 제목
-
+	private String fbtitle; //자유게시판 제목
+	
 	@Column(length = 2000, nullable = false)
-	private String fbcontent; // 자유게시판 내용
-
+	private String fbcontent; //자유게시판 내용
+	
 	@Column(nullable = true)
+
 	private Integer fbhit; // 조회수
 
 	@Column
@@ -60,23 +62,27 @@ public class FreeBoard extends BaseEntity {
 	@OneToMany(mappedBy = "freeboard", cascade = CascadeType.ALL)
 	@OrderBy("frid desc")
 	private List<FreeReply> freeReplyList;
-
-	// insert
+	
+	//insert
 	public static FreeBoard toSaveEntity(FreeBoardDTO freeBoardDTO) {
-		FreeBoard freeBoard = FreeBoard.builder().fbtitle(freeBoardDTO.getFbtitle())
-				.fbcontent(freeBoardDTO.getFbcontent()).fbhit(freeBoardDTO.getFbhit())
-				.freeFilename(freeBoardDTO.getFreeFilename()).freeFilepath(freeBoardDTO.getFreeFilepath())
-				.member(freeBoardDTO.getMember()).build();
-		return freeBoard;
-	}
-
-	// update
-	public static FreeBoard toUpdateEntity(FreeBoardDTO freeBoardDTO) {
-		FreeBoard freeBoard = FreeBoard.builder().fbid(freeBoardDTO.getFbid()).fbtitle(freeBoardDTO.getFbtitle())
-				.fbcontent(freeBoardDTO.getFbcontent()).fbhit(freeBoardDTO.getFbhit()).member(freeBoardDTO.getMember())
+		FreeBoard freeBoard = FreeBoard.builder()
+				.fbtitle(freeBoardDTO.getFbtitle())
+				.fbcontent(freeBoardDTO.getFbcontent())
+				.fbhit(freeBoardDTO.getFbhit())
 				.build();
 		return freeBoard;
 	}
+	//update
+	public static FreeBoard toUpdateEntity(FreeBoardDTO freeBoardDTO) {
+		FreeBoard freeBoard = FreeBoard.builder()
+				.fbid(freeBoardDTO.getFbid())
+				.fbtitle(freeBoardDTO.getFbtitle())
+				.fbcontent(freeBoardDTO.getFbcontent())
+				.fbhit(freeBoardDTO.getFbhit())
+				.build();
+		return freeBoard;
+	}
+
 
 	// 추가된 getter 및 setter
 //	public Member getMember() {
@@ -91,3 +97,4 @@ public class FreeBoard extends BaseEntity {
 //	        return member != null ? member.getMid() : null;
 //	    }
 }
+
