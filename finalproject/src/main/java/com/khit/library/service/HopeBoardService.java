@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -26,8 +28,7 @@ public class HopeBoardService {
 	public void save(HopeBoard hopeBoard, MultipartFile hopeBoardFile) throws Exception, IOException {
 
 		if(!hopeBoardFile.isEmpty()) { 
-		/*String hopeFilepath = "C:\\Final_project\\final-project\\finalproject\\src\\main\\resources\\static\\upload\\";*/
-		String hopeFilepath = "C:\\final-project\\finalproject\\src\\main\\resources\\static\\upload";
+		String hopeFilepath = "C:\\Final_project\\final-project\\finalproject\\src\\main\\resources\\static\\upload";
     UUID uuid = UUID.randomUUID();
 		String hopeFilename = uuid + "_" + hopeBoardFile.getOriginalFilename();
 		
@@ -65,7 +66,7 @@ public class HopeBoardService {
 
 	public HopeBoardDTO update(HopeBoardDTO hopeBoardDTO, MultipartFile hopeBoardFile) throws Exception, IOException {
 		if(!hopeBoardFile.isEmpty()) {
-			String hopeFilepath = "C:\\final-project\\finalproject\\src\\main\\resources\\static\\upload";
+			String hopeFilepath = "C:\\Final_project\\final-project\\finalproject\\src\\main\\resources\\static\\upload";
 			UUID uuid = UUID.randomUUID();
 			String hopeFilename = uuid + "_" + hopeBoardFile.getOriginalFilename();
 			
@@ -87,4 +88,9 @@ public class HopeBoardService {
 	public void updateHits(Long hbid) {
 		hopeBoardRepository.updateHits(hbid);
 	}
+	
+	public Page<HopeBoardDTO> paging(Pageable pageable) {
+		Page<HopeBoard> hopeBoardPage = hopeBoardRepository.findAll(pageable);
+        return hopeBoardPage.map(hopeBoard -> HopeBoardDTO.toSaveDTO(hopeBoard));
+    }
 }

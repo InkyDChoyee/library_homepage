@@ -17,6 +17,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OrderBy;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -53,10 +54,11 @@ public class FreeBoard extends BaseEntity {
 	// FreeBoard 엔터티에 작성자 정보 추가
 	// 작성자 - 외래키
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn
+	@JoinColumn(name = "mid")
 	private Member member;
 
 	@OneToMany(mappedBy = "freeboard", cascade = CascadeType.ALL)
+	@OrderBy("frid desc")
 	private List<FreeReply> freeReplyList;
 
 	// insert
@@ -77,15 +79,15 @@ public class FreeBoard extends BaseEntity {
 	}
 
 	// 추가된 getter 및 setter
-	public Member getMember() {
-		return member;
-	}
-
-	public void setMember(Member member) {
-		this.member = member;
-	}
-
-	 public String getMid() {
-	        return member != null ? member.getMid() : null;
-	    }
+//	public Member getMember() {
+//		return member;
+//	}
+//
+//	public void setMember(Member member) {
+//		this.member = member;
+//	}
+//
+//	 public String getMid() {
+//	        return member != null ? member.getMid() : null;
+//	    }
 }

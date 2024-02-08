@@ -1212,6 +1212,64 @@ select:focus{
 
 
 
+/* paging */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.pagination ul {
+	display: flex; /* ul 내부를 가로로 정렬 */
+    padding: 0;
+    margin: 0;
+}
+
+.pagination li {
+    margin: 0;
+    text-align: center;
+}
+
+.pagination a {
+    display: block;
+    padding: 5px 10px;
+    background-color: grey;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.pagination a:hover {
+    background-color: #999;
+}
+
+/* 이전 및 다음 버튼 */
+.pagination .prev,
+.pagination .next {
+    background-color: #f1f1f1;
+    color: #333;
+}
+
+/* 비활성화된 버튼 */
+.pagination .disabled {
+    pointer-events: none;
+    background-color: #ddd;
+    color: #999;
+}
+
+/* 목록 아이템의 마커 제거 */
+.pagination li {
+    margin: 0;
+    text-align: center;
+    list-style-type: none; /* 마커 제거 */
+}
+
+
+
 
 /* write form */
 .page_title_box {

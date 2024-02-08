@@ -69,20 +69,20 @@ crossorigin="anonymous"></script>
                                         	<div class="detail_info">
 	                                            <div class="detail_page_info_date" th:text="${#dates.format(freeBoard.createdDate, 'yyyy-MM-dd')}"></div>
 	                                            <div class="detail_page_info_mid" th:text="${freeBoard.member.mid}"></div>
-	                                            <div class="detail_page_info_hit" th:text="'조회수 ' + ${freeBoard.fbhit}"></div>
+	                                            <div class="detail_page_info_hit" th:text="'조회수 ' + ${freeBoard.hbhit}"></div>
                                         	</div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <input class="detail_page_title_input" type="text" name="fbtitle" th:value="${freeBoard.fbtitle}" readonly>
+                                            <input class="detail_page_title_input" type="text" name="hbtitle" th:value="${freeBoard.hbtitle}" readonly>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <textarea rows="5" cols="30" name="fbcontent" th:text="${freeBoard.fbcontent}" readonly></textarea>
+                                            <textarea rows="5" cols="30" name="hbcontent" th:text="${freeBoard.hbcontent}" readonly></textarea>
                                             <div class="page_textarea_img_box">
-                                                <img th:src="${freeBoard.freeFilepath}"/>
+                                                <img th:src="${freeBoard.hopeFilepath}"/>
                                             </div>
                                         </td>
                                     </tr>
@@ -90,8 +90,8 @@ crossorigin="anonymous"></script>
                             </table>
                             <div class="detail_btn_box">
                                 <a th:href="@{/freeboard/pagelist}"><button type="button" class="page_go_list">목록</button></a>
-                                <a th:href="@{|/freeboard/update/${freeBoard.fbid}|}"><button type="button" class="page_go_update">수정</button></a>
-                                <a th:href="@{|/freeboard/delete/${freeBoard.fbid}|}"><button type="button" class="page_go_delete">삭제</button></a>
+                                <a th:href="@{|/freeboard/update/${freeBoard.hbid}|}"><button type="button" class="page_go_update">수정</button></a>
+                                <a th:href="@{|/freeboard/delete/${freeBoard.hbid}|}"><button type="button" class="page_go_delete">삭제</button></a>
                             </div>
                         </div>
                     </div>
@@ -106,19 +106,19 @@ crossorigin="anonymous"></script>
                                 	<span th:text="'(작성일: ' + ${#dates.format(freeReply.createdDate, 'yyyy-MM-dd')} + ')'"></span>
                             	</div>
                             	<div class="hope_reply_content_box">
-	                                <p class="hope_reply_content" th:text="${freeReply.frcontent}"></p>
+	                                <p class="hope_reply_content" th:text="${freeReply.hrcontent}"></p>
                                     <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.getPrincipal.getUsername()} == ${freeBoard.member.mid}">
 	                                    <div class="hope_reply_update">
 	                                        <div class="reply_update_btn_box">
-	                                            <button class="reply_update_btn" type="button" th:onClick="replyObject.updateReply([[${freeBoard.fbid}]], [[${freeReply.frid}]])">수정</button>  
-	                                            <button class="reply_delete_btn" type="button" th:onClick="replyObject.deleteReply([[${freeBoard.fbid}]], [[${freeReply.frid}]])">삭제</button>
+	                                            <button class="reply_update_btn" type="button" th:onClick="replyObject.updateReply([[${freeBoard.hbid}]], [[${freeReply.hrid}]])">수정</button>  
+	                                            <button class="reply_delete_btn" type="button" th:onClick="replyObject.deleteReply([[${freeBoard.hbid}]], [[${freeReply.hrid}]])">삭제</button>
 	                                        </div>
 	                                    </div>
 	                                </th:block>
                             	</div>
                                 <div id="replyModal" class="modal" style="display: none;">
                                 	<div class="modal_content">
-                                    	<div style="display: none;" id="originalContent" th:text="${freeReply.frcontent}">
+                                    	<div style="display: none;" id="originalContent" th:text="${freeReply.hrcontent}">
                                      	</div> 
                                     	<textarea id="replyContent" rows="4" cols="50"></textarea>
                                  	</div>
@@ -134,7 +134,7 @@ crossorigin="anonymous"></script>
 						    <p>아직 댓글이 없습니다</p>
 						</div>
                         <div class="hope_reply_insert">
-                            <input type="hidden" id="board_id" th:value="${freeBoard.fbid}">
+                            <input type="hidden" id="board_id" th:value="${freeBoard.hbid}">
                             <div class="reply_textarea_box">
                                 <textarea id="reply_content" rows="3" cols="50" placeholder="댓글을 남겨주세요"></textarea>
                            		<button id="save_reply_btn">댓글 등록</button>

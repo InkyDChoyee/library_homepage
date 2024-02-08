@@ -12,6 +12,9 @@ import lombok.RequiredArgsConstructor;
 import java.io.IOException;
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -85,8 +88,13 @@ public class HopeBoardController {
     
     // 글 전체 목록
     @GetMapping("/hopeboard/pagelist")
-    public String getAllList(Model model, @AuthenticationPrincipal SecurityUser principal) {
+    public String getAllList(Model model, @AuthenticationPrincipal SecurityUser principal,
+            				 @RequestParam(value = "page", defaultValue = "0") int page,
+            				 @RequestParam(value = "size", defaultValue = "10") int size) {
+    	Pageable pageable = PageRequest.of(page, size);
     	List<HopeBoardDTO> hopeBoardDTOList = hopeBoardService.findAll();
+        Page<HopeBoardDTO> hopeBoardPage = hopeBoardService.paging(pageable);
+        model.addAttribute("hopeBoardPage", hopeBoardPage);
     	model.addAttribute("hopeBoardList", hopeBoardDTOList);
         if(principal == null){
             return "hopeboard/pagelist";
@@ -105,7 +113,7 @@ public class HopeBoardController {
     	HopeBoardDTO hopeBoardDTO = hopeBoardService.findById(hbid);
     	hopeBoardDTO.setMember(principal.getMember());
     	model.addAttribute("hopeBoard", hopeBoardDTO);
-        if(principal == null){
+        if(principal == null) {
             return "hopeboard/detail";
         }else{
             MemberDTO memberDTO = memberService.findByMid(principal);

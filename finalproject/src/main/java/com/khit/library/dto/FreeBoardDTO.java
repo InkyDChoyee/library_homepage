@@ -1,8 +1,10 @@
 package com.khit.library.dto;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import com.khit.library.entity.FreeBoard;
+import com.khit.library.entity.FreeReply;
 import com.khit.library.entity.Member;
 
 import lombok.Builder;
@@ -28,11 +30,13 @@ public class FreeBoardDTO {
 	private String freeFilename;
 	private String freeFilepath;
 	
+	private List<FreeReply> freeReplyList;
+	
 	//entity -> dto
 	public static FreeBoardDTO toSaveDTO(FreeBoard freeBoard) {
 		FreeBoardDTO freeBoardDTO = FreeBoardDTO.builder()
 				.fbid(freeBoard.getFbid())
-//				.member(freeBoard.getMember())
+				.member(freeBoard.getMember())
 				.fbtitle(freeBoard.getFbtitle())
 				.fbcontent(freeBoard.getFbcontent())
 				.fbhit(freeBoard.getFbhit())
@@ -40,6 +44,7 @@ public class FreeBoardDTO {
 				.freeFilepath(freeBoard.getFreeFilepath())
 				.createdDate(freeBoard.getCreatedDate())
 				.updatedDate(freeBoard.getUpdatedDate())
+				.freeReplyList(freeBoard.getFreeReplyList())
 				.build();
 		
 		return freeBoardDTO;
