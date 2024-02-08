@@ -1,5 +1,7 @@
 package com.khit.library.controller;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -12,8 +14,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.khit.library.config.SecurityUser;
+import com.khit.library.dto.HopeBoardDTO;
+import com.khit.library.dto.MemberDTO;
 import com.khit.library.dto.NoticeBoardDTO;
 import com.khit.library.entity.NoticeBoard;
+import com.khit.library.service.MemberService;
 import com.khit.library.service.NoticeBoardService;
 
 import org.springframework.ui.Model;
@@ -24,6 +29,7 @@ import lombok.RequiredArgsConstructor;
 public class NoticeBoardController {
 	
     private final NoticeBoardService noticeBoardService;
+    private final MemberService memberService;
 
 	//쓰기 페이지
 	@GetMapping("/notice/write")
@@ -69,11 +75,20 @@ public class NoticeBoardController {
     public String pagelist(
             @RequestParam(value = "page", defaultValue = "0") int page,
             @RequestParam(value = "size", defaultValue = "10") int size,
+            @AuthenticationPrincipal SecurityUser principal,
             Model model) {
         Pageable pageable = PageRequest.of(page, size);
         Page<NoticeBoardDTO> noticeBoardPage = noticeBoardService.paging(pageable);
+        List<NoticeBoardDTO> noticeBoardDTOList = noticeBoardService.findAll();
         model.addAttribute("noticeBoardPage", noticeBoardPage);
-        return "notice/pagelist";
+        model.addAttribute("noticeBoardList", noticeBoardDTOList);
+        if(principal == null){
+            return "notice/pagelist";
+        }else{
+            MemberDTO memberDTO = memberService.findByMid(principal);
+            model.addAttribute("member", memberDTO);
+            return "notice/pagelist";
+        }
     }
 	
     //상세보기

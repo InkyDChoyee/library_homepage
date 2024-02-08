@@ -7,12 +7,16 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.khit.library.dto.HopeBoardDTO;
+import com.khit.library.dto.NoticeBoardDTO;
 import com.khit.library.entity.HopeBoard;
+import com.khit.library.entity.NoticeBoard;
 import com.khit.library.repository.HopeBoardRepository;
 
 import jakarta.transaction.Transactional;
@@ -86,4 +90,10 @@ public class HopeBoardService {
 	public void updateHits(Long hbid) {
 		hopeBoardRepository.updateHits(hbid);
 	}
+	
+	//페이징
+	public Page<HopeBoardDTO> paging(Pageable pageable) {
+        Page<HopeBoard> hopeBoardPage = hopeBoardRepository.findAll(pageable);
+        return hopeBoardPage.map(hopeBoard -> HopeBoardDTO.toSaveDTO(hopeBoard));
+    }
 }
