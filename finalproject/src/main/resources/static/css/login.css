@@ -39,8 +39,12 @@ input {
 	border: 2px solid #c3c7bd;
 	border-radius: 6px;
 }
+.join_login{
+    display: flex;
+    justify-content: space-between;
+}
 .loginBtn{
-    width: 100%;
+    width: 200px;
     padding: 15px;
     background-color: #799c4b;
     color: #fff;
@@ -48,6 +52,28 @@ input {
     border-radius: 6px;
     cursor: pointer;
     font-size: 16px;
+}
+.joinBtn{
+    width: 200px;
+    padding: 15px;
+    background-color: #799c4b;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+}
+.btn_member{
+    display: flex;
+    justify-content: space-between;
+}
+.btn_member_white {
+    width: 200px;
+    padding: 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
 }
 .naverlogin{
     width: 100%;
@@ -167,23 +193,7 @@ button:hover {
 	margin-right: 10px;
 }
 
-.btn_member{
-    display: flex;
-    justify-content: space-between;
-}
-.btn_member_white {
-	width: 70px;
-    height: 30px;
-	padding: 6px;
-	font-size: 9px;
-	border: none;
-	border-radius: 6px;
-	cursor: pointer;
-}
-.joinBtn{
-    width: 80px;
-    height: 30px;
-}
+
 .btn_member_join {
 	background-color: #799c4b;
 	color: #fff;

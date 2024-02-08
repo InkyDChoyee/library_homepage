@@ -1,3 +1,4 @@
+
 package com.khit.library.config;
 
 import org.springframework.context.annotation.Configuration;
@@ -17,3 +18,4 @@ public class WebConfig implements WebMvcConfigurer{
 			    .addResourceLocations(savePath);    // 실제 저장 파일 위치
 	}
 }
+
