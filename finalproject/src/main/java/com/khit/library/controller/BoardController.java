@@ -1,31 +1,63 @@
 package com.khit.library.controller;
 
-import com.khit.library.entity.Board;
-import com.khit.library.service.BoardService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import com.khit.library.config.SecurityUser;
+import com.khit.library.dto.MemberDTO;
+import com.khit.library.service.MemberService;
+ 
 @Controller
 @RequiredArgsConstructor
 public class BoardController {
-    private final BoardService boardService;
-
-    //글쓰기
-    @GetMapping("/board/write")
-    public String writeForm(){
-        return "board/write";
-    }
-    @PostMapping("/board/write")
-    public String write(@ModelAttribute Board board){
-        boardService.insert(board);
-        return "redirect:/";
+	private final MemberService memberService;
+	
+    @GetMapping("/board/useinfoboard")
+    public String useinfo(@AuthenticationPrincipal SecurityUser principal, Model model){
+        if(principal == null){
+        	return "board/useinfoboard";
+        }else{
+            MemberDTO memberDTO = memberService.findByMid(principal);
+            model.addAttribute("member", memberDTO);
+            return "board/useinfoboard";
+        }
     }
     
-    @GetMapping("/test")
-    public String test() {
-    	return "test";
+    @GetMapping("/board/joininfoboard")
+    public String joininfo(@AuthenticationPrincipal SecurityUser principal, Model model){
+        if(principal == null){
+        	return "board/joininfoboard";
+        }else{
+            MemberDTO memberDTO = memberService.findByMid(principal);
+            model.addAttribute("member", memberDTO);
+            return "board/joininfoboard";
+        }
     }
+
+    @GetMapping("/board/datauseinfoboard")
+    public String datainfo(@AuthenticationPrincipal SecurityUser principal, Model model){
+    	if(principal == null){
+    		return "board/datauseinfoboard";
+    	}else{
+    		MemberDTO memberDTO = memberService.findByMid(principal);
+    		model.addAttribute("member", memberDTO);
+    		return "board/datauseinfoboard";
+    	}
+    }
+    
+    @GetMapping("/board/howtocomeboard")
+    public String howtocomeinfo(@AuthenticationPrincipal SecurityUser principal, Model model){
+    	if(principal == null){
+    		return "board/howtocomeboard";
+    	}else{
+    		MemberDTO memberDTO = memberService.findByMid(principal);
+    		model.addAttribute("member", memberDTO);
+    		return "board/howtocomeboard";
+    	}
+    }
+
 }

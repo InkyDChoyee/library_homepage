@@ -386,6 +386,32 @@ a {
     margin-top: 50px;
 }
 
+.auto_return_service {
+    width: 100%;
+    padding: 10px;
+}
+
+.auto_return_service table {
+    width: 100%;
+    border-collapse: collapse;
+    border-top: 3px solid #ddd;
+    border-bottom: 3px solid #ddd;
+    text-align: center;
+}
+
+.auto_return_service table tr:nth-child(1) {
+    background-color: #dfd;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.auto_return_service table tr td {
+    padding: 10px;
+}
+
+
+
+
 
 
 

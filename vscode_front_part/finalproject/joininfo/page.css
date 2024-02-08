@@ -348,43 +348,11 @@ a {
 }
 
 .page_info_box {
-    width: 100%;
-    text-align: left;
     margin-bottom: 50px;
 }
 
 
 
-
-.use_time_info {
-    width: 100%;
-}
-
-.use_time_info table {
-    width: 100%;
-    text-align: center;
-    border-collapse: collapse;
-    border-top: 3px solid #ddd;
-    border-bottom: 3px solid #ddd;
-}
-
-.use_time_info table thead {
-    background-color: #dfd;
-}
-
-.use_time_info table tr td,
-.use_time_info table tr th
- {
-    border-bottom: 1px solid #efefef;
-    padding: 10px;
-}
-
-
-
-.holiday_date_info {
-    width: 100%;
-    margin-top: 50px;
-}
 
 
 
