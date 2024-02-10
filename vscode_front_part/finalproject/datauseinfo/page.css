@@ -161,7 +161,7 @@ a {
 .nav_top_title {
     margin: 0 15px;
     padding: 10px;
-    border-bottom: 2px solid #efefef;
+    border-bottom: 2px solid #999;
 }
 
 .nav_top_title p{
@@ -203,16 +203,6 @@ a {
     display: flex;
     justify-content: right;
 }
-
-/* .page_menu_title {
-    font-size: 1.5rem;
-    color: #0F6728;
-    padding-top: 0px;
-    padding-right: 10%;
-    padding-left: 0;
-    padding-bottom: 10px;
-    text-align: right;
-} */
 
 .page_menu_search {
     padding-top: 0;
@@ -340,97 +330,83 @@ a {
 
 
 
-
-
-
-
-.page_title_box {
-    padding-right: 20px;
-}
-
-.page_title_box img {
-    width: 30px;
-    opacity: 60%;
-}
-
-.writepage_table {
+.page_menu_title {
     width: 100%;
-    border-top: 3px solid #efefef;
+    padding-top: 10px;
+    border-bottom: 3px solid #efefef;
+}
+
+.first_ul {
+    font-size: 1.2rem;
+    line-height: 2.5;
+}
+
+.second_ul {
+    font-size: 1rem;
+    line-height: 1.6;
+    padding-left: 20px;
+}
+
+.page_info_box {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 50px;
+}
+
+
+
+
+.use_time_info {
+    width: 100%;
+}
+
+.use_time_info table {
+    width: 100%;
+    text-align: center;
     border-collapse: collapse;
+    border-top: 3px solid #ddd;
+    border-bottom: 3px solid #ddd;
 }
 
-.writepage_table td{
-    padding-top: 0;
+.use_time_info table thead {
+    background-color: #dfd;
 }
 
-.writepage_table tbody tr td{
-    padding-top: 20px;
+.use_time_info table tr td,
+.use_time_info table tr th
+ {
+    border-bottom: 1px solid #efefef;
+    padding: 10px;
 }
 
-.write_page_title_input {
+
+
+.holiday_date_info {
+    width: 100%;
+    margin-top: 50px;
+}
+
+.auto_return_service {
     width: 100%;
     padding: 10px;
-    border-radius: 10px;
-    border: 2px solid #efefef;
 }
 
-.write_page_title_input:focus {
-    outline: none;
-}
-
-.writepage_table_body textarea {
+.auto_return_service table {
     width: 100%;
-    height: 300px;
-    border: 2px solid #efefef;
-    border-radius: 15px;
+    border-collapse: collapse;
+    border-top: 3px solid #ddd;
+    border-bottom: 3px solid #ddd;
+    text-align: center;
+}
+
+.auto_return_service table tr:nth-child(1) {
+    background-color: #dfd;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.auto_return_service table tr td {
     padding: 10px;
-    resize: none;
-}
-
-.writepage_table_body textarea:focus {
-    outline: none;
-}
-
-
-
-.select_file {
-    display: none;
-}
-
-.file_upload_btn:hover {
-    cursor: pointer;
-}
-
-.file_upload_btn {
-    border: 1px solid #ccc;
-    padding-top: 5px;
-    padding-right: 5%;
-    padding-bottom: 5px;
-    padding-left: 5%;
-    border-radius: 10px;
-    background-color: #efefef;
-    font-size: 0.8rem;
-}
-
-.write_form_btn_box {
-    width: 100%;
-    display: flex;
-    justify-content: right;
-}
-
-.write_form_btn_box button {
-    padding: 15px;
-    border-radius: 100%;
-    width: 75px;
-    height: 75px;
-    margin-right: 20px;
-}
-.write_btn { 
-    border: 1px solid #dcffe6;
-}
-
-.cancel_btn {
-    border: 1px solid rgb(255, 228, 202)
 }
 
 

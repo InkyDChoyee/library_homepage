@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -28,7 +30,9 @@ public class HopeBoardService {
 		if(!hopeBoardFile.isEmpty()) {
             UUID uuid = UUID.randomUUID();
             String hopeFilename = uuid + "_" + hopeBoardFile.getOriginalFilename();
-            String hopeFilepath ="C:/projectfiles/" + hopeFilename;
+            
+            //String hopeFilepath ="C:/springfiles/" + hopeFilename;
+            String hopeFilepath ="/Users/Healer/springfiles/" + hopeFilename; //희린 전용
 
             File savedHopeFile = new File(hopeFilepath); //실제 저장된 파일
             hopeBoardFile.transferTo(savedHopeFile);
@@ -66,7 +70,7 @@ public class HopeBoardService {
 		if(!hopeBoardFile.isEmpty()) {
             UUID uuid = UUID.randomUUID();
             String hopeFilename = uuid + "_" + hopeBoardFile.getOriginalFilename();
-            String hopeFilepath ="C:/projectfiles/" + hopeFilename;
+            String hopeFilepath ="C:/springfiles/" + hopeFilename;
 
             File savedHopeFile = new File(hopeFilepath); //실제 저장된 파일
             hopeBoardFile.transferTo(savedHopeFile);
@@ -86,4 +90,10 @@ public class HopeBoardService {
 	public void updateHits(Long hbid) {
 		hopeBoardRepository.updateHits(hbid);
 	}
+	
+	//페이징
+	public Page<HopeBoardDTO> paging(Pageable pageable) {
+        Page<HopeBoard> hopeBoardPage = hopeBoardRepository.findAll(pageable);
+        return hopeBoardPage.map(hopeBoard -> HopeBoardDTO.toSaveDTO(hopeBoard));
+    }
 }
