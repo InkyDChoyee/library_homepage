@@ -20,8 +20,6 @@
 					</div>
 				</div>
 			</div>
-
-
 			<div class="page_content_box">
 				<nav class="page_side_nav">
 					<div class="nav_content">
@@ -87,28 +85,28 @@
                             </div>
 						</div>
 					</div>
-					
-	<!-- 페이지네이션 -->
-	<div class="pagination">
-		<ul>
-			<!-- 이전 페이지 -->
-			<li th:if="${noticeBoardPage.hasPrevious()}"><a
-				th:href="@{|/notice/pagelist?page=${noticeBoardPage.pageable.pageNumber-1}|}">이전</a>
-			</li>
 
-			<!-- 페이지 번호 -->
-			<li
-				th:each="pageNum : ${#numbers.sequence(0, noticeBoardPage.totalPages-1)}">
-				<a th:href="@{|/notice/pagelist?page=${pageNum}|}"
-				th:text="${pageNum + 1}"></a>
-			</li>
+					<!-- 페이지네이션 -->
+					<div class="pagination">
+						<ul>
+							<!-- 이전 페이지 -->
+							<li th:if="${noticeBoardPage.hasPrevious()}"><a
+								th:href="@{|/notice/pagelist?page=${noticeBoardPage.pageable.pageNumber-1}|}">이전</a>
+							</li>
 
-			<!-- 다음 페이지 -->
-			<li th:if="${noticeBoardPage.hasNext()}"><a
-				th:href="@{|/notice/pagelist?page=${noticeBoardPage.pageable.pageNumber+1}|}">다음</a>
-			</li>
-		</ul>
-	</div>
+							<!-- 페이지 번호 -->
+							<li
+								th:each="pageNum : ${#numbers.sequence(0, noticeBoardPage.totalPages-1)}">
+								<a th:href="@{|/notice/pagelist?page=${pageNum}|}"
+								th:text="${pageNum + 1}"></a>
+							</li>
+
+							<!-- 다음 페이지 -->
+							<li th:if="${noticeBoardPage.hasNext()}"><a
+								th:href="@{|/notice/pagelist?page=${noticeBoardPage.pageable.pageNumber+1}|}">다음</a>
+							</li>
+						</ul>
+					</div> <!-- 페이지네이션 끝 -->
 
 				</div>
 			</div>

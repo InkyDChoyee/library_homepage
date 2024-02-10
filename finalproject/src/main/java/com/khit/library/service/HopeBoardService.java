@@ -14,9 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.khit.library.dto.HopeBoardDTO;
-import com.khit.library.dto.NoticeBoardDTO;
 import com.khit.library.entity.HopeBoard;
-import com.khit.library.entity.NoticeBoard;
 import com.khit.library.repository.HopeBoardRepository;
 
 import jakarta.transaction.Transactional;
@@ -32,7 +30,9 @@ public class HopeBoardService {
 		if(!hopeBoardFile.isEmpty()) {
             UUID uuid = UUID.randomUUID();
             String hopeFilename = uuid + "_" + hopeBoardFile.getOriginalFilename();
-            String hopeFilepath ="C:/springfiles/" + hopeFilename;
+            
+            //String hopeFilepath ="C:/springfiles/" + hopeFilename;
+            String hopeFilepath ="/Users/Healer/springfiles/" + hopeFilename; //희린 전용
 
             File savedHopeFile = new File(hopeFilepath); //실제 저장된 파일
             hopeBoardFile.transferTo(savedHopeFile);
