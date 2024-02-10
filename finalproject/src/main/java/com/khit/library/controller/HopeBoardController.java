@@ -12,10 +12,12 @@ import lombok.RequiredArgsConstructor;
 import java.io.IOException;
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -83,11 +85,32 @@ public class HopeBoardController {
     	//return "hopeboard/detail";
     }
     
-    // 글 전체 목록
+//    // 글 전체 목록
+//    @GetMapping("/hopeboard/pagelist")
+//    public String getAllList(Model model, @AuthenticationPrincipal SecurityUser principal) {
+//    	List<HopeBoardDTO> hopeBoardDTOList = hopeBoardService.findAll();
+//    	model.addAttribute("hopeBoardList", hopeBoardDTOList);
+//        if(principal == null){
+//            return "hopeboard/pagelist";
+//        }else{
+//            MemberDTO memberDTO = memberService.findByMid(principal);
+//            model.addAttribute("member", memberDTO);
+//            return "hopeboard/pagelist";
+//        }
+//    }
+    
+	//페이징, 글 목록
     @GetMapping("/hopeboard/pagelist")
-    public String getAllList(Model model, @AuthenticationPrincipal SecurityUser principal) {
-    	List<HopeBoardDTO> hopeBoardDTOList = hopeBoardService.findAll();
-    	model.addAttribute("hopeBoardList", hopeBoardDTOList);
+    public String pagelist(
+            @RequestParam(value = "page", defaultValue = "0") int page,
+            @RequestParam(value = "size", defaultValue = "10") int size,
+            @AuthenticationPrincipal SecurityUser principal,
+            Model model) {
+        Pageable pageable = PageRequest.of(page, size);
+        Page<HopeBoardDTO> hopeBoardPage = hopeBoardService.paging(pageable);
+        List<HopeBoardDTO> hopeBoardDTOList = hopeBoardService.findAll();
+        model.addAttribute("hopeBoardPage", hopeBoardPage);
+        model.addAttribute("hopeBoardList", hopeBoardDTOList);
         if(principal == null){
             return "hopeboard/pagelist";
         }else{
