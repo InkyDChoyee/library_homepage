@@ -75,7 +75,8 @@
 											<td>
 												<textarea rows="5" cols="30" name="hbcontent" th:text="${hopeBoard.hbcontent}"></textarea>
 												<div class="page_textarea_img_box">
-													<img th:src="${hopeBoard.hopeFilepath}"/>
+													<img th:if="${hopeBoard.hopeFilename != null}" th:src="${hopeBoard.hopeFilename}"/>
+
 												</div>
 											</td>
 										</tr>

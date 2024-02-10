@@ -8,6 +8,12 @@ body {
 	justify-content: center;
 	margin: 0;
 }
+fieldset{
+    border: none;
+}
+fieldset ul{
+    padding: 0;
+}
 
 .login {
 	width: 500px;
@@ -39,12 +45,8 @@ input {
 	border: 2px solid #c3c7bd;
 	border-radius: 6px;
 }
-.join_login{
-    display: flex;
-    justify-content: space-between;
-}
 .loginBtn{
-    width: 200px;
+    width: 100%;
     padding: 15px;
     background-color: #799c4b;
     color: #fff;
@@ -54,27 +56,16 @@ input {
     font-size: 16px;
 }
 .joinBtn{
-    width: 200px;
+    width: 100%;
     padding: 15px;
-    background-color: #799c4b;
+    background-color: #6A5C40;
     color: #fff;
     border: none;
     border-radius: 6px;
     cursor: pointer;
     font-size: 16px;
 }
-.btn_member{
-    display: flex;
-    justify-content: space-between;
-}
-.btn_member_white {
-    width: 200px;
-    padding: 15px;
-    font-size: 16px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-}
+
 .naverlogin{
     width: 100%;
     margin: 10px 0;
@@ -122,17 +113,17 @@ button:hover {
     margin-top: 10px;
 }
 .separator {
-    color: #777; /* 선의 색상 */
+    color: #777;
 }
 
 .separator::before,
 .separator::after {
-    content: ''; /* 가상 요소 생성 */
+    content: '';
     display: inline-block;
-    width: 170px; /* 선의 길이 */
-    border-top: 1px solid #ccc; /* 실선 스타일 지정 */
-    vertical-align: middle; /* 수직 정렬 */
-    margin: 0 10px; /* 간격 조절 */
+    width: 42%;
+    border-top: 1px solid #ccc;
+    vertical-align: middle;
+    margin: 0 10px;
 }
 
 .agree_box {
@@ -144,7 +135,7 @@ button:hover {
 }
 
 .agree_box input {
-	width: 50px;
+	width: 25px;
 }
 
 .agree_box label {
@@ -198,10 +189,20 @@ button:hover {
 	background-color: #799c4b;
 	color: #fff;
 }
-
+.btn_member{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 307px;
+}
 .btn_member_white {
-	background-color: #ecf0f1;
-	color: #333;
+    width: 70px;
+    padding: 3px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: #fff;
+    font-size: 10px;
+    color: #333;
 }
 
 .btn_member_gray {
@@ -209,7 +210,9 @@ button:hover {
 	color: #fff;
 }
 
-.btn_member_white:hover,
+.btn_member_white:hover{
+    background-color: #bdc3c7;
+}
 .btn_member_gray:hover {
 	background-color: #bdc3c7;
 }
