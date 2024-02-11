@@ -87,8 +87,12 @@ public class MemberController {
     }
     //회원수정 폼
     @GetMapping("/member/update")
-    public String updateForm(@AuthenticationPrincipal SecurityUser principal, Model model){
-        MemberDTO memberDTO = memberService.findByMid(principal);
+    public String updateForm(@AuthenticationPrincipal SecurityUser principal, Model model,
+    						MemberDTO memberDTO, BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            return "member/update";
+        }
+        memberDTO = memberService.findByMid(principal);
         model.addAttribute("member", memberDTO);
         return "member/update";
     }
