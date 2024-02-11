@@ -51,7 +51,7 @@
 
                     <div class="page_content_mid">
                         <div class="page_table_box">
-                            <form th:action="@{/member/update}" method="post" class="member_update_form">
+                            <form th:action="@{/member/update}" method="post" th:object="${memberDTO}" class="member_update_form">
                                 <input type="hidden" name="memberId" th:value="${member.memberId}">
                                 <input type="hidden" name="rentalCount" id="rentalCount" th:value="${member.rentalCount}" readonly>
                                 <input type="hidden" name="rentalAble" id="rentalAble" th:value="${member.rentalAble}" readonly>
@@ -73,7 +73,7 @@
                                                 <td><label for="password">비밀번호 (<span class="required">*</span>)</label></td>
                                                 <td colspan="2">
                                                     <input type="password" name="password" id="password" placeholder="비밀번호는 영문, 숫자, 특수문자를 모두 포함한 8글자 이상 20자 이하로 입력해 주세요.">
-                                                    <!-- <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error"></p> -->
+                                                    <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error"></p>
                                                     <p id="passwordMessage" class="password_message"></p>
                                                 </td>
                                             </tr>
@@ -89,7 +89,7 @@
                                                 <td><label for="name">이름 (<span class="required">*</span>)</label></td>
                                                 <td colspan="2">
                                                     <input type="text" name="name" id="name" th:value="${member.name}">
-                                                    <!-- <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error"></p> -->
+                                                    <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error"></p>
                                                     <p id="nameMessage" class="name_message"></p>
                                                 </td>
                                             </tr>
@@ -97,7 +97,7 @@
                                                 <td><label for="email">이메일 (<span class="required">*</span>) </label></td>
                                                 <td colspan="2">
                                                     <input type="text" name="email" id="email" th:value="${member.email}">
-                                                    <!-- <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error"></p> -->
+                                                    <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error"></p>
                                                     <p id="emailMessage" class="email_message"></p>
                                                 </td>
                                             </tr>

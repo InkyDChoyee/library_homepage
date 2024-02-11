@@ -25,8 +25,14 @@ public class BookController {
 
     //책등록 폼
     @GetMapping("/register")
-    public String insertFrom(){
-        return "book/register";
+    public String insertFrom(@AuthenticationPrincipal SecurityUser principal, Model model){
+        if(principal == null){
+        	return "book/register";
+        }else{
+            MemberDTO memberDTO = memberService.findByMid(principal);
+            model.addAttribute("member", memberDTO);
+            return "book/register";
+        }
     }
     //책 등록 처리
     @PostMapping("/register")
@@ -56,17 +62,28 @@ public class BookController {
     }
     //책 수정
     @GetMapping("/update/{bookId}")
-    public String updateForm(@PathVariable Long bookId, Model model){
+    public String updateForm(@PathVariable Long bookId, Model model,
+    						@AuthenticationPrincipal SecurityUser principal){
         BookDTO bookDTO = bookService.findById(bookId);
         model.addAttribute("book", bookDTO);
-        return "book/update";
+        
+        if(principal == null){
+        	return "book/update";
+        }else{
+            MemberDTO memberDTO = memberService.findByMid(principal);
+            model.addAttribute("member", memberDTO);
+            return "book/update";
+        }
+        
     }
+    
     //책 수정 처리
     @PostMapping("/update")
     public String update(@ModelAttribute BookDTO bookDTO,MultipartFile bookFile) throws Exception {
         bookService.update(bookDTO, bookFile);
         return "redirect:/book/list";
     }
+    
     //책 삭제
     @GetMapping("/delete/{bookId}")
     public String delete(@PathVariable Long bookId){

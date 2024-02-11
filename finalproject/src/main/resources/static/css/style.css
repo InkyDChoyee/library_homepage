@@ -111,7 +111,6 @@ a {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-
 }
 
 /* header_top_menu (도서 검색, 도서관 안내 등) */
@@ -179,7 +178,7 @@ a {
     visibility: visible; /* 호버 시 보이게 */
     transform: translateY(0); /* 원래 위치로 이동 */
 
-}
+
 
 /* header_member */
 .header_member {
@@ -190,6 +189,7 @@ a {
 	align-items: center;
 }
 
+
 .header_member a {
 	font-size: 0.7rem;
 	color: #A5B569;
@@ -198,7 +198,7 @@ a {
 	padding-left: 5px;
 }
 
-/* ====================================================== */
+/* ============================================ */
 
 /* main */
 #container {
@@ -439,18 +439,20 @@ select:focus {
 }
 
 /* main_mid_schedule */
-.main_mid_schedule {
-	width: 27.5%;
-	height: 350px;
-	background-color: #fff;
-	margin-right: 50px;
-	border-radius: 25px;
-	padding-top: 20px;
-	padding-right: 10px;
-	padding-left: 10px;
-	padding-bottom: 10px;
-	box-shadow: 5px 5px 5px #ccc;
-}
+
+/* .main_mid_schedule {
+    width: 27.5%;
+    height: 350px;
+    background-color: #fff;
+    margin-right: 50px;
+    border-radius: 25px;
+    padding-top: 20px;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    box-shadow: 5px 5px 5px #ccc;
+} */
+
 
 .main_schedule_title {
 	border-bottom: 2px solid #555;
@@ -504,18 +506,21 @@ select:focus {
 }
 
 /* main_mid_openspace*/
-.main_mid_openspace {
-	width: 27.5%;
-	height: 350px;
-	background-color: #fff;
-	margin-right: 50px;
-	border-radius: 25px;
-	padding-top: 20px;
-	padding-right: 10px;
-	padding-left: 10px;
-	padding-bottom: 10px;
-	box-shadow: 5px 5px 5px #ccc;
-}
+
+/* .main_mid_openspace {
+    width: 27.5%;
+    height: 350px;
+    background-color: #fff;
+    margin-right: 50px;
+    border-radius: 25px;
+    padding-top: 20px;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    box-shadow: 5px 5px 5px #ccc;
+} */
+
+
 
 .main_openspace_title {
 	border-bottom: 2px solid #555;
@@ -559,7 +564,7 @@ select:focus {
 	text-align: center;
 }
 
-/* main_mid_free */
+
 .main_mid_free {
 	width: 27.5%;
 	height: 350px;
@@ -571,6 +576,7 @@ select:focus {
 	padding-bottom: 10px;
 	box-shadow: 5px 5px 5px #ccc;
 }
+
 
 .main_free_title {
 	border-bottom: 2px solid #555;
@@ -667,11 +673,11 @@ select:focus {
 }
 
 .main_bottom_text_img {
-	width: 70px;
-	position: absolute;
-	top: -10px;
-	left: 600px;
-}
+    width: 70px;
+    position: absolute;
+    top: -10px;
+    left: 650px;
+  }
 
 .main_bottom_recommand_books {
 	width: 100%;
@@ -1509,30 +1515,6 @@ select:focus {
 	transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-.main_mid_text_box {
-	width: 50%;
-	height: 250px;
-	margin-bottom: 100px;
-	color: #56432C;
-}
-
-.main_mid_small_text {
-	font-size: 0.9rem;
-	color: #7C9877;
-}
-
-.main_mid_big_text {
-	font-size: 3rem;
-	position: relative;
-}
-
-.main_mid_text_img {
-	width: 70px;
-	position: absolute;
-	top: 50px;
-	left: 500px;
-}
-
 .main_mid_board_box {
 	width: 100%;
 	height: 350px;
@@ -1991,68 +1973,6 @@ select:focus {
 	transition-delay: 0.8s;
 }
 
-.main_bottom_small_text {
-	font-size: 0.9rem;
-	color: #7C9877;
-}
-
-.main_bottom_big_text {
-	font-size: 3rem;
-	position: relative;
-}
-
-.main_bottom_text_img {
-	width: 70px;
-	position: absolute;
-	top: 50px;
-	left: 600px;
-}
-
-.main_bottom_recommand_books {
-	width: 100%;
-	height: 350px;
-	display: flex;
-	justify-content: space-between;
-}
-
-.main_best_book {
-	padding: 10px;
-	width: 17.5%;
-	height: 350px;
-	background-color: #fff;
-	border-radius: 25px;
-	text-align: center;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-around;
-	align-items: center;
-	box-shadow: 5px 5px 5px #ccc;
-}
-
-.main_best_book_img {
-	width: 60%;
-	height: 220px;
-}
-
-.main_best_book_title {
-	color: #56432C;
-	font-size: 1.1rem;
-	font-weight: 700;
-}
-
-.best_mark {
-	font-size: 0.7rem;
-	color: #dd9;
-}
-
-.best_book {
-	border: 4px solid #ffa;
-}
-
-.main_best_book_author {
-	font-size: 0.8rem;
-	color: #7C9877;
-}
 
 /* ====================================================== */
 
@@ -2271,6 +2191,7 @@ select:focus {
 	justify-content: space-around;
 }
 
+
 /* paging 스타일 */
 .pagination {
 	display: flex;
@@ -2432,7 +2353,6 @@ select:focus {
 	background-color: #9f9;
 }
 
-
 /* member_update */
 .member_update_form {
     width: 100%;
@@ -2475,10 +2395,8 @@ select:focus {
     border-bottom: 2px solid #aaa;
 }
 
-.member_update_form table tr:nth-child(2) input,
-.member_update_form table tr:nth-child(9) input,
-.member_update_form table tr:nth-child(8) input,
-.member_update_form table tr:nth-child(3) input {
+.member_update_form table tr:nth-child(1) input,
+.member_update_form table tr:nth-child(2) input {
     font-weight: 600;
 }
 
@@ -2516,6 +2434,19 @@ select:focus {
 
 
 
+.book_img_preview {
+	border: 1px solid #efefef;
+	border-radius: 15px;
+	display: flex;
+	justify-content: center;
+	padding: 20px;
+	margin: 20px auto;
+}
+
+
+.book_img_preview img {
+	width: 50%;
+}
 
 /* footer */
 #footer {
