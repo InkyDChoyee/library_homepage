@@ -92,6 +92,7 @@ public class MemberController {
             MemberDTO memberDTO = memberService.findById(memberId);
             model.addAttribute("member", memberDTO);
             model.addAttribute("rental", rentalReturnService.count(memberId));
+            model.addAttribute("able", rentalReturnService.rentalAble());
             return "member/detail";
         }
     }
@@ -112,6 +113,7 @@ public class MemberController {
         	memberDTO = memberService.findByMid(principal);
         	model.addAttribute("member", memberDTO);
             model.addAttribute("rental", rentalReturnService.count(memberId));
+            model.addAttribute("able", rentalReturnService.rentalAble());
         	return "member/update";
         }
     }
