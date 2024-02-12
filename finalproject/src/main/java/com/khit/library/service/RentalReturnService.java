@@ -39,11 +39,26 @@ public class RentalReturnService {
         RentalReturn rentalReturn = RentalReturn.toUpdateEntity(rentalReturnDTO);
         rentalReturnRepository.save(rentalReturn);
     }
-
     public RentalReturnDTO findByRentalId(Long rentalId) {
-//        Optional<RentalReturn> rentalReturn = rentalReturnRepository.findByRentalId(rentalId);
+        //        Optional<RentalReturn> rentalReturn = rentalReturnRepository.findByRentalId(rentalId);
         RentalReturn rentalReturn = rentalReturnRepository.findByRentalId(rentalId);
         RentalReturnDTO rentalReturnDTO = RentalReturnDTO.toSaveDTO(rentalReturn);
         return rentalReturnDTO;
     }
+
+    public List<RentalReturnDTO> findByMemberMid(String mid) {
+        List<RentalReturn> rentalReturnList = rentalReturnRepository.findByMemberMid(mid);
+        List<RentalReturnDTO> rentalReturnDTOList = new ArrayList<>();
+
+        for(RentalReturn rentalReturn : rentalReturnList){
+            RentalReturnDTO rentalReturnDTO = RentalReturnDTO.toSaveDTO(rentalReturn);
+            rentalReturnDTOList.add(rentalReturnDTO);
+        }
+        return rentalReturnDTOList;
+    }
+
+    public int count(Long memberId){
+        return rentalReturnRepository.rentalCount(memberId);
+    }
+
 }
