@@ -87,18 +87,31 @@ public class MemberController {
     }
     //회원수정 폼
     @GetMapping("/member/update")
-    public String updateForm(@AuthenticationPrincipal SecurityUser principal, Model model){
-        MemberDTO memberDTO = memberService.findByMid(principal);
-        model.addAttribute("member", memberDTO);
-        return "member/update";
+    public String updateForm(@AuthenticationPrincipal SecurityUser principal, Model model,
+    						MemberDTO memberDTO, BindingResult bindingResult){
+        if(bindingResult.hasErrors() || principal == null){
+            return "member/update";
+        }else {
+        	memberDTO = memberService.findByMid(principal);
+        	model.addAttribute("member", memberDTO);
+        	return "member/update";
+        }
     }
+
     //회원수정 처리
     @PostMapping("/member/update")
-    public String update(@ModelAttribute MemberDTO memberDTO){
-        memberService.update(memberDTO);
-        log.info("dto : " + memberDTO);
-        return "redirect:/member/" + memberDTO.getMemberId();
+    public String update(@ModelAttribute MemberDTO memberDTO, Model model,  @AuthenticationPrincipal SecurityUser principal, BindingResult bindingResult){
+    	memberService.update(memberDTO);
+    	log.info("dto : " + memberDTO);
+    	
+    	if(bindingResult.hasErrors()){
+            return "member/update";
+        }
+            memberDTO = memberService.findByMid(principal);
+            model.addAttribute("member", memberDTO);
+            return "redirect:/member/" + memberDTO.getMemberId();
     }
+    
 
     //아이디 중복검사
     @PostMapping("/member/check-id")

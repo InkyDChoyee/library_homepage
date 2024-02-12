@@ -66,6 +66,7 @@ public class MemberService {
         Member member = Member.toUpdateEntity(memberDTO);
         memberRepository.save(member);
     }
+    
     //회원상세보기
     public MemberDTO findById(Long memberId) {
         Optional<Member> findMember = memberRepository.findById(memberId);
