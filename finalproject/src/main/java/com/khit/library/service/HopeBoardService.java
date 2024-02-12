@@ -30,9 +30,9 @@ public class HopeBoardService {
 		if(!hopeBoardFile.isEmpty()) {
             UUID uuid = UUID.randomUUID();
             String hopeFilename = uuid + "_" + hopeBoardFile.getOriginalFilename();
-            
-            //String hopeFilepath ="C:/springfiles/" + hopeFilename;
-            String hopeFilepath ="/Users/Healer/springfiles/" + hopeFilename; //희린 전용
+
+            String hopeFilepath ="C:/projectfiles/" + hopeFilename;
+            /*String hopeFilepath ="/Users/Healer/springfiles/" + hopeFilename; //희린 전용*/
 
             File savedHopeFile = new File(hopeFilepath); //실제 저장된 파일
             hopeBoardFile.transferTo(savedHopeFile);
@@ -40,19 +40,19 @@ public class HopeBoardService {
             hopeBoard.setHopeFilename(hopeFilename);
             hopeBoard.setHopeFilepath(hopeFilepath); //파일 경로 설정
 		}
-		
+
 		hopeBoardRepository.save(hopeBoard);
 	}
 
 	public List<HopeBoardDTO> findAll() {
 		List<HopeBoard> hopeBoardList = hopeBoardRepository.findAll(Sort.by(Sort.Direction.DESC, "hbid"));
 		List<HopeBoardDTO> hopeBoardDTOList = new ArrayList<>();
-		
+
 		for(HopeBoard hopeBoard : hopeBoardList) {
 			HopeBoardDTO hopeBoardDTO = HopeBoardDTO.toSaveDTO(hopeBoard);
 			hopeBoardDTOList.add(hopeBoardDTO);
 		}
-		
+
 		return hopeBoardDTOList;
 	}
 
@@ -70,7 +70,7 @@ public class HopeBoardService {
 		if(!hopeBoardFile.isEmpty()) {
             UUID uuid = UUID.randomUUID();
             String hopeFilename = uuid + "_" + hopeBoardFile.getOriginalFilename();
-            String hopeFilepath ="C:/springfiles/" + hopeFilename;
+            String hopeFilepath ="C:/projectfiles/" + hopeFilename;
 
             File savedHopeFile = new File(hopeFilepath); //실제 저장된 파일
             hopeBoardFile.transferTo(savedHopeFile);
@@ -85,12 +85,12 @@ public class HopeBoardService {
 		hopeBoardRepository.save(hopeBoard);
 		return findById(hopeBoardDTO.getHbid());
 	}
-	
+
 	@Transactional
 	public void updateHits(Long hbid) {
 		hopeBoardRepository.updateHits(hbid);
 	}
-	
+
 	//페이징
 	public Page<HopeBoardDTO> paging(Pageable pageable) {
         Page<HopeBoard> hopeBoardPage = hopeBoardRepository.findAll(pageable);
