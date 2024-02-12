@@ -24,8 +24,12 @@
 						<input type="text" name="role" id="role" th:value="${member.role}" readonly>
 					</li>
 					<li>
-						<label for="role">이메일</label>
+						<label for="email">이메일</label>
 						<input type="text" name="email" id="email" th:value="${member.email}" readonly>
+					</li>
+					<li>
+						<label for="count">대출권수</label>
+						<input type="text" name="count" id="count" th:value="${rental}" readonly>
 					</li>
 					<li>
 						<a th:href="@{/member/list}"><button type="button">목록</button></a>

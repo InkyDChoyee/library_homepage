@@ -82,6 +82,7 @@ public class MemberController {
     public String getMember(@PathVariable Long memberId, Model model){
         MemberDTO memberDTO = memberService.findById(memberId);
         model.addAttribute("member", memberDTO);
+        model.addAttribute("rental", rentalReturnService.count(memberId));
         return "member/detail";
     }
     //회원삭제
