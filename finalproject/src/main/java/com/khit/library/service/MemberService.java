@@ -61,11 +61,12 @@ public class MemberService {
     public void update(MemberDTO memberDTO) {
         String encPw = pwEncoder.encode(memberDTO.getPassword());
         memberDTO.setPassword(encPw);
-        memberDTO.setRole(Role.Member);
+        memberDTO.setRole(Role.Admin);
 
         Member member = Member.toUpdateEntity(memberDTO);
         memberRepository.save(member);
     }
+    
     //회원상세보기
     public MemberDTO findById(Long memberId) {
         Optional<Member> findMember = memberRepository.findById(memberId);
