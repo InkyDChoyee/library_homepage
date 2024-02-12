@@ -61,4 +61,3 @@ public class RentalReturnService {
         return rentalReturnRepository.rentalCount(memberId);
     }
 
-}

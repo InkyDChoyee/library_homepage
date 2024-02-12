@@ -2462,8 +2462,30 @@ select:focus{
 
 
 
+.rental_state_page_title{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.rental_state_page_title img {
+    width: 25px;
+    margin-right: 10px;
+}
 
 
+.user_rental_state_title,
+.user_rental_past_title {
+    width: 15%;
+    text-align: center;
+    padding-top: 3px;
+    padding-right: 10px;
+    padding-bottom: 3px;
+    padding-left: 10px;
+    background-color: #dfd;
+    border-radius: 10px;
+    line-height: 32px;
+}
 
 
 
