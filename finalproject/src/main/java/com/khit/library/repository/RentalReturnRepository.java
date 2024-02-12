@@ -15,5 +15,5 @@ public interface RentalReturnRepository extends JpaRepository<RentalReturn, Long
 
     @Query("select count(*) from RentalReturn where member.memberId = :memberId and returnDate is null")
     public int rentalCount(Long memberId);
-
 }
+
