@@ -2541,6 +2541,22 @@ select:focus{
 
 
 
+.user_rental_state_title p {
+    padding: 10ox;
+    background-color: #ccc;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* footer */
 #footer{
