@@ -1,6 +1,7 @@
 package com.khit.library.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.khit.library.dto.BookDTO;
 import jakarta.persistence.*;
@@ -15,6 +16,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Book extends BaseEntity{
 
     @Id
@@ -32,6 +34,9 @@ public class Book extends BaseEntity{
 
     @Column(nullable = false)
     private String publisher; //출판사
+    
+    @Column(nullable = false)
+    private String category; //책 카테고리
 
     @Column
     private String bfilename;
@@ -45,6 +50,7 @@ public class Book extends BaseEntity{
                 .bnumber(bookDTO.getBnumber())
                 .author(bookDTO.getAuthor())
                 .publisher(bookDTO.getPublisher())
+                .category(bookDTO.getCategory())
                 .bfilename(bookDTO.getBfilename())
                 .bfilepath(bookDTO.getBfilepath())
                 .rentalReturnList(bookDTO.getRentalReturnList())
@@ -57,6 +63,7 @@ public class Book extends BaseEntity{
                 .bname(bookDTO.getBname())
                 .bnumber(bookDTO.getBnumber())
                 .author(bookDTO.getAuthor())
+                .category(bookDTO.getCategory())
                 .publisher(bookDTO.getPublisher())
                 .bfilename(bookDTO.getBfilename())
                 .bfilepath(bookDTO.getBfilepath())
@@ -65,9 +72,9 @@ public class Book extends BaseEntity{
         return book;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn
+    @ManyToOne(fetch = FetchType.EAGER)
     @JsonIgnore
+    @JoinColumn
     private Member member;
 
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)

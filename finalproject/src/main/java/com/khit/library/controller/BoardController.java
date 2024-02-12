@@ -59,5 +59,16 @@ public class BoardController {
     		return "board/howtocomeboard";
     	}
     }
+    
+    @GetMapping("/board/hopebookboard")
+    public String hopebook(@AuthenticationPrincipal SecurityUser principal, Model model){
+    	if(principal == null){
+    		return "board/hopebookboard";
+    	}else{
+    		MemberDTO memberDTO = memberService.findByMid(principal);
+    		model.addAttribute("member", memberDTO);
+    		return "board/hopebookboard";
+    	}
+    }
 
 }

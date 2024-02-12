@@ -36,7 +36,7 @@
 						<input type="text" name="bnumber" id="bnumber" th:value="${book.bnumber}" readonly>
 					</li>
 					<li>
-						<img th:src="@{${book.bfilepath}}" alt="책 이미지">
+						<img th:src="@{|/upload/${book.bfilename}|}" alt="책 이미지">
 					</li>
 					<li>
 						<a th:href="@{|/book/update/${book.bookId}|}" sec:authorize="hasAnyAuthority('Admin')"><button type="button">수정</button></a>
@@ -63,14 +63,18 @@
                         bookId : [[${book.bookId}]]
                     },
                     rentalDate : new Date(),
+                    member: {
+                        rentalCount: [[${member.rentalCount}]] + 1
+                    },
                 }),
                 success: function(data){
                     console.log("대출성공 : " + data)
                     console.log(data)
-                    location.href = "/rentalReturn/list";
+                    location.href = "/book/list";
                 },
                 error: function(response){
                     console.log("대출실패" + response);
+                    location.href= "/login"
                 }
             });
         } else{

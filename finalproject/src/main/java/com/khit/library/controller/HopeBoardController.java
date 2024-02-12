@@ -42,7 +42,7 @@ public class HopeBoardController {
             return "hopeboard/write";
         }
     }
-    
+
     // 글쓰기 처리
     @PostMapping("/hopeboard/write")
     public String write(@ModelAttribute HopeBoard hopeBoard,
@@ -69,11 +69,11 @@ public class HopeBoardController {
             return "hopeboard/update";
         }
     }
-    
+
     // 글 수정 처리
     @PostMapping("/hopeboard/update/{hbid}")
     public String update(@ModelAttribute HopeBoardDTO hopeBoard,
-    					
+
     		             MultipartFile hopeBoardFile,
     		             @AuthenticationPrincipal SecurityUser principal,
     		             Model model) throws IOException, Exception {
@@ -84,7 +84,7 @@ public class HopeBoardController {
     	return "redirect:/hopeboard/" + upHopeBoard.getHbid();
     	//return "hopeboard/detail";
     }
-    
+
 //    // 글 전체 목록
 //    @GetMapping("/hopeboard/pagelist")
 //    public String getAllList(Model model, @AuthenticationPrincipal SecurityUser principal) {
@@ -98,7 +98,7 @@ public class HopeBoardController {
 //            return "hopeboard/pagelist";
 //        }
 //    }
-    
+
 	//페이징, 글 목록
     @GetMapping("/hopeboard/pagelist")
     public String pagelist(
@@ -119,7 +119,7 @@ public class HopeBoardController {
             return "hopeboard/pagelist";
         }
     }
-    
+
     // 글 하나 상세보기
     @GetMapping("/hopeboard/{hbid}")
     public String getDetail(@PathVariable Long hbid, Model model,
@@ -135,7 +135,7 @@ public class HopeBoardController {
             return "hopeboard/detail";
         }
     }
-    
+
     // 글 삭제
     @GetMapping("/hopeboard/delete/{hbid}")
     public String deleteHopeBoard(@PathVariable Long hbid) {

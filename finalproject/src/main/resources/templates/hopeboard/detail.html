@@ -82,7 +82,9 @@ crossorigin="anonymous"></script>
                                         <td>
                                             <textarea rows="5" cols="30" name="hbcontent" th:text="${hopeBoard.hbcontent}" readonly></textarea>
                                             <div class="page_textarea_img_box">
-                                             <img th:if="${hopeBoard.hopeFilename != null}" th:src="@{|/upload/${hopeBoard.hopeFilename}|}"/>
+
+                                                <img th:if="${hopeBoard.hopeFilename != null}" th:src="@{|/upload/${hopeBoard.hopeFilename}|}"/>
+
                                             </div>
                                         </td>
                                     </tr>
@@ -110,7 +112,7 @@ crossorigin="anonymous"></script>
                                     <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.getPrincipal.getUsername()} == ${hopeBoard.member.mid}">
 	                                    <div class="hope_reply_update">
 	                                        <div class="reply_update_btn_box">
-	                                            <button class="reply_update_btn" type="button" th:onClick="replyObject.updateReply([[${hopeBoard.hbid}]], [[${hopeReply.hrid}]])">수정</button>  
+	                                            <button class="reply_update_btn" type="button" th:onClick="replyObject.updateReply([[${hopeBoard.hbid}]], [[${hopeReply.hrid}]])">수정</button>
 	                                            <button class="reply_delete_btn" type="button" th:onClick="replyObject.deleteReply([[${hopeBoard.hbid}]], [[${hopeReply.hrid}]])">삭제</button>
 	                                        </div>
 	                                    </div>
@@ -119,7 +121,7 @@ crossorigin="anonymous"></script>
                                 <div id="replyModal" class="modal" style="display: none;">
                                 	<div class="modal_content">
                                     	<div style="display: none;" id="originalContent" th:text="${hopeReply.hrcontent}">
-                                     	</div> 
+                                     	</div>
                                     	<textarea id="replyContent" rows="4" cols="50"></textarea>
                                  	</div>
                                  	<div class="reply_update_confirm_box">
