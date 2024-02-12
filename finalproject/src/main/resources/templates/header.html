@@ -53,8 +53,11 @@
                     <div class="header_link_my_library">
                         <a th:href="@{/}">나의책숲</a>
                         <div class="header_sub_link_my_library">
-                            <p><a th:href="@{/book/list}">나의서재</a></p>
-                            <p><a th:href="@{/member/update}">내정보수정</a></p>
+
+                            <p><a th:href="@{/member/rentallist}">나의 서재</a></p>
+                            <th:block th:if="${member != null}">
+                                <p><a th:href="@{|/member/update/${member.memberId}|}">정보 수정</a></p>
+                            </th:block>
                         </div>
                     </div>
                 </div>
@@ -76,7 +79,6 @@
                 </div>
                     <a class="header_member_join" th:href="'#'" th:text="${member.name} + '님 환영합니다.'"></a> |
                     <a class="header_member_login" th:href="@{/logout}">로그아웃</a>
-
                 </th:block>
             </div>
             <!-- when login, change div element -->
