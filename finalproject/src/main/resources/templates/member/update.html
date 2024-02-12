@@ -52,8 +52,6 @@
                         <div class="page_table_box">
                             <form th:action="@{/member/update}" method="post" th:object="${memberDTO}" class="member_update_form">
                                 <input type="hidden" name="memberId" th:value="${member.memberId}">
-                                <input type="hidden" name="rentalCount" id="rentalCount" th:value="${member.rentalCount}" readonly>
-                                <input type="hidden" name="rentalAble" id="rentalAble" th:value="${member.rentalAble}" readonly>
                                     <table>
 									<tbody>
                                             <tr>
@@ -101,10 +99,10 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                            	<td><label for="rentalCount">대출한 책수<span><small>(수정 불가)</small></span></label></td>
-                                            	<td colspan="2"><input type="text" name="rentalCount" th:value="${member.rentalCount}" readonly></td>
+                                            	<td><label for="count">대출한 책수<span><small>(수정 불가)</small></span></label></td>
+                                            	<td colspan="2"><input type="text" name="count" id="count" th:value="${rental}" readonly></td>
                                             </tr>
-                                            <tr>
+                                            <!--<tr>
                                             	<td><label for="rentalAble">대출 가능여부<span><small>(수정 불가)</small></span></label></td>
                                             	<td colspan="2">
                                             		<th:block th:if="${member.rentalAble}">
@@ -114,7 +112,7 @@
 													    <input type="text" name="rentalAble" th:value="대출 불가능" readonly>
 													</th:block>
                                            		</td>
-                                            </tr>
+                                            </tr>-->
 
                                         </tbody>
                                     </table>    
