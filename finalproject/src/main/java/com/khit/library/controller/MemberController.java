@@ -83,16 +83,14 @@ public class MemberController {
             return "member/list";
         }
     }
-    //회원 상세보기
     @GetMapping("/member/{memberId}")
     public String getMember(@AuthenticationPrincipal SecurityUser principal, @PathVariable Long memberId, Model model){
-        MemberDTO memberDTO = memberService.findById(memberId);
-        model.addAttribute("member", memberDTO);
         if(principal == null){
             return "member/detail";
         }else{
-            memberDTO = memberService.findByMid(principal);
+            MemberDTO memberDTO = memberService.findById(memberId);
             model.addAttribute("member", memberDTO);
+            model.addAttribute("rental", rentalReturnService.count(memberId));
             return "member/detail";
         }
     }
