@@ -79,11 +79,15 @@ public class MemberController {
     }
     //회원 상세보기
     @GetMapping("/member/{memberId}")
-    public String getMember(@PathVariable Long memberId, Model model){
-        MemberDTO memberDTO = memberService.findById(memberId);
-        model.addAttribute("member", memberDTO);
-        model.addAttribute("rental", rentalReturnService.count(memberId));
-        return "member/detail";
+    public String getMember(@AuthenticationPrincipal SecurityUser principal, @PathVariable Long memberId, Model model){
+        if(principal == null){
+            return "member/detail";
+        }else{
+            MemberDTO memberDTO = memberService.findById(memberId);
+            model.addAttribute("member", memberDTO);
+            model.addAttribute("rental", rentalReturnService.count(memberId));
+            return "member/detail";
+        }
     }
     //회원삭제
     @GetMapping("/member/delete/{memberId}")
@@ -92,14 +96,15 @@ public class MemberController {
         return "redirect:/member/list";
     }
     //회원수정 폼
-    @GetMapping("/member/update")
-    public String updateForm(@AuthenticationPrincipal SecurityUser principal, Model model,
+    @GetMapping("/member/update/{memberId}")
+    public String updateForm(@AuthenticationPrincipal SecurityUser principal, @PathVariable Long memberId, Model model,
     						MemberDTO memberDTO, BindingResult bindingResult){
         if(bindingResult.hasErrors() || principal == null){
             return "member/update";
         }else {
         	memberDTO = memberService.findByMid(principal);
         	model.addAttribute("member", memberDTO);
+            model.addAttribute("rental", rentalReturnService.count(memberId));
         	return "member/update";
         }
     }
@@ -115,7 +120,7 @@ public class MemberController {
         }
             memberDTO = memberService.findByMid(principal);
             model.addAttribute("member", memberDTO);
-            return "redirect:/member/" + memberDTO.getMemberId();
+            return "redirect:/member/update/" + memberDTO.getMemberId();
     }
     
 
