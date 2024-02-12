@@ -24,7 +24,7 @@ import java.util.List;
 public class MemberController {
     private final MemberService memberService;
     private final RentalReturnService rentalReturnService;
-    
+
     //헤더 로그인 맴버
     @GetMapping("/")
     public String main(Model model, @AuthenticationPrincipal SecurityUser principal){
@@ -88,6 +88,7 @@ public class MemberController {
     public String getMember(@AuthenticationPrincipal SecurityUser principal, @PathVariable Long memberId, Model model){
         MemberDTO memberDTO = memberService.findById(memberId);
         model.addAttribute("member", memberDTO);
+
         if(principal == null){
             return "member/detail";
         }else{
@@ -95,6 +96,7 @@ public class MemberController {
             model.addAttribute("member", memberDTO);
             return "member/detail";
         }
+
     }
     //회원삭제
     @GetMapping("/member/delete/{memberId}")
@@ -136,13 +138,13 @@ public class MemberController {
         String resultText = memberService.checkId(mid);
         return resultText;
     }
-    
 
     //나의 대출목록
     @GetMapping("/member/rentallist")
     public String rentalList(@AuthenticationPrincipal SecurityUser principal, Model model){
         String mid = principal.getMember().getMid();
-        List<RentalReturnDTO > rentalReturnDTOList = rentalReturnService.findByMemberMid(mid);
+        List<RentalReturnDTO> rentalReturnDTOList = rentalReturnService.findByMemberMid(mid);
+
         model.addAttribute("rentalList", rentalReturnDTOList);
         return "member/rentallist";
     }
