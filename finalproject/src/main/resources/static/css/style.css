@@ -2489,6 +2489,110 @@ select:focus{
 }
 
 
+/* rentallist style */
+.rental_state_page_title{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.rental_user_info {
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 50px;
+    margin-left: 20px;
+}
+
+.rental_user_info ul li {
+    margin-left: 20px;
+    color: #753;
+}
+
+.rental_state_page_title img {
+    width: 25px;
+    margin-right: 10px;
+}
+
+
+.user_rental_state_title,
+.user_rental_past_title {
+    width: 15%;
+    text-align: center;
+    padding-top: 3px;
+    padding-right: 10px;
+    padding-bottom: 3px;
+    padding-left: 10px;
+    background-color: #531;
+    color: #eee;
+    border-radius: 10px;
+    line-height: 32px;
+}
+
+.user_rental_state_box,
+.user_rental_past_list_box {
+    border: 1px solid #fafafa;
+    background-color: #fafafa;
+    border-radius: 15px;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 70px;
+}
+
+.user_rental_state_tbl table,
+.user_rental_past_list_tbl table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.user_rental_state_tbl tbody tr td img,
+.user_rental_past_list_tbl tbody tr td img {
+    width: 50px;
+    height: 75px;
+    background-color: #000;
+}
+
+.user_rental_state_tbl table thead,
+.user_rental_past_list_tbl table thead {
+    background-color: #efffef;
+}
+
+.user_rental_state_tbl table thead tr th,
+.user_rental_past_list_tbl table thead tr th {
+    padding: 5px;
+}
+
+.user_rental_state_tbl table thead tr th:nth-child(1),
+.user_rental_past_list_tbl table thead tr th:nth-child(1) {
+    border-radius: 10px 0 0 10px;
+}
+.user_rental_state_tbl table thead tr th:last-child,
+.user_rental_past_list_tbl table thead tr th:last-child {
+    border-radius: 0 10px 10px 0;
+}
+
+.user_rental_state_tbl table tbody tr td,
+.user_rental_past_list_tbl table tbody tr td {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px dotted #ccc;
+
+}
+
+.user_rental_state_tbl table tbody tr td input {
+    padding: 3px;
+    border: 1px solid #eda;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    background-color: #fff;
+    color: #753;
+    cursor: pointer;
+}
+
+
+
 
 
 /* footer */
