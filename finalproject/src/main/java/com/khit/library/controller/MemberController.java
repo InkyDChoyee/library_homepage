@@ -147,7 +147,14 @@ public class MemberController {
         List<RentalReturnDTO> rentalReturnDTOList = rentalReturnService.findByMemberMid(mid);
 
         model.addAttribute("rentalList", rentalReturnDTOList);
-        return "member/rentallist";
+        
+        if(principal == null){
+            return "member/rentallist";
+        }else{
+            MemberDTO memberDTO = memberService.findByMid(principal);
+            model.addAttribute("member", memberDTO);
+            return "member/rentallist";
+        }
     }
 }
 
