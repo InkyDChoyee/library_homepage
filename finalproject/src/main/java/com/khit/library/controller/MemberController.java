@@ -85,6 +85,7 @@ public class MemberController {
     }
     @GetMapping("/member/{memberId}")
     public String getMember(@AuthenticationPrincipal SecurityUser principal, @PathVariable Long memberId, Model model){
+
         if(principal == null){
             return "member/detail";
         }else{
@@ -137,10 +138,12 @@ public class MemberController {
         return resultText;
     }
 
+
     //나의 대출목록
     @GetMapping("/member/rentallist")
     public String rentalList(@AuthenticationPrincipal SecurityUser principal, Model model){
         String mid = principal.getMember().getMid();
+
         List<RentalReturnDTO> rentalReturnDTOList = rentalReturnService.findByMemberMid(mid);
 
         model.addAttribute("rentalList", rentalReturnDTOList);
