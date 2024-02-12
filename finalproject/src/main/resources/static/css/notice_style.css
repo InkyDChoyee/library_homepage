@@ -1654,7 +1654,7 @@ select:focus{
 }
 
 .main_mid_openspace:hover {
-    width:37%;
+    width: 37%;
     border: 5px solid #745b3d;
     transition: width 0.5s ease-in-out, border 0.5s ease-in-out;
 }
