@@ -89,26 +89,27 @@ public class MemberController {
     @GetMapping("/member/update")
     public String updateForm(@AuthenticationPrincipal SecurityUser principal, Model model,
     						MemberDTO memberDTO, BindingResult bindingResult){
-        if(bindingResult.hasErrors()){
+        if(bindingResult.hasErrors() || principal == null){
             return "member/update";
+        }else {
+        	memberDTO = memberService.findByMid(principal);
+        	model.addAttribute("member", memberDTO);
+        	return "member/update";
         }
-        memberDTO = memberService.findByMid(principal);
-        model.addAttribute("member", memberDTO);
-        return "member/update";
     }
+
     //회원수정 처리
     @PostMapping("/member/update")
     public String update(@ModelAttribute MemberDTO memberDTO, Model model,  @AuthenticationPrincipal SecurityUser principal, BindingResult bindingResult){
     	memberService.update(memberDTO);
     	log.info("dto : " + memberDTO);
     	
-    	if(bindingResult.hasErrors() || principal != null){
+    	if(bindingResult.hasErrors()){
             return "member/update";
-        }else{
+        }
             memberDTO = memberService.findByMid(principal);
             model.addAttribute("member", memberDTO);
             return "redirect:/member/" + memberDTO.getMemberId();
-        }
     }
     
 

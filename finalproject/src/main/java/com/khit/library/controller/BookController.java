@@ -42,10 +42,16 @@ public class BookController {
     }
     //책 리스트
     @GetMapping("/list")
-    public String getList(Model model) {
+    public String getList(Model model, @AuthenticationPrincipal SecurityUser principal) {
         List<BookDTO> bookDTOList = bookService.findAll();
         model.addAttribute("bookList", bookDTOList);
-        return "book/list";
+        if(principal == null){
+            return "book/list";
+        }else{
+            MemberDTO memberDTO = memberService.findByMid(principal);
+            model.addAttribute("member", memberDTO);
+            return "book/list";
+        }
     }
     //책 상세
     @GetMapping("/detail/{bookId}")
@@ -90,12 +96,19 @@ public class BookController {
         bookService.deleteById(bookId);
         return "redirect:/book/list";
     }
+    
     //책 검색
     @GetMapping("/search")
-    public String search(@RequestParam String keyword, Model model) {
+    public String search(@RequestParam String keyword, Model model, @AuthenticationPrincipal SecurityUser principal) {
         List<BookDTO> searchResults = bookService.search(keyword);
         model.addAttribute("searchResults", searchResults);
-        return "book/searchResults";
+        if(principal == null){
+        	return "book/searchResults";
+        }else{
+            MemberDTO memberDTO = memberService.findByMid(principal);
+            model.addAttribute("member", memberDTO);
+            return "book/searchResults";
+        }
     }
 
 }

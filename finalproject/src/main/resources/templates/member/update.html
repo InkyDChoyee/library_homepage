@@ -32,7 +32,7 @@
                         </div>
                         <div class="nav_content_mid">
                             <div class="nav_links">
-                                <a class="nav_menu" href="#">나의 서재</a>
+                                <a class="nav_menu" th:href="@{/book/list}">나의 서재</a>
                                 <a class="nav_menu selected_menu" th:href="@{/member/update}">나의 정보</a>
                             </div>
                         </div>
@@ -103,16 +103,16 @@
                                             </tr>
                                             <tr>
                                             	<td><label for="rentalCount">대출한 책수<span><small>(수정 불가)</small></span></label></td>
-                                            	<td colspan="2"><input type="text" name="rentalCount" th:value="${member.rentalCount}"></td>
+                                            	<td colspan="2"><input type="text" name="rentalCount" th:value="${member.rentalCount}" readonly></td>
                                             </tr>
                                             <tr>
                                             	<td><label for="rentalAble">대출 가능여부<span><small>(수정 불가)</small></span></label></td>
                                             	<td colspan="2">
                                             		<th:block th:if="${member.rentalAble}">
-													    <input type="text" name="rentalAble" th:value="대출가능">
+													    <input type="text" name="rentalAble" th:value="대출가능" readonly>
 													</th:block>
 													<th:block th:unless="${member.rentalAble}">
-													    <input type="text" name="rentalAble" th:value="대출 불가능">
+													    <input type="text" name="rentalAble" th:value="대출 불가능" readonly>
 													</th:block>
                                            		</td>
                                             </tr>
