@@ -5,6 +5,7 @@ import com.khit.library.dto.BookDTO;
 import com.khit.library.dto.MemberDTO;
 import com.khit.library.service.BookService;
 import com.khit.library.service.MemberService;
+import com.khit.library.service.RentalReturnService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -21,6 +22,7 @@ import java.util.List;
 public class BookController {
     private final BookService bookService;
     private final MemberService memberService;
+    private final RentalReturnService rentalReturnService;
 
 
     //책등록 폼
@@ -63,6 +65,7 @@ public class BookController {
         }else{
             MemberDTO memberDTO = memberService.findByMid(principal);
             model.addAttribute("member", memberDTO);
+            model.addAttribute("able", rentalReturnService.rentalAble());
             return "book/detail";
         }
     }
