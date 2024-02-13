@@ -81,18 +81,49 @@
     </div>
 <div th:replace="~{footer::footer-fragment}"></div>
 <script>
-var mapOptions = {
-    center: new naver.maps.LatLng(37.53385, 126.8968),
-    zoom: 16
-};
+		var mapOptions = {
+			center : new naver.maps.LatLng(37.53385, 126.8968),
+			zoom : 16
+		};
 
-var map = new naver.maps.Map('map', mapOptions);
+		var map = new naver.maps.Map('map', mapOptions);
 
-var markerOptions = {
-		position: new naver.maps.LatLng(37.53385, 126.8968),
-		map: map
-};
-var marker = new naver.maps.Marker(markerOptions);
-</script>
+		var markerOptions = {
+			position : new naver.maps.LatLng(37.53385, 126.8968),
+			map : map,
+			title : '선유책숲'
+		};
+		var marker = new naver.maps.Marker(markerOptions);
+
+		// 정보 윈도우 생성
+		var infowindow = new naver.maps.InfoWindow({
+			content : '<div style="width:150px;text-align:center;padding:10px;color:blue;background-color:rgba(255, 255, 255, 0);">선유책숲</div>',
+			anchorSize : new naver.maps.Size(0, 0),
+			pixelOffset : new naver.maps.Point(0, -50) // 마커 위에 표시되도록 설정
+		});
+
+		// 마커에 마우스 클릭했을 때
+		naver.maps.Event.addListener(marker, 'click', function() {
+			// 네이버 길찾기 URL 생성
+			var destination = marker.getPosition();
+			var naverMapUrl = 'https://map.naver.com/v5/directions/' + destination.y + ',' + destination.x + ',선유책숲' // 현재위치
+					+ ',37.53385,126.8968,선유도서관' // 목적지 이름 및 위치
+					+ ',bySubway,publicTransit';
+			// 새 창으로 네이버 길찾기 페이지 열기
+			window.open(naverMapUrl);
+		});
+
+		// 마커에 마우스 오버했을 때
+		naver.maps.Event.addListener(marker, 'mouseover', function() {
+			infowindow.open(map, marker);
+		});
+		// 마커에 마우스 아웃했을 때
+		naver.maps.Event.addListener(marker, 'mouseout', function() {
+			// 정보 윈도우 닫기
+			infowindow.close();
+		});
+		// 페이지 열 때 정보 윈도우 숨기기
+		infowindow.close();
+	</script>
 </body>
 </html>

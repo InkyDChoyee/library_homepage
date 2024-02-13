@@ -852,7 +852,9 @@ select:focus{
     align-items: center;
 }
 
-.page_menu_search_select,
+.page_menu_search_select{
+	border: none;
+}
 .page_menu_search_input {
     border: none;
 }
@@ -2591,6 +2593,95 @@ select:focus{
     cursor: pointer;
 }
 
+
+
+
+/* bookdetail style */
+.book_detail_table_box {
+    width: 100%;
+    padding: 20px;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+.book_detail_table_box .first_table {
+    width: 100%;
+    border: 2px solid #efefef;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.book_detail_table_box .first_table tbody tr .first_table_td {
+    width: 40%;
+    padding: 15px;
+}
+
+.book_detail_table_box .first_table tbody tr td img {
+    width: 100%;
+    border: 2px solid #efefef;
+}
+
+.book_detail_table_box table tbody tr .book_detail_title {
+    border-bottom: 2px solid #efefef;
+    height: 150px;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.second_table_box_td {
+    display: flex;
+    justify-content: center;
+}
+
+.book_detail_info_box {
+    width: 80%;
+}
+
+.second_table {
+    width: 80%;
+    margin-top: 50px;
+    margin-right: 0;
+    margin-bottom: 50px;
+    margin-left: 30px;
+    border: none;
+    text-align: left;
+}
+
+.second_table td {
+    padding: 10px;
+    border-bottom: 1px solid #efefef;
+}
+
+.book_detail_btn_box {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.book_detail_btn_box div button {
+    width: 75px;
+    height: 75px;
+    border-radius: 100%;
+    margin: 0 10px;
+    font-size: 0.8rem;
+}
+
+.book_detail_rental_btn {
+    border: 1px solid #cfc;
+    background-color: #efe;
+}
+
+.book_detail_go_list {
+    border: 1px solid #feb;
+    background-color: #dca;
+}
+
+.book_detail_update_btn {
+    border: 1px solid #543;
+    background-color: #754;
+    color: #eee;
+}
 
 
 

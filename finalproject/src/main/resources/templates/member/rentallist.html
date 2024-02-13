@@ -65,11 +65,11 @@
                             </div>
                             <div class="rental_user_info">
                                 <ul>
-                                    <li>이용자 이름: <span></span></li>
-                                    <li>이용자 이메일: <span></span></li>
-                                    <li>회원상태: <span></span>권 대출 중, <span></span></li>
-                                    <li>일괄반납연기는 현재 보이는 페이지만 해당이 됩니다. 2페이지 이상일 경우 다음 페이지는 따로 일괄반납연기 해주시기 바랍니다</li>
-                                </ul>
+                                    <li>이용자 이름: <span th:text="${member.name}"></span></li>
+                                    <li>이용자 이메일: <span th:text="${member.email}"></span></li>
+                                    <li>회원상태: <span th:text="${member.rentalCount}"></span>권 대출 중, <span th:text="${member.rentalAble}"></span></li>
+<!--                                     <li>일괄반납연기는 현재 보이는 페이지만 해당이 됩니다. 2페이지 이상일 경우 다음 페이지는 따로 일괄반납연기 해주시기 바랍니다</li>
+ -->                                </ul>
                             </div>
 
                         </div>
@@ -108,8 +108,11 @@
                                                         <td th:text="${#dates.format(rental.deadlineDate, 'yyyy-MM-dd')}"></td>
                                                         <td th:if="${rental.deadlineDate <= #dates.createNow()}" th:text="연체"></td>
                                                         <td th:unless="${rental.deadlineDate <= #dates.createNow()}" th:text="대출중"></td>
+                                                        <input class="returnBtn" type="submit" th:value="반납" th:data-rental-id="${rental.rentalId}"> class명 returnBtn
                                                         <td>
+
                                                             <input type="submit" class="returnBtn" th:value="반납" th:data-rental-id="${rental.rentalId}">
+
                                                         </td>
                                                     </th:block>
                                                 </tr>
@@ -143,6 +146,7 @@
                                                 <th>대출상태</th>
                                             </tr>
                                         </thead>
+
                                         <tbody>
                                         <tr th:each="rental : ${rentalList}">
                                             <th:block th:unless="${rental.returnDate} == null">
@@ -158,6 +162,7 @@
                                             </th:block>
                                         </tr>
                                         </tbody>
+
                                     </table>
                                 </div>
                                 <div class="user_rental_past_list_paging">
