@@ -20,6 +20,8 @@
     <h2>책 상세보기</h2>
     <div class="detail">
         <fieldset>
+            <input type="hidden" id="able" th:value="${able}">
+            <input type="hidden" id="memberId" th:if="${member != null}" th:value="${member.memberId}">
             <ul>
                 <li>
                     <label for="bname">서명</label>
@@ -53,14 +55,17 @@
         </fieldset>
     </div>
 </div>
-
 <script>
 
 	$("#rentalBtn").click(function(){
-        if([[${able}]].includes([[${member.memberId}]])){
+        let able = $("#able").val();
+        let memberId = $("#memberId").val();
+
+        if(able.includes(memberId)){
             alert("대출 불가능 상태입니다.");
             return;
         }
+
 
         let confirmed = confirm('대여하시겠습니까?');
         if (confirmed) {

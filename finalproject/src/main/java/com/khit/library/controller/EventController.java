@@ -1,3 +1,4 @@
+/*
 package com.khit.library.controller;
 
 
@@ -38,3 +39,4 @@ public class EventController {
         return "event/detail";
     }
 }
+*/

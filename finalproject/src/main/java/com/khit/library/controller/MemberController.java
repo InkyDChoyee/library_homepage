@@ -72,7 +72,7 @@ public class MemberController {
     }
     //회원목록
     @GetMapping("/member/list")
-    public String getList(@AuthenticationPrincipal SecurityUser principal, Model model){
+    public String getList(@AuthenticationPrincipal SecurityUser principal, Model model/*, @PathVariable Long memberId*/){
         List<MemberDTO> memberDTOList = memberService.findAll();
         model.addAttribute("memberList", memberDTOList);
         if(principal == null){
@@ -80,6 +80,8 @@ public class MemberController {
         }else{
             MemberDTO memberDTO = memberService.findByMid(principal);
             model.addAttribute("member", memberDTO);
+//            model.addAttribute("rental", rentalReturnService.count(memberId));
+            model.addAttribute("able", rentalReturnService.rentalAble());
             return "member/list";
         }
     }
