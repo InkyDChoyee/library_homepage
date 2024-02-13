@@ -3,11 +3,14 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
     <title>선유도서관_게시판</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
 	<link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
     <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
     <link th:href="@{https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap}" rel="stylesheet">
+    <script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=xwdah49alh"></script>
 </head>
 <body>
 <div th:replace="~{header::header-fragment}"></div>
@@ -47,7 +50,7 @@
                         </div>
                     </div>
                     <div class="page_content_mid">
-                        	<div class="libarary_location_map_box">
+                        	<div class="libarary_location_map_box" id="map" style="width:100%;height:400px;">
                         	
                         	</div>
                         <div class="page_content_box">
@@ -77,5 +80,19 @@
         </section>
     </div>
 <div th:replace="~{footer::footer-fragment}"></div>
+<script>
+var mapOptions = {
+    center: new naver.maps.LatLng(37.53385, 126.8968),
+    zoom: 16
+};
+
+var map = new naver.maps.Map('map', mapOptions);
+
+var markerOptions = {
+		position: new naver.maps.LatLng(37.53385, 126.8968),
+		map: map
+};
+var marker = new naver.maps.Marker(markerOptions);
+</script>
 </body>
 </html>

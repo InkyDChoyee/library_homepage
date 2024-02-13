@@ -61,4 +61,8 @@ public class RentalReturnService {
         return rentalReturnRepository.rentalCount(memberId);
     }
 
+    public List<Integer> rentalAble(){
+        return rentalReturnRepository.rentalAble();
+    }
+
 }

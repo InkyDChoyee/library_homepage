@@ -100,7 +100,7 @@
                                 <ul>
                                     <li>이용자 이름: <span></span></li>
                                     <li>이용자 이메일: <span></span></li>
-                                    <li>회원상태: <span></span></li>
+                                    <li>회원상태: <span></span>권 대출 중, <span></span></li>
                                     <li>일괄반납연기는 현재 보이는 페이지만 해당이 됩니다. 2페이지 이상일 경우 다음 페이지는 따로 일괄반납연기 해주시기 바랍니다</li>
                                 </ul>
                             </div>
@@ -113,7 +113,41 @@
                             <div class="user_rental_state_box">
                                 <div class="user_rental_state_tbl">
                                     <table>
-                                        
+                                        <thead>
+                                            <tr>
+                                                <th>도서코드</th>
+                                                <th>도서이미지</th>
+                                                <th>서명</th>
+                                                <th>저자</th>
+                                                <th>출판사</th>
+                                                <th>ISBN</th>
+                                                <th>대출일</th>
+                                                <th>반납마감일</th>
+                                                <th>대출상태</th>
+                                                <th>반납하기</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tbody>
+                                                <tr th:each="rental : ${rentalList}">
+                                                    <th:block th:if="${rental.returnDate} == null">
+                                                        <td th:text="${rental.book.bookId}"></td>
+                                                        <td th:text="${rental.book.bfilename}"></td>
+                                                        <td th:text="${rental.book.bname}"></td>
+                                                        <td th:text="${rental.book.author}"></td>
+                                                        <td th:text="${rental.book.publisher}"></td>
+                                                        <td th:text="${rental.book.bnumber}"></td>
+                                                        <td th:text="${#dates.format(rental.rentalDate, 'yyyy-MM-dd')}"></td>
+                                                        <td th:text="${#dates.format(rental.deadlineDate, 'yyyy-MM-dd')}"></td>
+                                                        <td th:if="${rental.deadlineDate <= #dates.createNow()}" th:text="연체"></td>
+                                                        <td th:unless="${rental.deadlineDate <= #dates.createNow()}" th:text="대출중"></td>
+                                                        <td>
+                                                            <input type="submit" th:value="반납" th:data-rental-id="${rental.rentalId}">
+                                                        </td>
+                                                    </th:block>
+                                                </tr>
+                                            </tbody>
+                                        </tbody>
                                     </table>
                                 </div>
                                 <div class="user_rental_state_paging">
@@ -129,15 +163,42 @@
                             <div class="user_rental_past_list_box">
                                 <div class="user_rental_past_list_tbl">
                                     <table>
-                                        
+                                        <thead>
+                                            <tr>
+                                                <th>도서코드</th>
+                                                <th>도서이미지</th>
+                                                <th>서명</th>
+                                                <th>저자</th>
+                                                <th>출판사</th>
+                                                <th>ISBN</th>
+                                                <th>대출일</th>
+                                                <th>반납일</th>
+                                                <th>대출상태</th>
+                                            </tr>
+                                        </thead>
                                     </table>
+                                    <tbody>
+                                        <tr th:each="rental : ${rentalList}">
+                                            <th:block th:unless="${rental.returnDate} == null">
+                                                <td th:text="${rental.book.bookId}"></td>
+                                                <td th:text="${rental.book.bfilename}"></td>
+                                                <td th:text="${rental.book.bname}"></td>
+                                                <td th:text="${rental.book.author}"></td>
+                                                <td th:text="${rental.book.publisher}"></td>
+                                                <td th:text="${rental.book.bnumber}"></td>
+                                                <td th:text="${#dates.format(rental.rentalDate, 'yyyy-MM-dd')}"></td>
+                                                <td th:text="${#dates.format(rental.returnDate, 'yyyy-MM-dd')}"></td>
+                                                <td th:if="${rental.returnDate} != null" th:text="반납완료"></td>
+                                            </th:block>
+                                        </tr>
+                                        </tbody>
                                 </div>
                                 <div class="user_rental_past_list_paging">
 
                                 </div>
                             </div>
                         </div>
-
+                        <a th:href="@{/}"><button type="button">Home</button></a>
                     </div>
                 </div>
             </div>
