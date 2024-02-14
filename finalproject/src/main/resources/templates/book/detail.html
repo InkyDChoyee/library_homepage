@@ -114,13 +114,14 @@
 <script>
 
 	$("#rentalBtn").click(function(){
-		let able = $("#able").val();
+		    let able = $("#able").val();
         let memberId = $("#memberId").val();
 
         if(able.includes(memberId)){
             alert("대출 불가능 상태입니다.");
             return;
         }
+
         let confirmed = confirm('대여하시겠습니까?');
         
         if (confirmed) {

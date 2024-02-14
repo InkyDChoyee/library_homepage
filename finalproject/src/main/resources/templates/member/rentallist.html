@@ -108,8 +108,11 @@
                                                         <td th:text="${#dates.format(rental.deadlineDate, 'yyyy-MM-dd')}"></td>
                                                         <td th:if="${rental.deadlineDate <= #dates.createNow()}" th:text="연체"></td>
                                                         <td th:unless="${rental.deadlineDate <= #dates.createNow()}" th:text="대출중"></td>
+                                                        <input class="returnBtn" type="submit" th:value="반납" th:data-rental-id="${rental.rentalId}"> class명 returnBtn
                                                         <td>
-                                                            <input class="returnBtn" type="submit" th:value="반납" th:data-rental-id="${rental.rentalId}">
+
+                                                            <input type="submit" class="returnBtn" th:value="반납" th:data-rental-id="${rental.rentalId}">
+
                                                         </td>
                                                     </th:block>
                                                 </tr>
@@ -143,21 +146,23 @@
                                                 <th>대출상태</th>
                                             </tr>
                                         </thead>
-	                                    <tbody>
-	                                        <tr th:each="rental : ${rentalList}">
-	                                            <th:block th:unless="${rental.returnDate} == null">
-	                                                <td th:text="${rental.book.bookId}"></td>
-	                                                <td><img th:src="@{|/upload/${rental.book.bfilename}|}" alt="책 이미지"></td>
-	                                                <td th:text="${rental.book.bname}"></td>
-	                                                <td th:text="${rental.book.author}"></td>
-	                                                <td th:text="${rental.book.publisher}"></td>
-	                                                <td th:text="${rental.book.bnumber}"></td>
-	                                                <td th:text="${#dates.format(rental.rentalDate, 'yyyy-MM-dd')}"></td>
-	                                                <td th:text="${#dates.format(rental.returnDate, 'yyyy-MM-dd')}"></td>
-	                                                <td th:if="${rental.returnDate} != null" th:text="반납완료"></td>
-	                                            </th:block>
-	                                        </tr>
-	                                    </tbody>
+
+                                        <tbody>
+                                        <tr th:each="rental : ${rentalList}">
+                                            <th:block th:unless="${rental.returnDate} == null">
+                                                <td th:text="${rental.book.bookId}"></td>
+                                                <td><img th:src="@{|/upload/${rental.book.bfilename}|}" alt="책 이미지"></td>
+                                                <td th:text="${rental.book.bname}"></td>
+                                                <td th:text="${rental.book.author}"></td>
+                                                <td th:text="${rental.book.publisher}"></td>
+                                                <td th:text="${rental.book.bnumber}"></td>
+                                                <td th:text="${#dates.format(rental.rentalDate, 'yyyy-MM-dd')}"></td>
+                                                <td th:text="${#dates.format(rental.returnDate, 'yyyy-MM-dd')}"></td>
+                                                <td th:if="${rental.returnDate} != null" th:text="반납완료"></td>
+                                            </th:block>
+                                        </tr>
+                                        </tbody>
+
                                     </table>
                                 </div>
                                 <div class="user_rental_past_list_paging">
