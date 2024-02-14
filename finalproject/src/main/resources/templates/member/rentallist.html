@@ -108,11 +108,8 @@
                                                         <td th:text="${#dates.format(rental.deadlineDate, 'yyyy-MM-dd')}"></td>
                                                         <td th:if="${rental.deadlineDate <= #dates.createNow()}" th:text="연체"></td>
                                                         <td th:unless="${rental.deadlineDate <= #dates.createNow()}" th:text="대출중"></td>
-                                                        <input class="returnBtn" type="submit" th:value="반납" th:data-rental-id="${rental.rentalId}"> class명 returnBtn
                                                         <td>
-
                                                             <input type="submit" class="returnBtn" th:value="반납" th:data-rental-id="${rental.rentalId}">
-
                                                         </td>
                                                     </th:block>
                                                 </tr>
