@@ -4,15 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <title>책 상세보기</title>
-    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
     <script src="https://code.jquery.com/jquery-3.7.1.js"
             integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
             crossorigin="anonymous"></script>
-    <style>
-        #container {
-            margin-top: 100px;
-        }
-    </style>
 </head>
 <body>
 <div th:replace="~{header::header-fragment}"></div>
@@ -56,18 +51,16 @@
     </div>
 </div>
 <script>
-
 	$("#rentalBtn").click(function(){
-        let able = $("#able").val();
+		let able = $("#able").val();
         let memberId = $("#memberId").val();
 
         if(able.includes(memberId)){
             alert("대출 불가능 상태입니다.");
             return;
         }
-
-
         let confirmed = confirm('대여하시겠습니까?');
+        
         if (confirmed) {
             $.ajax({
                 type: "post",
