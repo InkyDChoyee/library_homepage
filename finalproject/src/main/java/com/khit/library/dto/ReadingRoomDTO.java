@@ -18,13 +18,14 @@ public class ReadingRoomDTO {
     private boolean seatAvailable = true; //이용가능여부
 
     private Member member;
-    /*new Timestamp(readingRoom.getEnter().getTime() + (6 * 60 * 60 * 1000))*/
 
     public static ReadingRoomDTO toSaveDTO(ReadingRoom readingRoom){
+        Timestamp enterTimestamp = readingRoom.getEnter() != null ? readingRoom.getEnter() : new Timestamp(System.currentTimeMillis());
+        Timestamp checkOutTimestamp = new Timestamp(enterTimestamp.getTime() + (6 * 60 * 60 * 1000));
         ReadingRoomDTO readingRoomDTO = ReadingRoomDTO.builder()
                 .readingId(readingRoom.getReadingId())
-                .enter(readingRoom.getEnter())
-                .checkOut(readingRoom.getCheckOut())
+                .enter(enterTimestamp)
+                .checkOut(checkOutTimestamp)
                 .seat(readingRoom.getSeat())
                 .seatAvailable(readingRoom.isSeatAvailable())
                 .member(readingRoom.getMember())

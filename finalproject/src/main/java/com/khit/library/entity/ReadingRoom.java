@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.sql.Timestamp;
 
@@ -25,6 +26,7 @@ public class ReadingRoom {
     private Long readingId;
 
     @Column
+    @CreationTimestamp
     private Timestamp enter; //입실
 
     @Column
@@ -38,9 +40,10 @@ public class ReadingRoom {
     private boolean seatAvailable = true;
 
     public static ReadingRoom toSaveEntity(ReadingRoomDTO readingRoomDTO){
+        Timestamp enterTimestamp = readingRoomDTO.getEnter() != null ? readingRoomDTO.getEnter() : new Timestamp(System.currentTimeMillis());
         ReadingRoom readingRoom = ReadingRoom.builder()
-                .enter(readingRoomDTO.getEnter())
-                .checkOut(readingRoomDTO.getCheckOut())
+                .enter(enterTimestamp)
+                .checkOut(new Timestamp(readingRoomDTO.getEnter().getTime() + (6 * 60 * 60 * 1000)))
                 .seat(readingRoomDTO.getSeat())
                 .seatAvailable(readingRoomDTO.isSeatAvailable())
                 .member(readingRoomDTO.getMember())

@@ -11,6 +11,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -39,7 +40,8 @@ public class ReadingRoomController {
 
     //좌석 선택
     @PostMapping("/select")
-    public ReadingRoomDTO select(@RequestParam("readingId") Long readingId, @AuthenticationPrincipal SecurityUser principal){
+    public String select(@RequestParam("readingId") Long readingId, @AuthenticationPrincipal SecurityUser principal
+    , RedirectAttributes attributes){
         ReadingRoomDTO readingRoomDTO = readingRoomService.findById(readingId);
 
         MemberDTO memberDTO = memberService.findByMid(principal);
@@ -49,9 +51,27 @@ public class ReadingRoomController {
             readingRoomDTO.setEnter(new Timestamp(System.currentTimeMillis()));
         }
         readingRoomDTO.setSeatAvailable(false);
-        readingRoomService.save(readingRoomDTO);
+        readingRoomService.select(readingRoomDTO);
 
-        /*readingRoomDTO.setEnter(new Timestamp(System.currentTimeMillis()));*/
-        return readingRoomDTO;
+        attributes.addFlashAttribute("readingId", readingId);
+
+        return "redirect:/readingRoom/room";
+    }
+
+    //좌석 반납
+    @PostMapping("/checkout")
+    public String checkout(@RequestParam("readingId") Long readingId, @AuthenticationPrincipal SecurityUser principal, RedirectAttributes attributes){
+        ReadingRoomDTO readingRoomDTO = readingRoomService.findById(readingId);
+        MemberDTO memberDTO = memberService.findByMid(principal);
+        readingRoomDTO.setMember(Member.builder().memberId(memberDTO.getMemberId()).build());
+        if(readingRoomDTO.getEnter() != null){
+            readingRoomDTO.setEnter(null);
+            readingRoomDTO.setCheckOut(null);
+        }
+        readingRoomDTO.setSeatAvailable(true);
+        readingRoomService.checkout(readingRoomDTO);
+        attributes.addFlashAttribute("readingId", readingId);
+
+        return "redirect:/readingRoom/room";
     }
 }
