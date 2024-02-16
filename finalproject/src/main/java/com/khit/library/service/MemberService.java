@@ -24,7 +24,7 @@ public class MemberService {
     public void save(MemberDTO memberDTO) {
         String encPw = pwEncoder.encode(memberDTO.getPassword()); //비밀번호 암호화
         memberDTO.setPassword(encPw);
-        memberDTO.setRole(Role.Member); //권한설정
+        memberDTO.setRole(Role.Admin); //권한설정
         Member member = Member.toSaveEntity(memberDTO);
         memberRepository.save(member);
     }
@@ -94,6 +94,21 @@ public class MemberService {
             return "OK";
         }else{
             return "NO";
+        }
+    }
+
+    public boolean withdrawal(String username, String password) {
+        Optional<Member> optionalMember = memberRepository.findByMid(username);
+        if(optionalMember.isPresent()){
+            Member member = optionalMember.get();
+            if(pwEncoder.matches(password, member.getPassword())){
+                memberRepository.deleteById(member.getMemberId());
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            return false;
         }
     }
 }

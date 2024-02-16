@@ -2617,6 +2617,300 @@ select:focus{
 }
 
 
+.member_rental_info_box {
+    width: 100%;
+    display: block;
+}
+
+.member_rental_info {
+    width: 100%;
+    margin-top: 30px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 0;
+    border-collapse: collapse;
+    border-top: 2px solid #efefef;
+    border-bottom: 2px solid #efefef;
+}
+
+
+.member_rental_info_img_box {
+    width: 15%;
+    background-color: #efefef;
+    padding: 10px;
+}
+
+.member_rental_info tr td {
+    padding-left: 10px;
+}
+.member_rental_info_img_box div {
+    background-color: #efefef;
+    display: flex;
+}
+
+.member_rental_info_img_box img {
+    width: 100%;
+    background-color: #fff;
+    padding: 10px;
+}
+
+.member_rental_info tr:nth-child(1) td:nth-child(2),
+.member_rental_info tr:nth-child(2) td:nth-child(1) {
+    width: 20%;
+    background-color: #efefef;
+}
+
+.member_rental_info tr:nth-child(1) td:nth-child(3),
+.member_rental_info tr:nth-child(2) td:nth-child(2) {
+    padding-left: 20px;
+}
+
+
+.member_rental_info tr:nth-child(1) {
+    border-bottom: 1px solid #ddd;
+}
+
+.member_rental_btn_box {
+    width: 15%;
+    text-align: center;
+}
+
+.member_rental_info_toggle_btn {
+    padding: 13px 5px;
+    border-radius: 10px;
+    border: 1px solid #efefef;
+    background-color: #efefef;
+}
+
+.member_rental_list_box {
+    width: 100%;
+    background-color: #efefef;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.1s ease, padding 0.1s ease;
+}
+
+.member_rental_list_second_box {
+    width: 100%;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 15px;
+
+}
+
+.member_rental_list {
+    width: 100%;
+    background-color: #fff;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.member_rental_list tbody tr td {
+    font-size: 0.8rem;
+    padding: 3px;
+}
+
+.member_rental_list thead tr th {
+    font-size: 0.8rem;
+    background-color: #efe;
+    padding: 3px;
+}
+
+.member_rental_list thead tr th:nth-child(1) {
+    border-radius: 5px 0 0 5px;
+}
+
+.member_rental_list thead tr th:last-child {
+    border-radius: 0 5px 5px 0;
+}
+
+.list_toggle_active {
+    max-height: 100%;
+    padding: 15px;
+    transition: max-height 1s ease, padding 1s ease;
+}
+
+.member_rental_list tbody tr td input {
+    padding: 2px;
+    font-size: 0.5rem;
+    border: 1px solid #7D704E;
+    background-color: #7D704E;
+    color: #fff;
+    font-weight: 600;
+   	cursor: pointer;
+}
+
+.member_rental_page {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* studyroom style */
+.study_room_page {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.seats_section {
+    width: 100%;
+    border-bottom: 3px solid #ccc;
+    padding: 15px;
+    margin-bottom: 50px;
+    height: 550px;
+}
+
+.seats_box {
+    width: 100%;
+    border: 5px solid #a07a48;
+    border-radius: 20px;
+    padding: 15px;
+    height: 500px;
+    background-color: #fff;
+}
+
+.big_seats {
+    width: 100%;
+    height: 250px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.small_seats_box {
+    width: 100%;
+    height: 185px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.small_seats_1 {
+    width: 50%;
+    height: 150px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.small_seats_2 {
+    width: 35%;
+    height: 150px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.seats_info_board_box {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.seats_info_board {
+    width: 80%;
+    height: 150px;
+    background-color: #efefef;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.seats_info_board h3 {
+    margin-bottom: 10px;
+}
+
+.seats_info_board div,
+.seats_info_board div table {
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+.seats_info_board div table thead tr th {
+    border-bottom: 1px solid #ccc;
+    padding: 3px;
+}
+
+.seats_info_board div table tbody tr td {
+    padding-top: 10px;
+}
+
+.seats_using_board {
+    width: 80%;
+    height: 380px;
+    background-color: #efefef;
+    border-radius: 15px;
+    padding-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 75px;
+}
+
+.seats_using_info {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.seats_using_list {
+    width: 90%;
+    height: 300px;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+.seat_form input{
+    margin: 5px 10px;
+    width: 6vw;
+    height: 50px;
+    padding: 5px 20px;
+    font-size: 1.5rem;
+    background-color: #efe;
+    color: #754;
+    border: none;
+    cursor: pointer;
+}
+
+.seat_form input:hover {
+    border: 3px solid #754;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+form[action="/readingRoom/checkout"] input {
+    background-color: #543;
+    color: #cfc;
+}
+
+.seats_using_list table {
+    width: 100%;
+    text-align: center;
+}
+
+.seats_using_list table thead th {
+    padding: 10px;
+    border-bottom: 1px solid #efefef;
+}
+.seats_using_list table tbody td {
+    padding: 5px;
+    border-bottom: 1px dotted #efefef;
+}
+
+
+
 
 /* footer */
 #footer{

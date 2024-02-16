@@ -1,5 +1,6 @@
 package com.khit.library.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.khit.library.config.SecurityUser;
 import com.khit.library.dto.FreeBoardDTO;
@@ -28,13 +30,12 @@ import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/freeboard")
 public class FreeBoardController {
 	private final FreeBoardService freeBoardService;
 	private final MemberService memberService;
 
 	// write page 글쓰기
-	@GetMapping("/write")
+	@GetMapping("/freeboard/write")
 	public String writeForm(@AuthenticationPrincipal SecurityUser principal, Model model) {
         if(principal == null){
         	return "freeboard/write";
@@ -46,16 +47,17 @@ public class FreeBoardController {
 	}
 
 	// 글쓰기 처리
-	@PostMapping("/write")
-	public String write(@ModelAttribute FreeBoard freeBoard, @AuthenticationPrincipal SecurityUser principal) {
+	@PostMapping("/freeboard/write")
+	public String write(@ModelAttribute FreeBoard freeBoard, @AuthenticationPrincipal SecurityUser principal, MultipartFile freeBoardFile) 
+			 throws IOException, Exception {
     	freeBoard.setMember(principal.getMember());
 		freeBoard.setFbhit(0);
-		freeBoardService.save(freeBoard);
+		freeBoardService.save(freeBoard, freeBoardFile);
 		return "redirect:/freeboard/pagelist";
 	}
 
 	// update page 글 수정
-	@GetMapping("/update/{fbid}")
+	@GetMapping("/freeboard/update/{fbid}")
 	public String updateForm(@PathVariable Long fbid, @AuthenticationPrincipal SecurityUser principal, Model model) {
 		FreeBoardDTO freeBoardDTO = freeBoardService.findById(fbid);
 		model.addAttribute("freeBoard", freeBoardDTO);
@@ -69,10 +71,14 @@ public class FreeBoardController {
 	}
 
 	// 글 수정 처리
-	@PostMapping("/update/{fbid}")
-	public String update(@ModelAttribute FreeBoardDTO freeBoardDTO) {
-		freeBoardService.update(freeBoardDTO);
-		return "redirect:/freeboard/" + freeBoardDTO.getFbid();
+	@PostMapping("/freeboard/update/{fbid}")
+	public String update(@ModelAttribute FreeBoardDTO freeBoardDTO, MultipartFile freeBoardFile,
+            @AuthenticationPrincipal SecurityUser principal,
+            Model model) throws IOException, Exception {
+		freeBoardDTO.setMember(principal.getMember());
+		FreeBoardDTO upFreeBoardDTO = freeBoardService.update(freeBoardDTO, freeBoardFile);
+		model.addAttribute("freeBoard", upFreeBoardDTO);
+		return "redirect:/freeboard/" + upFreeBoardDTO.getFbid();
 	}
 
 	// 글 전체 목록
@@ -90,7 +96,7 @@ public class FreeBoardController {
 //	}
 	
 	//페이징, 글 목록
-    @GetMapping("/pagelist")
+    @GetMapping("/freeboard/pagelist")
     public String pagelist(
             @RequestParam(value = "page", defaultValue = "0") int page,
             @RequestParam(value = "size", defaultValue = "10") int size,
@@ -140,7 +146,7 @@ public class FreeBoardController {
     }
 
 	// 글 하나 상세보기
-	@GetMapping("/{fbid}")
+	@GetMapping("/freeboard/{fbid}")
 	public String getDetail(@AuthenticationPrincipal SecurityUser principal, @PathVariable Long fbid, Model model) {
 		FreeBoardDTO freeBoardDTO = freeBoardService.findById(fbid);
 		model.addAttribute("freeBoard", freeBoardDTO);
@@ -154,7 +160,7 @@ public class FreeBoardController {
 	}
 
 	// 글 삭제
-	@GetMapping("/delete/{fbid}")
+	@GetMapping("/freeboard/delete/{fbid}")
 	public String deleteFreeBoard(@PathVariable Long fbid) {
 		freeBoardService.deleteById(fbid);
 		return "redirect:/freeboard/pagelist";
