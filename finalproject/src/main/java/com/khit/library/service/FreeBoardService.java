@@ -89,23 +89,18 @@ public class FreeBoardService {
 		return findById(freeBoardDTO.getFbid());
 		
 	}
-
-	public Page<FreeBoardDTO> search(String keyword, Pageable pageable) {
-		Page<FreeBoard> searchResults = freeBoardRepository.findByFbtitleContainingOrFbcontentContaining(keyword,
-				keyword, pageable);
-		return searchResults.map(FreeBoardDTO::toSaveDTO);
+	
+	public Page<FreeBoardDTO> searchByTitle(String keyword, Pageable pageable) {
+	    return freeBoardRepository.findByFbtitleContaining(keyword, pageable)
+	            .map(freeBoard -> FreeBoardDTO.toSaveDTO(freeBoard));
 	}
 
-	public Page<FreeBoardDTO> searchByTitle(String title, Pageable pageable) {
-		Page<FreeBoard> searchResults = freeBoardRepository.findByFbtitleContaining(title, pageable);
-		return searchResults.map(FreeBoardDTO::toSaveDTO);
+	public Page<FreeBoardDTO> searchByContent(String keyword, Pageable pageable) {
+	    return freeBoardRepository.findByFbcontentContaining(keyword, pageable)
+	            .map(freeBoard -> FreeBoardDTO.toSaveDTO(freeBoard));
 	}
 
-	public Page<FreeBoardDTO> searchByAuthor(String author, Pageable pageable) {
-        // 수정된 부분: findByMember_NameContaining으로 변경
-        Page<FreeBoard> searchResults = freeBoardRepository.findByMember_NameContaining(author, pageable);
-        return searchResults.map(FreeBoardDTO::toSaveDTO);
-    }
+	
 	
 	
 	@Transactional
