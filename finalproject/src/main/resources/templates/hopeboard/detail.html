@@ -43,9 +43,9 @@ crossorigin="anonymous"></script>
 						</div>
 						<div class="nav_content_mid">
 							<div class="nav_links">
-								<a class="nav_menu selected_menu" th:href="@{#}">도서관에 바란다</a> <a
-									class="nav_menu" th:href="@{#}">자유 게시판</a> <a class="nav_menu"
-									th:href="@{#}">도서관 이벤트</a>
+								<a class="nav_menu selected_menu" th:href="@{/hopeboard/pagelist}">도서관에 바란다</a> 
+								<a class="nav_menu" th:href="@{/freeboard/pagelist}">자유 게시판</a> 
+								<a class="nav_menu" th:href="@{#}">도서관 이벤트</a>
 							</div>
 						</div>
 					</div>
@@ -149,6 +149,6 @@ crossorigin="anonymous"></script>
         </section>
     </div>
     <div th:replace="~{footer::footer-fragment}"></div>
-	<script th:src="@{/js/reply.js}"></script>
+	<script th:src="@{/js/hopereply.js}"></script>
 </body>
 </html>
