@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -93,20 +94,49 @@ public class FreeBoardController {
     public String pagelist(
             @RequestParam(value = "page", defaultValue = "0") int page,
             @RequestParam(value = "size", defaultValue = "10") int size,
+            @RequestParam(value = "searchOption", required = false) String searchOption,
+            @RequestParam(value = "keyword", required = false) String keyword,
             @AuthenticationPrincipal SecurityUser principal,
             Model model) {
+    
+    	
         Pageable pageable = PageRequest.of(page, size);
-        Page<FreeBoardDTO> freeBoardPage = freeBoardService.paging(pageable);
+        
+        Page<FreeBoardDTO> freeBoardPage;
+        
+        if (searchOption != null && keyword != null) {
+        	if ("title".equals(searchOption)) {
+        	    freeBoardPage = freeBoardService.searchByTitle(keyword, pageable);
+        	} else if ("content".equals(searchOption)) {
+        	    freeBoardPage = freeBoardService.searchByContent(keyword, pageable);
+        	} else {
+        	    // 기본적으로는 제목으로 검색
+        	    freeBoardPage = freeBoardService.searchByTitle(keyword, pageable);
+        	}
+        } else {
+            // 검색 옵션 및 키워드가 없는 경우에는 기존 페이징 로직을 수행
+            freeBoardPage = freeBoardService.paging(pageable);
+        }
+        
         List<FreeBoardDTO> freeBoardDTOList = freeBoardService.findAll();
+        
         model.addAttribute("freeBoardPage", freeBoardPage);
         model.addAttribute("freeBoardList", freeBoardDTOList);
-        if(principal == null){
-            return "freeboard/pagelist";
-        }else{
+        model.addAttribute("currentPage", pageable.getPageNumber());
+        model.addAttribute("totalPages", freeBoardPage.getTotalPages());
+        model.addAttribute("totalItems", freeBoardPage.getTotalElements());
+        model.addAttribute("keyword", keyword);
+        
+        
+    
+        
+        
+        String viewName = "freeboard/pagelist";
+        if (principal != null) {
             MemberDTO memberDTO = memberService.findByMid(principal);
             model.addAttribute("member", memberDTO);
-            return "freeboard/pagelist";
         }
+        return viewName;
     }
 
 	// 글 하나 상세보기
@@ -130,28 +160,4 @@ public class FreeBoardController {
 		return "redirect:/freeboard/pagelist";
 	}
 
-	@GetMapping("/search")
-	public String search(@RequestParam(required = false) String searchOption,
-	                     @RequestParam(required = false) String keyword,
-	                     Pageable pageable,
-	                     Model model) {
-	    Page<FreeBoardDTO> searchResults;
-	    if (searchOption != null && keyword != null) {
-	        if ("title".equals(searchOption)) {
-	            searchResults = freeBoardService.searchByTitle(keyword, pageable);
-	        } else if ("author".equals(searchOption)) {
-	            searchResults = freeBoardService.searchByAuthor(keyword, pageable);
-	        } else {
-	            // 다른 경우에 대한 처리 (예: 기본적으로는 제목으로 검색)
-	            searchResults = freeBoardService.search(keyword, pageable);
-	        }
-	    } else {
-	        // searchOption 또는 keyword가 누락된 경우에 대한 처리
-	        // 예: 기본적으로는 제목으로 검색하거나 다른 적절한 기본 동작을 설정
-	        searchResults = freeBoardService.search(keyword, pageable);
-	    }
-
-	    model.addAttribute("freeBoardList", searchResults);
-	    return "freeboard/pagelist";
-	}
 }
