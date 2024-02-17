@@ -2561,7 +2561,11 @@ detail_page_info_input {
     flex-direction: column;
 }
 
-
+.withdrawalError{
+    padding-top: 10px;
+    padding-left: 5px;
+    color: red;
+}
 
 
 
