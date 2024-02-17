@@ -69,12 +69,14 @@
 									</tr>
 								</thead>
 								<tbody class="page_table_body">
-									<tr th:each="noticeBoard : ${noticeBoardPage.content}">
+									<!-- <tr th:each="noticeBoard : ${noticeBoardPage.content}"> -->
+									<tr th:each="noticeBoard : ${noticeBoardList}">
 										<td th:text="${noticeBoard.nbid}"></td>
+										<!-- th:href="@{/notice/{nbid}(nbid=${noticeBoard.nbid})}" -->
 										<td><a
-											th:href="@{/notice/{nbid}(nbid=${noticeBoard.nbid})}"
+											th:href="@{|/notice/${noticeBoard.nbid}|}"
 											th:text="${noticeBoard.nbtitle}"></a></td>
-										<td th:text="${noticeBoard.member.name}"></td>
+										<td th:text="${noticeBoard.member.mid}"></td>
 										<td
 											th:text="${#dates.format(noticeBoard.createdDate, 'yyyy-MM-dd')}"></td>
 
