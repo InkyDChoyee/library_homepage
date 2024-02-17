@@ -9,10 +9,10 @@
 <body>
 	<div id="container">
 		<section id="login">
-		<h2>로그인</h2>
 		<div class="login">
+		<h2>로그인</h2> <br>
 			<form th:action="@{/login}" method="post" class="loginform">
-				<fieldset>
+				<fieldset class="login_fieldset">
 					<ul>
 						<li>
 							<label for="username">아이디</label>
@@ -25,10 +25,12 @@
 						<li>
 							<span th:text="${error}" class="error"></span>
 						</li>
-                        <p class="agree_box">
-                            <input type="checkbox" name="saveId" id="saveId">
-                            <label for="saveId"> 아이디 저장</label>
-                        </p>
+						<li>
+            	            <div class="agree_box">
+	       	                    <input type="checkbox" name="saveId" id="saveId">
+	   	                        <label for="saveId"> 아이디 저장</label>
+	                        </div>
+						</li>
 						<li>
                             <div class="join_login">
                                 <button type="submit" class="loginBtn">로그인</button>
