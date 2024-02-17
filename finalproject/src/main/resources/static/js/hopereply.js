@@ -49,25 +49,24 @@ let replyObject = {
 	}, // inserReply닫기
 	
 	updateReply: function(hbid, hrid) {
-		
-		let originalContent = $('#originalContent').text().trim(); // 기존 댓글 내용 가져오기
-		console.log(originalContent);
-			$('#replyContent').attr('placeholder', originalContent);
-		    $('#replyModal').css('display', 'block'); // 모달 창 띄우기
-			$('#updateReplyBtn_cancel').click(() => {
-			    $('#replyModal').css('display', 'none'); // 모달 창 숨기기
-			});
-		    $('#updateReplyBtn_confirm').click(() => {
-		        let updatedContent = $('#replyContent').val().trim(); // 수정된 내용 가져오기
-		        if (!updatedContent) {
-		            alert("댓글 내용을 입력하세요");
-		            return;
-		        }
-		
-		        let reply = {
-		            hrcontent: updatedContent
-		        };
-
+	    let originalContent = $('#originalContent'+hrid).text().trim(); // 기존 댓글 내용 가져오기
+	    console.log(originalContent);
+	    $('#replyContent'+hrid).attr('placeholder', originalContent);
+	    $('#replyModal'+hrid).css('display', 'block'); // 모달 창 띄우기
+	    $('#updateReplyBtn_cancel'+hrid).click(() => {
+	        $('#replyModal'+hrid).css('display', 'none'); // 모달 창 숨기기
+	    });
+	    $('#updateReplyBtn_confirm'+hrid).click(() => {
+	        let updatedContent = $('#replyContent'+hrid).val().trim(); // 수정된 내용 가져오기
+	        if (!updatedContent) {
+	            alert("댓글 내용을 입력하세요");
+	            return;
+	        }
+	
+	        let reply = {
+	            hrcontent: updatedContent
+	        };
+	
 	        $.ajax({
 	            type: "PUT",
 	            url: "/hopereply/" + hrid,
