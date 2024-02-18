@@ -104,4 +104,9 @@ public class BookService {
         // Page<Book>를 Page<BookDTO>로 변환
         return searchResults.map(BookDTO::toSaveDTO);
     }
+
+	public Page<BookDTO> paging(Pageable pageable) {
+		Page<Book> bookPage = bookRepository.findAll(pageable);
+		return bookPage.map(book -> BookDTO.toSaveDTO(book));
+	}
 }

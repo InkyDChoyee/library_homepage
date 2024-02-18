@@ -17,5 +17,8 @@ public interface BookRepository extends JpaRepository<Book, Long> {
     
     @Query("SELECT b FROM Book b WHERE LOWER(b.bname) LIKE LOWER(CONCAT('%', :keyword, '%')) OR LOWER(b.author) LIKE LOWER(CONCAT('%', :keyword, '%'))")
     Page<Book> findByBnameContainingIgnoreCaseOrAuthorContainingIgnoreCase(@Param("keyword") String keyword, Pageable pageable);
+    
+    //페이징 처리
+    Page<Book> findAll(Pageable pageable);
 }
 
