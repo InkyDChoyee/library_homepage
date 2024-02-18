@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>로그인</title>
+    <meta charset="UTF-8">
+    <title>로그인</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 </head>
 <body>
+
 	<div id="container">
 		<section id="login">
 		<div class="login">
@@ -32,6 +33,7 @@
 	                        </div>
 						</li>
 						<li>
+
                             <div class="join_login">
                                 <button type="submit" class="loginBtn">로그인</button>
                             </div>
@@ -57,7 +59,9 @@
 
                         <li>
                             <button type="submit" class="naverlogin">
-                                <img th:src="@{/images/naver.PNG}">네이버로 로그인
+                                <a th:href="@{|${naverUrl}|}">
+                                    <img th:src="@{/images/naver.PNG}">네이버로 로그인
+                                </a>
                             </button>
                             <button type="submit" class="kakaologin">
                                 <img th:src="@{/images/kakao.PNG}">카카오로 로그인
@@ -65,12 +69,12 @@
                         </li>
                     </ul>
 
-				</fieldset>		
-			</form>
-		</div>
+                </fieldset>
+            </form>
+        </div>
 
-		</section>
-	</div>
+    </section>
+</div>
 <script>
     function findId(){
         window.open('/member/searchId', '_blank', 'width = 600, height = 350');
