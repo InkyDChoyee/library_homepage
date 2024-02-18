@@ -26,7 +26,7 @@ public class MemberService {
     public void save(MemberDTO memberDTO) {
         String encPw = pwEncoder.encode(memberDTO.getPassword()); //비밀번호 암호화
         memberDTO.setPassword(encPw);
-        memberDTO.setRole(Role.Admin); //권한설정
+        memberDTO.setRole(Role.Member); //권한설정
         Member member = Member.toSaveEntity(memberDTO);
         memberRepository.save(member);
     }
@@ -63,7 +63,7 @@ public class MemberService {
     public void update(MemberDTO memberDTO) {
         String encPw = pwEncoder.encode(memberDTO.getPassword());
         memberDTO.setPassword(encPw);
-        memberDTO.setRole(Role.Admin);
+        memberDTO.setRole(Role.Member);
 
         Member member = Member.toUpdateEntity(memberDTO);
         memberRepository.save(member);
