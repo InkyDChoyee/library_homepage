@@ -3,14 +3,14 @@
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
 <meta charset="UTF-8">
-<title>책목록</title>
+<title>대출베스트</title>
 <link rel="stylesheet" th:href="@{/css/style.css}">
 <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
 <link rel="preconnect" th:href="@{https://fonts.gstatic.com}"
 	crossorigin>
 <link
 	th:href="@{https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap}"
-	rel="stylesheet">	
+	rel="stylesheet">
 </head>
 <body>
 	<div th:replace="~{header::header-fragment}"></div>
@@ -23,7 +23,7 @@
 						<img th:src="@{/images/main_library_picture1.PNG}" alt="img">
 					</div>
 					<div class="page_title">
-						<p>자료검색</p>
+						<p>대출 베스트</p>
 					</div>
 				</div>
 			</div>
@@ -47,19 +47,15 @@
 						</div>
 					</div>
 				</nav>
-				
 				<div class="page_content">
 					<div class="page_content_top">
 						<div class="page_menu_search">
 							<form th:action="@{/book/list}" method="get">
-
-								<div class="page_menu_search_box" >
-								
-									<input class="page_menu_search_input" type="text" name="keyword" th:value="${keyword}"  placeholder="제목 혹은 저자를 입력하세요">
-                                    <button class="page_menu_input_btn" type="submit">
-                                        <img class="page_menu_search_img" th:src="@{/images/magnifying4.png}" alt="">
-                                    </button>
-
+								<div class="page_menu_search_box">
+									<!--<input class="page_menu_search_input" type="text" name="keyword" th:value="">-->
+	                                    <button class="page_menu_input_btn" type="submit">
+	                                        <img class="page_menu_search_img" th:src="@{/images/magnifying4.png}" alt="">
+	                                    </button>
 								</div>
 							</form>
 						</div>
@@ -79,8 +75,8 @@
 										<th>조회</th>
 									</tr>
 								</thead>
-								<tbody class="page_table_body">
-									<tr th:each="book : ${bookPage.content}">
+								<tbody class="page_table_body" id="searchResultsContainer">
+									<tr th:each="book : ${book}">
 										<td th:text="${book.bookId}" ></td>
 										<td th:text="${book.bname}" ></td>
 										<td th:text="${book.publisher}" ></td>
@@ -96,34 +92,12 @@
 									</tr>
 								</tbody>
                             </table>
-                            <div class="book_register">
-                            	<a th:href="@{/book/register}" sec:authorize="hasAnyAuthority('Admin')">책등록</a>
-							</div>
+                            <a th:href="@{/book/register}" sec:authorize="hasAnyAuthority('Admin')">책등록</a>
+
 						</div>
 					</div>
 					
-					<div class="pagination">
-						<ul>
-							<!-- 이전 페이지 -->
-							<li th:if="${bookPage.hasPrevious()}"><a
-								th:href="@{|/book/list?page=${bookPage.pageable.pageNumber-1}|}"> < </a>
-							</li>
-
-							<!-- 페이지 번호 -->
-							<li
-								th:each="pageNum : ${#numbers.sequence(0, bookPage.totalPages-1)}">
-								<a th:href="@{|/book/list?page=${pageNum}|}"
-								th:text="${pageNum + 1}"
-								th:classappend="${pageNum} == ${bookPage.pageable.pageNumber} ? 'current' : ''">
-								</a>
-							</li>
-
-							<!-- 다음 페이지 -->
-							<li th:if="${bookPage.hasNext()}"><a
-								th:href="@{|/book/list?page=${bookPage.pageable.pageNumber+1}|}"> > </a>
-							</li>
-						</ul>
-					</div>
+					
 				</div>
 			</div>
 		</section>
