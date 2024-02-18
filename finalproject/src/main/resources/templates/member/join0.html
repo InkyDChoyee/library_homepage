@@ -132,9 +132,18 @@
 	            <div class="btnbox">
 	                <a th:href="@{/}"><button type="button" class="reset_btn">이전</button></a>
 	                <a th:href="@{/member/join1}"><button type="button" class="join_btn">다음</button></a>
+	                <button onclick="toggleCheckboxes()">모두 동의</button>
 	            </div>
 	        </div>
 	    </section>
 	</div>
+<script>
+function toggleCheckboxes() {
+    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    checkboxes.forEach(function(checkbox) {
+        checkbox.checked = true;
+    });
+}
+</script>
 </body>
 </html>

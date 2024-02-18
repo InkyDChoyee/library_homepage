@@ -60,11 +60,11 @@
                                                 <td rowspan="3"><img class="user_update_icon" th:src="@{/images/user.png}" alt=""></td>
                                             </tr>
                                             <tr>
-                                                <td><label for="mid">아이디 <span><small>(수정 불가)</small></span></label></td>
+                                                <td><label for="mid">아이디 <br><span><small>(수정 불가)</small></span></label></td>
                                                 <td><input type="text" name="mid" id="mid" th:value="${member.mid}" readonly></td>
                                             </tr>
                                             <tr>
-                                                <td><label for="role">권한 <span><small>(수정 불가)</small></span></label></td>
+                                                <td><label for="role">권한 <br><span><small>(수정 불가)</small></span></label></td>
                                                 <td colspan="2"><input type="text" name="role" id="role" th:value="${member.role}" readonly></td>
                                             </tr>
 
@@ -101,11 +101,11 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                            	<td><label for="count">대출한 책수<span><small>(수정 불가)</small></span></label></td>
+                                            	<td><label for="count">대출한 책수<br><span><small>(수정 불가)</small></span></label></td>
                                             	<td colspan="2"><input type="text" name="count" id="count" th:value="${rental}" readonly></td>
                                             </tr>
                                             <tr>
-                                            	<td><label for="rentalAvailable">대출 가능여부<span><small>(수정 불가)</small></span></label></td>
+                                            	<td><label for="rentalAvailable">대출 가능여부<br><span><small>(수정 불가)</small></span></label></td>
                                             	<td colspan="2">
                                             		<span th:if="${!#strings.contains(able, member.memberId)}">
                                                         <input type="text" class="able" name="able" th:value="'대출 가능'" readonly>
