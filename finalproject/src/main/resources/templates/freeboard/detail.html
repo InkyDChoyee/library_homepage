@@ -118,15 +118,15 @@ crossorigin="anonymous"></script>
 	                                    </div>
 	                                </th:block>
                             	</div>
-                                <div id="replyModal" class="modal" style="display: none;">
+                                <div th:id="'replyModal'+${freeReply.frid}" class="modal" style="display: none;">
                                 	<div class="modal_content">
-                                    	<div style="display: none;" id="originalContent" th:text="${freeReply.frcontent}">
+                                    	<div style="display: none;" th:id="'originalContent'+${freeReply.frid}" th:text="${freeReply.frcontent}">
                                      	</div>
-                                    	<textarea id="replyContent" rows="4" cols="50"></textarea>
+                                    	<textarea th:id="'replyContent'+${freeReply.frid}" rows="4" cols="50"></textarea>
                                  	</div>
                                  	<div class="reply_update_confirm_box">
-    	                           		<button id="updateReplyBtn_confirm">수정 확인</button>
-	                               		<button id="updateReplyBtn_cancel" type="reset">수정 취소</button>
+    	                           		<button th:id="'updateReplyBtn_confirm'+${freeReply.frid}" class="updateReplyBtn_confirm">수정 확인</button>
+	                               		<button th:id="'updateReplyBtn_cancel'+${freeReply.frid}" class="updateReplyBtn_cancel" type="reset">수정 취소</button>
                                  	</div>
                                </div>
 
