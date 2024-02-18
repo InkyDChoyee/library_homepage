@@ -175,12 +175,96 @@ a {
 
 
 /* joinform1 */
+.jopinform1 {
+	width: 100%;
+}
 
+#joinform0 .joinform1_fieldset{
+    border-radius: 10px;
+    width: 100%;
+}
 
+.join_header_inner span {
+    font-size: 18px;
+    font-weight: bold;
+}
 
+.input-wrapper {
+    list-style: none;
+    padding: 0;
+}
 
+.input-wrapper li {
+    margin-bottom: 15px;
+}
+.idCheck{
+    display: flex;
+    justify-content: space-between;
+}
 
+.joinform1_fieldset label {
+    font-weight: bold;
+    height: 30px;
+    display: block;
+    margin-bottom: 5px;
+}
+.joinform1_fieldset input[type="text"],
+.joinform1_fieldset input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+.joinform1 .required {
+    color: red;
+}
+.joinform1 .error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
+.joinform1 .result {
+    font-size: 14px;
+    margin-top: 5px;
+}
+.joinform1 .btn_box {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.joinform1 .reset_btn,
+.joinform1 .join_btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #799c4b;
+    color: #fff;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+.joinform1 .reset_btn {
+    background-color: #ccc;
+}
+.joinform1 .reset_btn:hover,
+.joinform1 .join_btn:hover {
+    background-color: #5e7e39;
+}
+.joinform1 #checkBtn {
+    padding: 8px 15px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    background-color: #f4f4f4;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
 
+.joinform1 #checkBtn:hover {
+    background-color: #e0e0e0;
+}
 
 
 
