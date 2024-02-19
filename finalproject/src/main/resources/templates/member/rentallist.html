@@ -3,7 +3,7 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
     <meta charset="UTF-8">
-    <title>내서재</title>
+    <title>나의 서재</title>
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
@@ -21,10 +21,10 @@
         <div class="page_top">
             <div class="page_top_imgbox">
                 <div class="page_img">
-                    <img th:src="@{/images/header-image2.jpg}" alt="img">
+                    <img th:src="@{/images/main_library_picture1.PNG}" alt="img">
                 </div>
                 <div class="page_title">
-                    <p>내 서재</p>
+                    <p>나의 서재</p>
                 </div>
             </div>
         </div>
@@ -35,13 +35,13 @@
                 <div class="nav_content">
                     <div class="nav_content_top">
                         <div class="nav_top_title">
-                            <p>나의책숲</p>
+                            <p>나의 책숲</p>
                         </div>
                     </div>
                     <div class="nav_content_mid">
                         <div class="nav_links">
-                            <a class="nav_menu selected_menu" th:href="@{/member/rentallist}">내서재</a>
-                            <a class="nav_menu" th:href="@{|/member/update/${member.memberId}|}">내정보수정</a>
+                            <a class="nav_menu selected_menu" th:href="@{/member/rentallist}">나의 서재</a>
+                            <a class="nav_menu" th:href="@{|/member/update/${member.memberId}|}">나의 정보</a>
                         </div>
                     </div>
                 </div>
@@ -163,35 +163,12 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <!-- <div class="user_rental_past_list_paging"> -->
-                            <!-- 페이지네이션 -->
-							<div class="pagination">
-								<ul>
-									<!-- 이전 페이지 -->
-									<li th:if="${rentalReturnPage.hasPrevious()}"><a
-										th:href="@{|/member/rentallist?page=${rentalReturnPage.pageable.pageNumber-1}|}">
-											< </a></li>
-		
-									<!-- 페이지 번호 -->
-									<li
-										th:each="pageNum : ${#numbers.sequence(0, rentalReturnPage.totalPages-1)}">
-										<a th:href="@{|/member/rentallist?page=${pageNum}|}"
-										th:text="${pageNum + 1}"
-										th:classappend="${pageNum} == ${rentalReturnPage.pageable.pageNumber} ? 'current' : ''">
-									</a>
-									</li>
-		
-									<!-- 다음 페이지 -->
-									<li th:if="${rentalReturnPage.hasNext()}"><a
-										th:href="@{|/member/rentallist?page=${rentalReturnPage.pageable.pageNumber+1}|}">
-											> </a></li>
-								</ul>
-							</div>
-							<!-- 페이지네이션 끝 -->
+                            <div class="user_rental_past_list_paging">
 
+                            </div>
                         </div>
-                    </div><!-- user_rental_past_list -->
-                    <a th:href="@{/}"><button type="button" class="home_btn">홈으로</button></a>
+                    </div>
+                    <a th:href="@{/}"><button type="button">Home</button></a>
                 </div>
             </div>
         </div>
