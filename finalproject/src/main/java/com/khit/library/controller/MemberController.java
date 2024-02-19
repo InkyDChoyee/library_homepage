@@ -2,7 +2,6 @@ package com.khit.library.controller;
 
 import com.khit.library.config.SecurityUser;
 import com.khit.library.dto.MemberDTO;
-import com.khit.library.dto.NoticeBoardDTO;
 import com.khit.library.dto.RentalReturnDTO;
 import com.khit.library.entity.Member;
 import com.khit.library.service.EmailService;
@@ -11,10 +10,6 @@ import com.khit.library.service.RentalReturnService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -81,20 +76,10 @@ public class MemberController {
     public String logout(){
         return "redirect:/";
     }
-    
-    //회원목록, 페이징
+    //회원목록
     @GetMapping("/member/list")
-
-    public String getList(/*, @PathVariable Long memberId*/
-            @RequestParam(value = "page", defaultValue = "0") int page,
-            @RequestParam(value = "size", defaultValue = "10") int size,
-            @AuthenticationPrincipal SecurityUser principal,
-            Model model) {
-    	Pageable pageable = PageRequest.of(page, size);
-    	Page<MemberDTO> memberPage = memberService.paging(pageable);
-
+    public String getList(@AuthenticationPrincipal SecurityUser principal, Model model){
         List<MemberDTO> memberDTOList = memberService.findAll();
-        model.addAttribute("memberPage", memberPage);
         model.addAttribute("memberList", memberDTOList);
         if(principal == null){
             return "member/list";
@@ -106,7 +91,6 @@ public class MemberController {
             return "member/list";
         }
     }
-    
     @GetMapping("/member/{memberId}")
     public String getMember(@AuthenticationPrincipal SecurityUser principal, @PathVariable Long memberId, Model model){
 
@@ -120,7 +104,7 @@ public class MemberController {
             return "member/detail";
         }
     }
-  
+
     //회원삭제
     @GetMapping("/member/delete/{memberId}")
     public String delete(@PathVariable Long memberId){
@@ -197,32 +181,32 @@ public class MemberController {
     //회원수정 폼
     @GetMapping("/member/update/{memberId}")
     public String updateForm(@AuthenticationPrincipal SecurityUser principal, @PathVariable Long memberId, Model model,
-    						MemberDTO memberDTO, BindingResult bindingResult){
+                             MemberDTO memberDTO, BindingResult bindingResult){
         if(bindingResult.hasErrors() || principal == null){
             return "member/update";
         }else {
-        	memberDTO = memberService.findByMid(principal);
-        	model.addAttribute("member", memberDTO);
+            memberDTO = memberService.findByMid(principal);
+            model.addAttribute("member", memberDTO);
             model.addAttribute("rental", rentalReturnService.count(memberId));
             model.addAttribute("able", rentalReturnService.rentalAble());
-        	return "member/update";
+            return "member/update";
         }
     }
 
     //회원수정 처리
     @PostMapping("/member/update")
     public String update(@ModelAttribute MemberDTO memberDTO, Model model,  @AuthenticationPrincipal SecurityUser principal, BindingResult bindingResult){
-    	memberService.update(memberDTO);
-    	log.info("dto : " + memberDTO);
-    	
-    	if(bindingResult.hasErrors()){
+        memberService.update(memberDTO);
+        log.info("dto : " + memberDTO);
+
+        if(bindingResult.hasErrors()){
             return "member/update";
         }
-            memberDTO = memberService.findByMid(principal);
-            model.addAttribute("member", memberDTO);
-            return "redirect:/member/update/" + memberDTO.getMemberId();
+        memberDTO = memberService.findByMid(principal);
+        model.addAttribute("member", memberDTO);
+        return "redirect:/member/update/" + memberDTO.getMemberId();
     }
-    
+
 
     //아이디 중복검사
     @PostMapping("/member/check-id")
@@ -232,38 +216,14 @@ public class MemberController {
     }
 
     //나의 대출목록
-//    @GetMapping("/member/rentallist")
-//    public String rentalList(@AuthenticationPrincipal SecurityUser principal, Model model){
-//        String mid = principal.getMember().getMid();
-//
-//        List<RentalReturnDTO> rentalReturnDTOList = rentalReturnService.findByMemberMid(mid);
-//
-//        model.addAttribute("rentalList", rentalReturnDTOList);
-//        
-//        if(principal == null){
-//            return "member/rentallist";
-//        }else{
-//            MemberDTO memberDTO = memberService.findByMid(principal);
-//            model.addAttribute("member", memberDTO);
-//            return "member/rentallist";
-//        }
-//    }
-    
-    //페이징, 나의대출목록
     @GetMapping("/member/rentallist")
-    public String pagelist(
-    		@RequestParam(value = "page", defaultValue = "0") int page,
-            @RequestParam(value = "size", defaultValue = "10") int size,
-    		@AuthenticationPrincipal SecurityUser principal,
-    		Model model){
-    	Pageable pageable = PageRequest.of(page, size);
+    public String rentalList(@AuthenticationPrincipal SecurityUser principal, Model model){
         String mid = principal.getMember().getMid();
 
-        Page<RentalReturnDTO> rentalReturnPage = rentalReturnService.paging(pageable);        
         List<RentalReturnDTO> rentalReturnDTOList = rentalReturnService.findByMemberMid(mid);
-        model.addAttribute("rentalReturnPage", rentalReturnPage);
+
         model.addAttribute("rentalList", rentalReturnDTOList);
-        
+
         if(principal == null){
             return "member/rentallist";
         }else{

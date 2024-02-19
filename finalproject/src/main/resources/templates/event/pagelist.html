@@ -137,8 +137,7 @@
 								</tbody>
 							</table>
 							<div class="page_write_btn_box">
-								<a th:href="@{/event/write}"><button type="button"
-										class="page_write_btn">글쓰기</button></a>
+								<a th:href="@{/event/write}"><button type="button" class="page_write_btn" sec:authorize="hasAnyAuthority('Admin')">글쓰기</button></a>
 							</div>
 						</div>
 					</div>
