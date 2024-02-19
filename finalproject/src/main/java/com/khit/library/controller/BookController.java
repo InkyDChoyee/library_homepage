@@ -123,13 +123,5 @@ public class BookController {
         return "redirect:/book/list";
     }
 
-    //대출 베스트
-    @GetMapping("/rentalbest")
-    public String bestList(Model model){
-        List<BookDTO> bookDTOList = bookService.findOrderByRentalCount();
-        model.addAttribute("book", bookDTOList);
-        return "book/rentalbest";
-    }
-    
 
 }
