@@ -756,7 +756,7 @@
 	    position: absolute;
 	    width: 200px;
 	    display: block;
-	    top: 75px;
+	    top: 60px;
 	    opacity: 0;
 	    visibility: hidden;
 	    transform: translateY(-20px);
@@ -1828,14 +1828,29 @@
 	}
 	
 	.page_write_btn {
-	    border: 1px solid #cfc;
+/* 	    border: 1px solid #cfc;
 	    border-radius: 15px 5px 15px 10px;
 	    padding: 5px;
 	    background-color: #fff;
 	    color: #543;
 	    font-size: 0.8rem;
 	    font-weight: 500;
-	    box-shadow: 1px 1px 3px #543;
+	    box-shadow: 1px 1px 3px #543; */
+        border: 1px solid #E1E1E1;
+	    border-radius: 4px;
+	    padding: 6px;
+	    background-color: #fff;
+	    color: #777;
+	    font-size: 0.8rem;
+	    box-shadow: 3px 3px 3px #eee;
+	    cursor: pointer;
+	}
+	
+		.page_write_btn:hover {
+		background-color: rgba(200, 206, 122, 0.1);
+		border: 1px solid rgba(200, 206, 122, 0.1);
+		color: #777;
+		box-shadow: 3px 3px 3px #eee;
 	}
 	
 	.page_textarea_img_box {
@@ -3736,7 +3751,7 @@
 	    position: absolute;
 	    width: 200px;
 	    display: block;
-	    top: 75px;
+	    top: 60px;
 	    opacity: 0;
 	    visibility: hidden;
 	    transform: translateY(-20px);
@@ -6756,7 +6771,7 @@
 	    position: absolute;
 	    width: 200px;
 	    display: block;
-	    top: 75px;
+	    top: 60px;
 	    opacity: 0;
 	    visibility: hidden;
 	    transform: translateY(-20px);
@@ -7845,14 +7860,29 @@
 	}
 	
 	.page_write_btn {
-	    border: 1px solid #cfc;
+/* 	    border: 1px solid #cfc;
 	    border-radius: 15px 5px 15px 10px;
 	    padding: 5px;
 	    background-color: #fff;
 	    color: #543;
 	    font-size: 0.8rem;
 	    font-weight: 500;
-	    box-shadow: 1px 1px 3px #543;
+	    box-shadow: 1px 1px 3px #543; */
+        border: 1px solid #E1E1E1;
+	    border-radius: 4px;
+	    padding: 6px;
+	    background-color: #fff;
+	    color: #777;
+	    font-size: 0.8rem;
+	    box-shadow: 3px 3px 3px #eee;
+	    cursor: pointer;
+	}
+	
+		.page_write_btn:hover {
+		background-color: rgba(200, 206, 122, 0.1);
+		border: 1px solid rgba(200, 206, 122, 0.1);
+		color: #777;
+		box-shadow: 3px 3px 3px #eee;
 	}
 	
 	.page_textarea_img_box {
@@ -10903,14 +10933,29 @@
 	}
 	
 	.page_write_btn {
-	    border: 1px solid #cfc;
+/* 	    border: 1px solid #cfc;
 	    border-radius: 15px 5px 15px 10px;
 	    padding: 5px;
 	    background-color: #fff;
 	    color: #543;
 	    font-size: 0.8rem;
 	    font-weight: 500;
-	    box-shadow: 1px 1px 3px #543;
+	    box-shadow: 1px 1px 3px #543; */
+        border: 1px solid #E1E1E1;
+	    border-radius: 4px;
+	    padding: 6px;
+	    background-color: #fff;
+	    color: #777;
+	    font-size: 0.8rem;
+	    box-shadow: 3px 3px 3px #eee;
+	    cursor: pointer;
+	}
+	
+		.page_write_btn:hover {
+		background-color: rgba(200, 206, 122, 0.1);
+		border: 1px solid rgba(200, 206, 122, 0.1);
+		color: #777;
+		box-shadow: 3px 3px 3px #eee;
 	}
 	
 	.page_textarea_img_box {
