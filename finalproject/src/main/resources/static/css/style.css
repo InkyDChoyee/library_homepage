@@ -717,6 +717,11 @@
 	
 	}
 	
+	.header_menu_toggle_box {
+		display: none;
+	}
+	
+	
 	/* header_member */
 	.header_member {
 		width: 15%;
@@ -1277,13 +1282,33 @@
 	
 	/* main_icons */
 	.main_icons {
-	    width: 83.5%;
+	    width: 100%;
 	    padding: 0 50px;
-	    height: 300px;
+	    height: 400px;
 	    margin: 0 auto;
 	    display: flex;
 	    justify-content: space-around;
 	    align-items: center;
+	    position: relative;
+	}
+	
+	.icons_background {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		opacity: 0.2;
+	}
+	
+	.icons_background_visible {
+	    opacity: 0.2;
+		transform: translateX(0);
+		transition: opacity 1s ease, transform 1s ease;	
+	}
+	
+	.icons_background_hidden {
+	    opacity: 0;
+	    transform: translateX(200px);
+	    transition: opacity 0.5s ease, transform 0.5s ease;
 	}
 	
 	.main_icons div img {
@@ -3673,6 +3698,10 @@
 	
 	}
 	
+	.header_menu_toggle_box {
+		display: none;
+	}
+	
 	/* header_member */
 	.header_member {
 		width: 20%;
@@ -4249,13 +4278,33 @@
 	
 	/* main_icons */
 	.main_icons {
-	    width: 85.5%;
+	    width: 100%;
 	    padding: 0;
 	    height: 300px;
 	    margin: 0 auto;
 	    display: flex;
-	    justify-content: space-between;
+	    justify-content: space-around;
 	    align-items: center;
+	    position: relative;
+	}
+	
+	.icons_background {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		opacity: 0.2;
+	}
+	
+	.icons_background_visible {
+	    opacity: 0.2;
+		transform: translateX(0);
+		transition: opacity 1s ease, transform 1s ease;	
+	}
+	
+	.icons_background_hidden {
+	    opacity: 0;
+	    transform: translateX(200px);
+	    transition: opacity 0.5s ease, transform 0.5s ease;
 	}
 	
 	.main_icons div img {
@@ -6583,7 +6632,7 @@
 		display: flex;
 		justify-content: space-around;
 		align-items: center;
-	
+		font-size: 0.8rem;
 	}
 	
 	/* header_top_menu (도서 검색, 도서관 안내 등) */
@@ -6650,6 +6699,10 @@
 	    visibility: visible; /* 호버 시 보이게 */
 	    transform: translateY(0); /* 원래 위치로 이동 */
 	
+	}
+	
+	.header_menu_toggle_box {
+		display: none;
 	}
 	
 	/* header_member */
@@ -7228,13 +7281,33 @@
 	
 	/* main_icons */
 	.main_icons {
-	    width: 85.5%;
+	    width: 100%;
 	    padding: 0;
-	    height: 300px;
+	    height: 280px;
 	    margin: 0 auto;
 	    display: flex;
-	    justify-content: space-between;
+	    justify-content: space-around;
 	    align-items: center;
+		position: relative;
+	}
+	
+	.icons_background {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		opacity: 0.2;
+	}
+	
+	.icons_background_visible {
+	    opacity: 0.2;
+		transform: translateX(0);
+		transition: opacity 1s ease, transform 1s ease;	
+	}
+	
+	.icons_background_hidden {
+	    opacity: 0;
+	    transform: translateX(200px);
+	    transition: opacity 0.5s ease, transform 0.5s ease;
 	}
 	
 	.main_icons div img {
@@ -9560,15 +9633,32 @@
 		height: 100%;
 		align-items: center;
 		font-size: 0.8rem;
+		position: relative;
 	}
 	
 	.header_link {
-		width: 90%;
-		height: 100%;
-		display: flex;
+		width: 140px;
+		display: none;
 		justify-content: space-around;
+		flex-direction: column;
 		align-items: center;
+		position: absolute;
+		top: 40px;
+		z-index:2;
+		border-radius: 15px;
+		background-color: #fff;
+		opacity: 0.8;
+		padding: 5px;
+	}
 	
+	.header_link div {
+		padding: 5px;
+	}
+	
+	.header_link div:hover {
+		width: 100%;
+		background-color: #eee;
+		border-radius: 10px;
 	}
 	
 	/* header_top_menu (도서 검색, 도서관 안내 등) */
@@ -9610,7 +9700,8 @@
 		position: absolute;
 	    width: 200px;
 	    display: block;
-	    top: 35px;
+	    top: -10px;
+	    left: 100px;
 	    opacity: 0; /* 시작 시 투명하게 */
 	    visibility: hidden; /* 시작 시 숨김 */
 	    transform: translateY(-20px); /* 시작 시 약간 위에서 시작 */
@@ -9634,8 +9725,37 @@
 	    opacity: 1; /* 호버 시 불투명하게 */
 	    visibility: visible; /* 호버 시 보이게 */
 	    transform: translateY(0); /* 원래 위치로 이동 */
-	
 	}
+	
+	.header_link_search .header_sub_link_search p:hover,
+	.header_link_open_space .header_sub_link_open_space p:hover,
+	.header_link_library_info .header_sub_link_library_info p:hover,
+	.header_link_study_room .header_sub_link_study_room p:hover,
+	.header_link_my_library .header_sub_link_my_library p:hover {
+		background-color: #eee;
+		border-radius: 10px;
+	}
+	
+	.header_menu_active {
+		display: flex;
+	}
+	
+	.header_menu_toggle_box {
+		height: 100%;
+	}
+	
+	.header_menu_toggle_btn {
+		height: 100%;
+		border: none;
+		background-color: #f4f4f4;
+		font-size: 0.5rem;
+		color: #999;
+	}
+	
+	.header_menu_toggle_btn span {
+		margin: 0 3px;
+	}
+	
 	
 	/* header_member */
 	.header_member {
@@ -10227,7 +10347,26 @@
     	align-items: center;
     	flex-wrap: wrap;
 	    align-content: space-around;
-
+	    position: relative;
+	}
+	
+	.icons_background {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		opacity: 0.2;
+	}
+	
+	.icons_background_visible {
+	    opacity: 0.2;
+		transform: translateX(0);
+		transition: opacity 1s ease, transform 1s ease;	
+	}
+	
+	.icons_background_hidden {
+	    opacity: 0;
+	    transform: translateX(200px);
+	    transition: opacity 0.5s ease, transform 0.5s ease;
 	}
 	
 	.main_icons div img {
