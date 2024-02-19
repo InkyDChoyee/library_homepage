@@ -2,6 +2,7 @@ package com.khit.library.controller;
 
 import com.khit.library.config.SecurityUser;
 import com.khit.library.dto.MemberDTO;
+import com.khit.library.dto.NoticeBoardDTO;
 import com.khit.library.dto.RentalReturnDTO;
 import com.khit.library.entity.Member;
 import com.khit.library.service.EmailService;
@@ -10,6 +11,10 @@ import com.khit.library.service.RentalReturnService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -76,10 +81,20 @@ public class MemberController {
     public String logout(){
         return "redirect:/";
     }
-    //회원목록
+    
+    //회원목록, 페이징
     @GetMapping("/member/list")
-    public String getList(@AuthenticationPrincipal SecurityUser principal, Model model){
+
+    public String getList(/*, @PathVariable Long memberId*/
+            @RequestParam(value = "page", defaultValue = "0") int page,
+            @RequestParam(value = "size", defaultValue = "10") int size,
+            @AuthenticationPrincipal SecurityUser principal,
+            Model model) {
+    	Pageable pageable = PageRequest.of(page, size);
+    	Page<MemberDTO> memberPage = memberService.paging(pageable);
+
         List<MemberDTO> memberDTOList = memberService.findAll();
+        model.addAttribute("memberPage", memberPage);
         model.addAttribute("memberList", memberDTOList);
         if(principal == null){
             return "member/list";
@@ -91,6 +106,7 @@ public class MemberController {
             return "member/list";
         }
     }
+    
     @GetMapping("/member/{memberId}")
     public String getMember(@AuthenticationPrincipal SecurityUser principal, @PathVariable Long memberId, Model model){
 
@@ -216,12 +232,36 @@ public class MemberController {
     }
 
     //나의 대출목록
+//    @GetMapping("/member/rentallist")
+//    public String rentalList(@AuthenticationPrincipal SecurityUser principal, Model model){
+//        String mid = principal.getMember().getMid();
+//
+//        List<RentalReturnDTO> rentalReturnDTOList = rentalReturnService.findByMemberMid(mid);
+//
+//        model.addAttribute("rentalList", rentalReturnDTOList);
+//        
+//        if(principal == null){
+//            return "member/rentallist";
+//        }else{
+//            MemberDTO memberDTO = memberService.findByMid(principal);
+//            model.addAttribute("member", memberDTO);
+//            return "member/rentallist";
+//        }
+//    }
+    
+    //페이징, 나의대출목록
     @GetMapping("/member/rentallist")
-    public String rentalList(@AuthenticationPrincipal SecurityUser principal, Model model){
+    public String pagelist(
+    		@RequestParam(value = "page", defaultValue = "0") int page,
+            @RequestParam(value = "size", defaultValue = "10") int size,
+    		@AuthenticationPrincipal SecurityUser principal,
+    		Model model){
+    	Pageable pageable = PageRequest.of(page, size);
         String mid = principal.getMember().getMid();
 
+        Page<RentalReturnDTO> rentalReturnPage = rentalReturnService.paging(pageable);        
         List<RentalReturnDTO> rentalReturnDTOList = rentalReturnService.findByMemberMid(mid);
-
+        model.addAttribute("rentalReturnPage", rentalReturnPage);
         model.addAttribute("rentalList", rentalReturnDTOList);
         
         if(principal == null){

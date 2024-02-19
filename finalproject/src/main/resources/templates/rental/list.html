@@ -3,7 +3,7 @@
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
 <meta charset="UTF-8">
-<title>Hope for the library : PAGE_LIST</title>
+<title>대출정보</title>
 <link rel="stylesheet" th:href="@{/css/style.css}">
 <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
 <link rel="preconnect" th:href="@{https://fonts.gstatic.com}"
@@ -22,10 +22,10 @@
             <div class="page_top">
                 <div class="page_top_imgbox">
                     <div class="page_img">
-                        <img src="/img/main_library_picture1.PNG" alt="img">
+                        <img src="@{/images/header-image2.jpg}" alt="img">
                     </div>
                     <div class="page_title">
-                        <p>대출 정보 목록</p>
+                        <p>대출정보</p>
                     </div>
                 </div>
             </div>
@@ -35,7 +35,7 @@
                     <div class="nav_content">
                         <div class="nav_content_top">
                             <div class="nav_top_title">
-                                <p>관리페이지</p>
+                                <p>관리자</p>
                             </div>
                         </div>
                         <div class="nav_content_mid">
@@ -104,24 +104,38 @@
 	                                                </tbody>
 	                                            </table>
 	                                        </div>
-	                                    </div>
-	                                </div>
+	                                </div> <!-- member_rental_list_box -->
+	                          	 </div>
                             </div>
                         </div>
                     </div>
-                    <a th:href="@{/}"><button type="button">Home</button></a>
+                    	<!-- 페이지네이션 -->
+						<div class="pagination">
+						    <ul>
+						        <li th:if="${rentalReturnPage.hasPrevious()}">
+						            <a th:href="@{|/rentalReturn/list?page=${rentalReturnPage.pageable.pageNumber-1}|}"> < </a>
+						        </li>
+						
+						        <li th:each="pageNum : ${#numbers.sequence(0, rentalReturnPage.totalPages-1)}">
+						            <a th:href="@{|/rentalReturn/list?page=${pageNum}|}"
+						               th:text="${pageNum + 1}"
+						               th:classappend="${pageNum} == ${rentalReturnPage.pageable.pageNumber} ? 'current' : ''"> </a>
+						        </li>
+						
+						        <li th:if="${rentalReturnPage.hasNext()}">
+						            <a th:href="@{|/rentalReturn/list?page=${rentalReturnPage.pageable.pageNumber+1}|}"> > </a>
+						        </li>
+						    </ul>
+						</div>
+                    <a th:href="@{/}"><button type="button" class="home_btn2">홈으로</button></a>
                 </div>
             </div>
         </section>
     </div>
 
-
-
-
-
-
 <div th:replace="~{footer::footer-fragment}"></div>
 <script>
+$(document).ready(function() {
 	const toggleButtons = document.querySelectorAll('.member_rental_info_toggle_btn');
 	
 	toggleButtons.forEach(function(button) {
@@ -167,6 +181,7 @@
 	        console.log("취소");
 	    }
 	})
+});
 </script>
 </body>
 </html>

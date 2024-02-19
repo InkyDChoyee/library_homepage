@@ -7,7 +7,14 @@ import com.khit.library.entity.Member;
 import com.khit.library.service.MemberService;
 import com.khit.library.service.ReadingRoomService;
 import lombok.RequiredArgsConstructor;
+
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+
 import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -42,6 +49,28 @@ public class ReadingRoomController {
             return "readingroom/room";
         }
     }
+    
+    //좌석, 페이징
+//    @GetMapping("/room")
+//    public String pagelist(
+//		    @RequestParam(value = "page", defaultValue = "0") int page,
+//		    @RequestParam(value = "size", defaultValue = "5") int size,
+//		    @AuthenticationPrincipal SecurityUser principal,
+//		    Model model) {
+//    	Pageable pageable = PageRequest.of(page, size);
+//        Page<ReadingRoomDTO> readingRoomPage = readingRoomService.paging(pageable);
+//    	List<ReadingRoomDTO> readingRoomDTOList = readingRoomService.findAll();
+//    	model.addAttribute("readingRoomPage", readingRoomPage);
+//    	model.addAttribute("seatList", readingRoomDTOList);
+//    	if(principal == null){
+//    		return "readingroom/room";
+//    	}else{
+//    		MemberDTO memberDTO = memberService.findByMid(principal);
+//    		model.addAttribute("member", memberDTO);
+//    		return "readingroom/room";
+//    	}
+//    }
+    
 
     //좌석 선택
     @PostMapping("/select")
@@ -77,4 +106,7 @@ public class ReadingRoomController {
 
         return "redirect:/readingRoom/room";
     }
+    
+
+    
 }
