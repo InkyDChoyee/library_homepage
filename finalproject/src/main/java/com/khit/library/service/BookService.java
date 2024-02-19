@@ -106,10 +106,6 @@ public class BookService {
     }
 
 
-    public List<BookDTO> findOrderByRentalCount() {
-        return rentalReturnRepository.findOrderByRentalCount();
-    }
-
 	public Page<BookDTO> paging(Pageable pageable) {
 		Page<Book> bookPage = bookRepository.findAll(pageable);
 		return bookPage.map(book -> BookDTO.toSaveDTO(book));

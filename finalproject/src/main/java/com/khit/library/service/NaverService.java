@@ -1,3 +1,4 @@
+/*
 package com.khit.library.service;
 
 import com.google.gson.Gson;
@@ -163,3 +164,4 @@ class NaverUserInfoResponseData {
     }
 }
 
+*/
