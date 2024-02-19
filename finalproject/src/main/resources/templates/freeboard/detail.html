@@ -112,7 +112,7 @@ crossorigin="anonymous"></script>
                             	</div>
                             	<div class="hope_reply_content_box">
 	                                <p class="hope_reply_content" th:text="${freeReply.frcontent}"></p>
-                                    <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.getPrincipal.getUsername()} == ${freeBoard.member.mid}">
+                                    <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.getPrincipal.getUsername()} == ${freeReply.member.mid}">
 	                                    <div class="hope_reply_update">
 	                                        <div class="reply_update_btn_box">
 	                                            <button class="reply_update_btn" type="button" th:onClick="replyObject.updateReply([[${freeBoard.fbid}]], [[${freeReply.frid}]])">수정</button>
