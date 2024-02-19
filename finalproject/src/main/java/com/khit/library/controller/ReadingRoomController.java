@@ -8,9 +8,13 @@ import com.khit.library.service.MemberService;
 import com.khit.library.service.ReadingRoomService;
 import lombok.RequiredArgsConstructor;
 
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+
+import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +27,7 @@ import java.util.List;
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/readingRoom")
+@Slf4j
 public class ReadingRoomController {
 
     private final ReadingRoomService readingRoomService;
@@ -36,8 +41,11 @@ public class ReadingRoomController {
         if(principal == null){
             return "readingroom/room";
         }else{
+            int result = readingRoomService.seat(principal.getMember().getMemberId());
             MemberDTO memberDTO = memberService.findByMid(principal);
+
             model.addAttribute("member", memberDTO);
+            model.addAttribute("seatCnt", result);
             return "readingroom/room";
         }
     }
@@ -67,18 +75,16 @@ public class ReadingRoomController {
     //좌석 선택
     @PostMapping("/select")
     public String select(@RequestParam("readingId") Long readingId, @AuthenticationPrincipal SecurityUser principal
-    , RedirectAttributes attributes){
+            , RedirectAttributes attributes){
         ReadingRoomDTO readingRoomDTO = readingRoomService.findById(readingId);
 
         MemberDTO memberDTO = memberService.findByMid(principal);
         readingRoomDTO.setMember(Member.builder().memberId(memberDTO.getMemberId()).build());
-
         if(readingRoomDTO.getEnter() == null){
             readingRoomDTO.setEnter(new Timestamp(System.currentTimeMillis()));
         }
         readingRoomDTO.setSeatAvailable(false);
         readingRoomService.select(readingRoomDTO);
-
         attributes.addFlashAttribute("readingId", readingId);
 
         return "redirect:/readingRoom/room";

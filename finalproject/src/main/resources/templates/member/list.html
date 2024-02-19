@@ -91,11 +91,8 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                            	<td><label for="count">대출한 책수</label></td>
-                                            	<td colspan="2"><input type="text" id="count" name="count" th:value="${rental}" readonly></td>
-                                            </tr>
-                                            <tr>
-                                                <td><label for="rentalAvailable">대출 가능 여부</label></td>
+
+                                                <td><label for="rentalAvailable">대출 가능여부</label></td>
                                                 <td colspan="2">
                                             		<span th:if="${!#strings.contains(able, member.memberId)}">
                                                         <input type="text" class="able" name="able" th:value="'대출 가능'" readonly>

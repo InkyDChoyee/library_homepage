@@ -191,15 +191,17 @@
 		</section>
 	</div>
 
+
 	<div th:replace="~{footer::footer-fragment}"></div>
 	<script>
+
     const counting = () => {
         let td1 = document.querySelector("#td1");
         let td2 = document.querySelector("#td2");
         let td3 = document.querySelector("#td3");
         let td4 = document.querySelector("#td4");
 
-        let seats = document.querySelectorAll('input[type="submit"]').length;
+        let seats = document.querySelectorAll('input[type="button"]').length;
 
         let usedSeats = document.querySelectorAll('.alreadyUse').length;
 
@@ -214,6 +216,41 @@
     }
 
     counting();
+
+    $(".canUse").click(function (){
+        let confirmationMessage = "사용 하시겠습니까?";
+        if(confirm(confirmationMessage)){
+            if([[${seatCnt}]] > 0) {
+                alert("이미 사용중인 좌석이 있습니다.");
+                return;
+            }
+
+            $(this).closest("form").submit()
+            alert("사용 시작.");
+            counting();
+        } else{
+            return false;
+        }
+    });
+
+    $(".alreadyUse").click(function (){
+        let loginUser = '[[${#authentication.principal.username}]]';
+        let seatUser = $(this).closest(".seat-form").find(".member-id").val();
+        let message = "반납 하시겠습니까?";
+        if(confirm(message)){
+            if(loginUser !== seatUser){
+                alert("권한이 없습니다.");
+                return false;
+            }else{
+                $(this).closest("form").submit()
+                alert("반납 완료.");
+                counting();
+                return true;
+            }
+        }else{
+            return false;
+        }
+    })
 </script>
 </body>
 </html>

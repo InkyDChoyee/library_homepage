@@ -5,6 +5,7 @@ import com.khit.library.entity.ReadingRoom;
 import com.khit.library.exception.FinalException;
 import com.khit.library.repository.ReadingRoomRepository;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.data.domain.Page;
@@ -54,10 +55,8 @@ public class ReadingRoomService {
         }
     }
 
-    //페이징
-//	public Page<ReadingRoomDTO> paging(Pageable pageable) {
-//       Page<ReadingRoom> readingRoomPage = readingRoomRepository.findAll(pageable);
-//       return readingRoomPage.map(readingRoom -> ReadingRoomDTO.toSaveDTO(readingRoom));
-//	}
-
+    @Transactional
+    public int seat(Long memberId){
+        return readingRoomRepository.countSeatsByMemberId(memberId);
+    }
 }

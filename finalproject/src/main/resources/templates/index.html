@@ -2,18 +2,57 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
-  <meta charset="UTF-8">
-  <title>선유도서관</title>
-  <link rel="stylesheet" th:href="@{/css/style.css}">
-  <link rel="preconnect" href="@{https://fonts.googleapis.com">
-  <link rel="preconnect" href="@{https://fonts.gstatic.com}" crossorigin>
-  <link	href="@{https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap}" rel="stylesheet">
+<meta charset="UTF-8">
+<title>선유도서관</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+<link rel="preconnect" href="@{https://fonts.googleapis.com">
+<link rel="preconnect" href="@{https://fonts.gstatic.com}" crossorigin>
+<link
+	href="@{https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap}"
+	rel="stylesheet">
+<script th:src="@{/js/script.js}"></script>
+<script>
+	// 검색어 입력란에서 Enter 키를 누르면 네이버 검색 페이지로 이동하는 함수
+	function handleSearchKeyPress(event) {
+		if (event.key === 'Enter') {
+			searchNaver();
+		}
+	}
+
+	function searchNaver() {
+		var searchInput = document.getElementById('searchInput');
+		var searchTerm = searchInput.value.trim();
+
+		if (searchTerm !== '') {
+			window.location.href = 'https://search.naver.com/search.naver?query='
+					+ encodeURIComponent(searchTerm);
+		}
+	}
+	function handleSearchKeyPress(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault(); // 폼 제출 방지
+            submitSearchForm();
+        }
+    }
+
+    function submitSearchForm() {
+        var searchInput = document.getElementById('searchInput');
+        var searchForm = document.getElementById('searchForm');
+
+        // 검색어가 비어있지 않은 경우에만 검색 수행
+        if (searchInput.value.trim() !== '') {
+            searchForm.submit();
+        }
+    }
+</script>
+<style type="text/css">
+</style>
 </head>
 <body>
 	<div th:replace="~{header::header-fragment}"></div>
 	<div id="container">
 		<section class="main">
-      
+
 			<div class="main_top">
 				<div class="main_pic_box">
 						<img class="main_pic active" th:src="@{/images/main-pic1.jpg}" alt="">
@@ -22,7 +61,9 @@
 				</div>
 
 				<div class="main_welcome">
-					<p class="main_big_welcome">도서관에서 여러분의 <br>다음 책을 만나보세요</p>
+					<p class="main_big_welcome">
+						도서관에서 여러분의 <br>다음 책을 만나보세요
+					</p>
 					<p class="main_small_welcom">모든 이야기가 당신을 기다립니다</p>
 				</div>
 
@@ -33,10 +74,17 @@
 					<button class="main_toggle_btn" onClick="togglePicture()">||</button>
 				</div>
 
-				<div class="main_search">
-					<input class="main_search_input" type="text" placeholder="Seacrh">
-					<img class="main_search_icon" th:src="@{/images/magnifying3.png}">
-				</div>
+				<form id="searchForm" action="https://search.naver.com/search.naver"
+					method="get" target="_blank">
+					<div class="main_search">
+						<input id="searchInput" class="main_search_input" type="text"
+							name="query" placeholder="검색"
+							onkeydown="handleSearchKeyPress(event)">
+						<button class="main_input_btn" type="submit">
+							<img class="main_search_icon" th:src="@{/images/magnifying3.png}">
+						</button>
+					</div>
+				</form>
 
 			</div>
 
@@ -195,7 +243,7 @@
 			</div>
 
 			<div class="main_icons">
-
+				<img class="icons_background" th:src="@{/images/background.jpg}">
 				<div class="main_use_info">
 					<a th:href="@{/}"> <img class="use_info_icon"
 						th:src="@{/images/use_info_icon.png}" alt="#">

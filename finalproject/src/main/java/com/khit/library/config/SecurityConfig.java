@@ -24,8 +24,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authroize -> authroize
                         .requestMatchers("/", "/css/**", "/images/**", "/js/**", "/upload/**","/error").permitAll()
                         .requestMatchers("/hopeboard/write", "/member/update", "/rentalReturn/rental", "member/rentallist").authenticated()
-                        .requestMatchers("/member/list", "/book/register", "/rentalReturn/list", "/notice/write").hasAnyAuthority("Admin")
-                        .requestMatchers("/member/**", "/hopeboard/**", "/book/**", "/rentalReturn/**", "/readingRoom/**",
+                        .requestMatchers("/member/list", "/book/register", "/rentalReturn/list", "/notice/write", "/wantbook/pagelist").hasAnyAuthority("Admin")
+                        .requestMatchers("/member/**", "/hopeboard/**", "/book/**", "/rentalReturn/**", "/readingRoom/**", "/faq/**",
                                 "/freeboard/**", "/notice/**", "/board/**").permitAll()
                         .anyRequest().authenticated()
                 )

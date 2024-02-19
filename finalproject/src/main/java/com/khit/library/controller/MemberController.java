@@ -84,6 +84,7 @@ public class MemberController {
     
     //회원목록, 페이징
     @GetMapping("/member/list")
+
     public String getList(/*, @PathVariable Long memberId*/
             @RequestParam(value = "page", defaultValue = "0") int page,
             @RequestParam(value = "size", defaultValue = "10") int size,
@@ -91,6 +92,7 @@ public class MemberController {
             Model model) {
     	Pageable pageable = PageRequest.of(page, size);
     	Page<MemberDTO> memberPage = memberService.paging(pageable);
+
         List<MemberDTO> memberDTOList = memberService.findAll();
         model.addAttribute("memberPage", memberPage);
         model.addAttribute("memberList", memberDTOList);
@@ -99,7 +101,7 @@ public class MemberController {
         }else{
             MemberDTO memberDTO = memberService.findByMid(principal);
             model.addAttribute("member", memberDTO);
-//            model.addAttribute("rental", rentalReturnService.count(memberId));
+            model.addAttribute("rental", rentalReturnService.count(memberDTO.getMemberId()));
             model.addAttribute("able", rentalReturnService.rentalAble());
             return "member/list";
         }
@@ -267,6 +269,8 @@ public class MemberController {
         }else{
             MemberDTO memberDTO = memberService.findByMid(principal);
             model.addAttribute("member", memberDTO);
+            model.addAttribute("rental", rentalReturnService.count(memberDTO.getMemberId()));
+            model.addAttribute("able", rentalReturnService.rentalAble());
             return "member/rentallist";
         }
     }
