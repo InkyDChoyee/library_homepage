@@ -12,6 +12,11 @@
 	th:href="@{https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap}"
 	rel="stylesheet">	
 <style>
+.booklist_add_book_btn {
+	float: right;
+	margin: 20px;
+}
+
 .book_menu_search_box {
     position: relative;
     display: flex;
@@ -132,7 +137,7 @@
 								</tbody>
                             </table>
                             <div class="book_register">
-                            	<a th:href="@{/book/register}" sec:authorize="hasAnyAuthority('Admin')">책등록</a>
+                            	<a th:href="@{/book/register}" sec:authorize="hasAnyAuthority('Admin')"><button class="booklist_add_book_btn">책등록</button></a>
 							</div>
 						</div>
 					</div>
