@@ -9,10 +9,6 @@ import com.khit.library.service.BookService;
 import com.khit.library.service.MemberService;
 import com.khit.library.service.RentalReturnService;
 import lombok.RequiredArgsConstructor;
-
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -31,27 +27,18 @@ public class RentalReturnController {
     private final MemberService memberService;
     private final BookService bookService;
 
-    //대출리스트, 페이징
+    //대출리스트
     @GetMapping("/list")
-    public String getList(
-    		 @RequestParam(value = "page", defaultValue = "0") int page,
-             @RequestParam(value = "size", defaultValue = "10") int size,
-             @AuthenticationPrincipal SecurityUser principal,
-             Model model) {
-    	Pageable pageable = PageRequest.of(page, size);
-    	Page<RentalReturnDTO> rentalReturnPage = rentalReturnService.paging(pageable);
-        model.addAttribute("rentalReturnPage", rentalReturnPage);
-    	
-        //List<RentalReturnDTO> rentalReturnDTOList = rentalReturnService.findAll();
-        //model.addAttribute("rentalList", rentalReturnDTOList);
+    public String getList(@AuthenticationPrincipal SecurityUser principal,Model model){
+        List<RentalReturnDTO> rentalReturnDTOList = rentalReturnService.findAll();
+        model.addAttribute("rentalList", rentalReturnDTOList);
         //model.addAttribute("rentalCount", rentalReturnService.count(memberId));
-        
         model.addAttribute("able", rentalReturnService.rentalAble());
-        
+
         List<MemberDTO> memberDTOList = memberService.findAll();
         model.addAttribute("memberList", memberDTOList);
         if(principal == null){
-        	return "rental/list";
+            return "rental/list";
         }else{
             MemberDTO memberDTO = memberService.findByMid(principal);
             model.addAttribute("member", memberDTO);
@@ -78,7 +65,6 @@ public class RentalReturnController {
         rentalReturnService.update(findRentalId);
         return findRentalId;
     }
-
 
     //대출 베스트
     @GetMapping("/rentalbest")
