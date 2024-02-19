@@ -16,10 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.khit.library.config.SecurityUser;
-import com.khit.library.dto.HopeBoardDTO;
 import com.khit.library.dto.MemberDTO;
 import com.khit.library.dto.NoticeBoardDTO;
-import com.khit.library.entity.HopeBoard;
 import com.khit.library.entity.NoticeBoard;
 import com.khit.library.service.MemberService;
 import com.khit.library.service.NoticeBoardService;

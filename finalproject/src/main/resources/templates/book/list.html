@@ -3,7 +3,7 @@
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
 <meta charset="UTF-8">
-<title>책목록</title>
+<title>도서목록</title>
 <link rel="stylesheet" th:href="@{/css/style.css}">
 <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
 <link rel="preconnect" th:href="@{https://fonts.gstatic.com}"
@@ -20,7 +20,7 @@
 			<div class="page_top">
 				<div class="page_top_imgbox">
 					<div class="page_img">
-						<img th:src="@{/images/main_library_picture1.PNG}" alt="img">
+						<img th:src="@{/images/header-image2.jpg}" alt="img">
 					</div>
 					<div class="page_title">
 						<p>자료검색</p>
@@ -34,14 +34,15 @@
 					<div class="nav_content">
 						<div class="nav_content_top">
 							<div class="nav_top_title">
-								<p>자료 검색</p>
+								<p>자료검색</p>
 							</div>
 						</div>
 						<div class="nav_content_mid">
 							<div class="nav_links">
 								<a class="nav_menu selected_menu" th:href="@{/book/list}">자료검색</a>
-								<a class="nav_menu" th:href="@{#}">대출 베스트</a>
-								<a class="nav_menu" th:href="@{#}">희망도서 신청</a>
+								<a class="nav_menu" th:href="@{#}">대출베스트(추천도서)</a>
+								<a class="nav_menu" th:href="@{wantbook/write}">희망도서신청</a>
+								<a class="nav_menu" th:href="@{wantbook/pagelist}">희망도서신청내역</a>
 							</div>
 						</div>
 					</div>

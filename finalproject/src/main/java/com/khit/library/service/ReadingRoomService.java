@@ -6,6 +6,9 @@ import com.khit.library.exception.FinalException;
 import com.khit.library.repository.ReadingRoomRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -50,4 +53,11 @@ public class ReadingRoomService {
             throw new FinalException("좌석이 없습니다.");
         }
     }
+
+    //페이징
+//	public Page<ReadingRoomDTO> paging(Pageable pageable) {
+//       Page<ReadingRoom> readingRoomPage = readingRoomRepository.findAll(pageable);
+//       return readingRoomPage.map(readingRoom -> ReadingRoomDTO.toSaveDTO(readingRoom));
+//	}
+
 }

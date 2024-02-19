@@ -7,6 +7,10 @@ import com.khit.library.entity.Member;
 import com.khit.library.service.MemberService;
 import com.khit.library.service.RentalReturnService;
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -24,12 +28,21 @@ public class RentalReturnController {
     private final RentalReturnService rentalReturnService;
     private final MemberService memberService;
 
-    //대출리스트
+    //대출리스트, 페이징
     @GetMapping("/list")
-    public String getList(@AuthenticationPrincipal SecurityUser principal,Model model){
-        List<RentalReturnDTO> rentalReturnDTOList = rentalReturnService.findAll();
-        model.addAttribute("rentalList", rentalReturnDTOList);
+    public String getList(
+    		 @RequestParam(value = "page", defaultValue = "0") int page,
+             @RequestParam(value = "size", defaultValue = "10") int size,
+             @AuthenticationPrincipal SecurityUser principal,
+             Model model) {
+    	Pageable pageable = PageRequest.of(page, size);
+    	Page<RentalReturnDTO> rentalReturnPage = rentalReturnService.paging(pageable);
+        model.addAttribute("rentalReturnPage", rentalReturnPage);
+    	
+        //List<RentalReturnDTO> rentalReturnDTOList = rentalReturnService.findAll();
+        //model.addAttribute("rentalList", rentalReturnDTOList);
         //model.addAttribute("rentalCount", rentalReturnService.count(memberId));
+        
         model.addAttribute("able", rentalReturnService.rentalAble());
         
         List<MemberDTO> memberDTOList = memberService.findAll();
@@ -62,6 +75,4 @@ public class RentalReturnController {
         rentalReturnService.update(findRentalId);
         return findRentalId;
     }
-
-
 }

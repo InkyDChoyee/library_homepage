@@ -32,8 +32,8 @@
                         <div class="nav_content_mid">
                             <div class="nav_links">
 
-                                <a class="nav_menu" th:href="@{/member/rentallist}">나의 서재</a>
-                                <a class="nav_menu selected_menu" th:href="@{|/member/update/${member.memberId}|}">나의 정보</a>
+                                <a class="nav_menu" th:href="@{/member/rentallist}">내서재</a>
+                                <a class="nav_menu selected_menu" th:href="@{|/member/update/${member.memberId}|}">내정보수정</a>
 
                             </div>
                         </div>
@@ -119,11 +119,12 @@
                                         </tbody>
                                     </table>    
                                     <div class="member_update_btn_box">
-                                        <button type="reset" class="member_update_cancel">취소</button>
+                                    <a th:href="@{|/member/withdrawal/${member.memberId}|}"><button type="button" class="member_update_leave">탈퇴</button></a>
                                         <button type="submit" class="member_update_confirm">수정</button>
+                                        <button type="reset" class="member_update_cancel">취소</button>
                                     </div>
                             </form>
-                            <a th:href="@{|/member/withdrawal/${member.memberId}|}"><button type="button" class="member_update_confirm">탈퇴</button></a>
+<!--                             <a th:href="@{|/member/withdrawal/${member.memberId}|}"><button type="button" class="member_update_leave">탈퇴</button></a> -->
                         </div>
                     </div>
                 </div>
