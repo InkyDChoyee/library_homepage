@@ -5,7 +5,11 @@ import com.khit.library.entity.ReadingRoom;
 import com.khit.library.exception.FinalException;
 import com.khit.library.repository.ReadingRoomRepository;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -49,5 +53,10 @@ public class ReadingRoomService {
         }else{
             throw new FinalException("좌석이 없습니다.");
         }
+    }
+
+    @Transactional
+    public int seat(Long memberId){
+        return readingRoomRepository.countSeatsByMemberId(memberId);
     }
 }

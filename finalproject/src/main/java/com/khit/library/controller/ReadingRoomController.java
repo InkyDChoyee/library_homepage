@@ -7,6 +7,14 @@ import com.khit.library.entity.Member;
 import com.khit.library.service.MemberService;
 import com.khit.library.service.ReadingRoomService;
 import lombok.RequiredArgsConstructor;
+
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+
+import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +27,7 @@ import java.util.List;
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/readingRoom")
+@Slf4j
 public class ReadingRoomController {
 
     private final ReadingRoomService readingRoomService;
@@ -32,27 +41,50 @@ public class ReadingRoomController {
         if(principal == null){
             return "readingroom/room";
         }else{
+            int result = readingRoomService.seat(principal.getMember().getMemberId());
             MemberDTO memberDTO = memberService.findByMid(principal);
+
             model.addAttribute("member", memberDTO);
+            model.addAttribute("seatCnt", result);
             return "readingroom/room";
         }
     }
+    
+    //좌석, 페이징
+//    @GetMapping("/room")
+//    public String pagelist(
+//		    @RequestParam(value = "page", defaultValue = "0") int page,
+//		    @RequestParam(value = "size", defaultValue = "5") int size,
+//		    @AuthenticationPrincipal SecurityUser principal,
+//		    Model model) {
+//    	Pageable pageable = PageRequest.of(page, size);
+//        Page<ReadingRoomDTO> readingRoomPage = readingRoomService.paging(pageable);
+//    	List<ReadingRoomDTO> readingRoomDTOList = readingRoomService.findAll();
+//    	model.addAttribute("readingRoomPage", readingRoomPage);
+//    	model.addAttribute("seatList", readingRoomDTOList);
+//    	if(principal == null){
+//    		return "readingroom/room";
+//    	}else{
+//    		MemberDTO memberDTO = memberService.findByMid(principal);
+//    		model.addAttribute("member", memberDTO);
+//    		return "readingroom/room";
+//    	}
+//    }
+    
 
     //좌석 선택
     @PostMapping("/select")
     public String select(@RequestParam("readingId") Long readingId, @AuthenticationPrincipal SecurityUser principal
-    , RedirectAttributes attributes){
+            , RedirectAttributes attributes){
         ReadingRoomDTO readingRoomDTO = readingRoomService.findById(readingId);
 
         MemberDTO memberDTO = memberService.findByMid(principal);
         readingRoomDTO.setMember(Member.builder().memberId(memberDTO.getMemberId()).build());
-
         if(readingRoomDTO.getEnter() == null){
             readingRoomDTO.setEnter(new Timestamp(System.currentTimeMillis()));
         }
         readingRoomDTO.setSeatAvailable(false);
         readingRoomService.select(readingRoomDTO);
-
         attributes.addFlashAttribute("readingId", readingId);
 
         return "redirect:/readingRoom/room";
@@ -74,4 +106,7 @@ public class ReadingRoomController {
 
         return "redirect:/readingRoom/room";
     }
+    
+
+    
 }

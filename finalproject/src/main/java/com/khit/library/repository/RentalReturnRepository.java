@@ -1,11 +1,13 @@
 package com.khit.library.repository;
 
 import com.khit.library.entity.RentalReturn;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface RentalReturnRepository extends JpaRepository<RentalReturn, Long> {
     //Optional<RentalReturn> findByRentalId(Long rentalId);
@@ -23,5 +25,16 @@ public interface RentalReturnRepository extends JpaRepository<RentalReturn, Long
             "or (r1.deadlineDate < current_date() and r1.returnDate is null) " +
             "group by r1.member.memberId")
     public List<Integer> rentalAble();
+
+    
+    //페이징 처리를 위한 메서드
+  	Page<RentalReturn> findAll(Pageable pageable);
+
+
+    @Query("SELECT r.book.bookId, COUNT(r.rentalId) AS rentalCount " +
+            "FROM RentalReturn r " +
+            "GROUP BY r.book.bookId " +
+            "ORDER BY rentalCount DESC")
+    List<Object[]> findOrderByRentalCount();
 }
 

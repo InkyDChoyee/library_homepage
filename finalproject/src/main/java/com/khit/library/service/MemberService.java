@@ -7,6 +7,9 @@ import com.khit.library.entity.Role;
 import com.khit.library.exception.FinalException;
 import com.khit.library.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +29,7 @@ public class MemberService {
     public void save(MemberDTO memberDTO) {
         String encPw = pwEncoder.encode(memberDTO.getPassword()); //비밀번호 암호화
         memberDTO.setPassword(encPw);
-        memberDTO.setRole(Role.Admin); //권한설정
+        memberDTO.setRole(Role.Member); //권한설정
         Member member = Member.toSaveEntity(memberDTO);
         memberRepository.save(member);
     }
@@ -63,7 +66,7 @@ public class MemberService {
     public void update(MemberDTO memberDTO) {
         String encPw = pwEncoder.encode(memberDTO.getPassword());
         memberDTO.setPassword(encPw);
-        memberDTO.setRole(Role.Admin);
+        memberDTO.setRole(Role.Member);
 
         Member member = Member.toUpdateEntity(memberDTO);
         memberRepository.save(member);
@@ -154,4 +157,10 @@ public class MemberService {
         MemberDTO memberDTO = MemberDTO.toSaveDTO(member);
         return memberDTO;
     }
+    
+    //페이징
+	public Page<MemberDTO> paging(Pageable pageable) {
+		Page<Member> memberPage = memberRepository.findAll(pageable);
+		return memberPage.map(member -> MemberDTO.toSaveDTO(member));
+	}
 }
