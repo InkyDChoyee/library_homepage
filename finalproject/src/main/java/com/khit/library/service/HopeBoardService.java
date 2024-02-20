@@ -8,11 +8,13 @@ import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.khit.library.dto.FreeBoardDTO;
 import com.khit.library.dto.HopeBoardDTO;
 import com.khit.library.entity.HopeBoard;
 import com.khit.library.repository.HopeBoardRepository;
@@ -86,7 +88,15 @@ public class HopeBoardService {
 		return findById(hopeBoardDTO.getHbid());
 	}
 
-	
+	public Page<HopeBoardDTO> searchByTitle(String keyword, Pageable pageable) {
+	    return hopeBoardRepository.findByHbtitleContaining(keyword, pageable)
+	            .map(hopeBoard -> HopeBoardDTO.toSaveDTO(hopeBoard));
+	}
+
+	public Page<HopeBoardDTO> searchByContent(String keyword, Pageable pageable) {
+	    return hopeBoardRepository.findByHbcontentContaining(keyword, pageable)
+	            .map(hopeBoard -> HopeBoardDTO.toSaveDTO(hopeBoard));
+	}
 	
 	
 
@@ -97,7 +107,10 @@ public class HopeBoardService {
 
 	//페이징
 	public Page<HopeBoardDTO> paging(Pageable pageable) {
-        Page<HopeBoard> hopeBoardPage = hopeBoardRepository.findAll(pageable);
+	    Pageable reversePageable = PageRequest.of(
+	            pageable.getPageNumber(), pageable.getPageSize(), Sort.by(Sort.Direction.DESC, "hbid"));
+	        Page<HopeBoard> hopeBoardPage = hopeBoardRepository.findAll(reversePageable);
         return hopeBoardPage.map(hopeBoard -> HopeBoardDTO.toSaveDTO(hopeBoard));
     }
+
 }

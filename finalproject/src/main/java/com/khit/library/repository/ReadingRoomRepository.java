@@ -23,7 +23,8 @@ public interface ReadingRoomRepository extends JpaRepository<ReadingRoom, Long> 
     @Modifying
     @Query("update ReadingRoom set member.memberId = null , enter = null , checkOut = null, seatAvailable = true where seat = :seat")
     public void checkout(Integer seat);
-    
-	//페이징 처리를 위한 메서드
-//	Page<ReadingRoom> findAll(Pageable pageable);
+
+    @Query("select count(*) from ReadingRoom rr where rr.member.memberId = :memberId")
+    public int countSeatsByMemberId(Long memberId);
+
 }

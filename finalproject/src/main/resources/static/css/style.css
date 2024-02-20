@@ -18,16 +18,6 @@
 	   @media (max-width: 767px) {}
  */
 
-
-
-
-
-
-
-
-
-
-
 /* =================================== pc버전(큰화면) =================================== */
 @media (min-width: 1440px){
 /* =================================== 공통 =================================== */
@@ -610,7 +600,8 @@
 		display: flex;
 		justify-content: space-around;
 		position: fixed;
-		z-index: 1;
+		z-index: 2;
+
 	}
 	
 	.header {
@@ -3118,6 +3109,7 @@
 
 
 
+
 /* =================================== pc버전 (보통) =================================== */
 @media (min-width: 1025px) and (max-width: 1439px) {
 /* =================================== 공통 =================================== */
@@ -3702,7 +3694,9 @@
 		display: flex;
 		justify-content: space-around;
 		position: fixed;
-		z-index: 1;
+
+		z-index: 2;
+
 	}
 	
 	.header {
@@ -6786,7 +6780,8 @@
 		display: flex;
 		justify-content: space-around;
 		position: fixed;
-		z-index: 1;
+		z-index: 2;
+
 	}
 	
 	.header {
@@ -9876,7 +9871,7 @@
 		display: flex;
 		justify-content: space-around;
 		position: fixed;
-		z-index: 1;
+		z-index: 2;
 	}
 	
 	.header {

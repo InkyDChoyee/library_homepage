@@ -50,15 +50,15 @@ let replyObject = {
 	
 	updateReply: function(fbid, frid) {
 		
-		let originalContent = $('#originalContent').text().trim(); // 기존 댓글 내용 가져오기
+		let originalContent = $('#originalContent'+frid).text().trim(); // 기존 댓글 내용 가져오기
 		console.log(originalContent);
-			$('#replyContent').attr('placeholder', originalContent);
-		    $('#replyModal').css('display', 'block'); // 모달 창 띄우기
-			$('#updateReplyBtn_cancel').click(() => {
-			    $('#replyModal').css('display', 'none'); // 모달 창 숨기기
+			$('#replyContent'+frid).attr('placeholder', originalContent);
+		    $('#replyModal'+frid).css('display', 'block'); // 모달 창 띄우기
+			$('#updateReplyBtn_cancel'+frid).click(() => {
+			    $('#replyModal'+frid).css('display', 'none'); // 모달 창 숨기기
 			});
-		    $('#updateReplyBtn_confirm').click(() => {
-		        let updatedContent = $('#replyContent').val().trim(); // 수정된 내용 가져오기
+		    $('#updateReplyBtn_confirm'+frid).click(() => {
+		        let updatedContent = $('#replyContent'+frid).val().trim(); // 수정된 내용 가져오기
 		        if (!updatedContent) {
 		            alert("댓글 내용을 입력하세요");
 		            return;
@@ -84,24 +84,25 @@ let replyObject = {
 		
 	
 	deleteReply: function(boardId, replyId){
-		alert("댓글 삭제 요청됨");
-		
-		//let header = $("meta[name='_csrf_header']").attr('content');
-		//let token = $("meta[name='_csrf']").attr('content');
-		
-		$.ajax({
-			type: "DELETE",
-			url: "/freereply/" + replyId,
-			//beforeSend: function(xhr) {
-			//	xhr.setRequestHeader(header, token);
-			//}
+		if(confirm("댓글을 삭제하시겠습니까?")){
 			
-		}).done((response)=>{
-			console.log(response);
-			location.href="/freeboard/"+boardId;
-		}).fail((error)=>{
-			alert("에러 발생: "+ error)
-		})
+			//let header = $("meta[name='_csrf_header']").attr('content');
+			//let token = $("meta[name='_csrf']").attr('content');
+			
+			$.ajax({
+				type: "DELETE",
+				url: "/freereply/" + replyId,
+				//beforeSend: function(xhr) {
+				//	xhr.setRequestHeader(header, token);
+				//}
+				
+			}).done((response)=>{
+				console.log(response);
+				location.href="/freeboard/"+boardId;
+			}).fail((error)=>{
+				alert("에러 발생: "+ error)
+			})
+		}
 	}
 }
 

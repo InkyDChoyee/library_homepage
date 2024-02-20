@@ -1,16 +1,19 @@
 package com.khit.library.service;
 
+import com.khit.library.dto.BookDTO;
 import com.khit.library.dto.RentalReturnDTO;
 import com.khit.library.entity.RentalReturn;
 import com.khit.library.repository.RentalReturnRepository;
 import lombok.RequiredArgsConstructor;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -66,10 +69,8 @@ public class RentalReturnService {
         return rentalReturnRepository.rentalAble();
     }
 
-    //페이징
-	public Page<RentalReturnDTO> paging(Pageable pageable) {
-		Page<RentalReturn> rentalReturnPage = rentalReturnRepository.findAll(pageable);
-		return rentalReturnPage.map(rentalReturn -> RentalReturnDTO.toSaveDTO(rentalReturn));
-	}
 
+    /*public List<BookDTO> findOrderByRentalCount() {
+        return rentalReturnRepository.findOrderByRentalCount();
+    }*/
 }

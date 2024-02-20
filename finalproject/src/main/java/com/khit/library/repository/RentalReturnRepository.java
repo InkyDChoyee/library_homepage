@@ -25,8 +25,16 @@ public interface RentalReturnRepository extends JpaRepository<RentalReturn, Long
             "or (r1.deadlineDate < current_date() and r1.returnDate is null) " +
             "group by r1.member.memberId")
     public List<Integer> rentalAble();
+
     
     //페이징 처리를 위한 메서드
   	Page<RentalReturn> findAll(Pageable pageable);
+
+
+    @Query("SELECT r.book.bookId, COUNT(r.rentalId) AS rentalCount " +
+            "FROM RentalReturn r " +
+            "GROUP BY r.book.bookId " +
+            "ORDER BY rentalCount DESC")
+    List<Object[]> findOrderByRentalCount();
 }
 
