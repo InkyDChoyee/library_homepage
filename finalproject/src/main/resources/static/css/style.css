@@ -4139,7 +4139,7 @@
 	    transition: opacity 0.5s ease, transform 0.5s ease;
 	}
 	
-	/* main_mid_schedule */
+		/* main_mid_schedule */
 	.main_mid_schedule {
 	    width: 20%;
 	    height: 350px;
@@ -4209,11 +4209,15 @@
 	    color: #333;
 	}
 	
+	.main_usable_time_table thead tr th:nth-child(2) {
+		font-size: 0.2rem;
+	}
+	
 	.main_usable_time_table tbody tr td:nth-child(1),
 	.main_usable_time_table tbody tr td:nth-child(2) {
 	    padding-top: 10px;
 	    padding-bottom: 10px;
-	    font-size: 13px;
+	    font-size: 0.2rem;
 	    font-weight: 400;
 	    transition: font-size 0.5s ease-in-out;
 	    color: #333;
@@ -4222,7 +4226,7 @@
 	.main_usable_time_table tbody tr td:nth-child(3),
 	.main_usable_time_table tbody tr td:nth-child(4){
 	    font-weight: 400;
-	    font-size: 13px;
+	    font-size: 0.2rem;
 	    text-align: center;
 	    transition: font-size 0.5s ease-in-out;
 	    color: #333;
@@ -4310,16 +4314,16 @@
 	.main_openspace_board_table tbody tr td:nth-child(3) {
 	    padding-top: 10px;
 	    padding-bottom: 10px;
-	    font-size: 13px;
+	    font-size: 0.2rem;
 	    font-weight: 400;
 	    transition: font-size 0.5s ease-in-out;
 	    color: #333;
 	}
 	
 	.main_openspace_board_table tbody tr td:nth-child(2) {
-	    padding-top: 10px;
-	    padding-bottom: 10px;
-	    font-size: 13px;
+	    padding-top: 5px;
+	    padding-bottom: 5px;
+	    font-size: 0.2rem;
 	    font-weight: 400;
 	    transition: font-size 0.5s ease-in-out;
 	    color: #333;
@@ -4385,8 +4389,8 @@
 	}
 	
 	.main_free_board_table thead tr th{
-	    padding-top: 10px;
-	    padding-bottom: 10px;
+	    padding-top: 15px;
+	    padding-bottom: 15px;
 	    font-size: 13px;
 	    font-weight: 400;
 	    transition: font-size 0.5s ease-in-out;
@@ -4397,7 +4401,7 @@
 	.main_free_board_table tbody tr td:nth-child(3) {
 	    padding-top: 10px;
 	    padding-bottom: 10px;
-	    font-size: 13px;
+	    font-size: 0.2rem;
 	    font-weight: 400;
 	    transition: font-size 0.5s ease-in-out;
 	    color: #333;
@@ -4406,7 +4410,7 @@
 	.main_free_board_table tbody tr td:nth-child(2) {
 	    padding-top: 10px;
 	    padding-bottom: 10px;
-	    font-size: 13px;
+	    font-size: 0.2rem;
 	    font-weight: 400;
 	    transition: font-size 0.5s ease-in-out;
 	    color: #333;
@@ -7199,13 +7203,13 @@
 	
 	
 	.main_mid_small_text {
-	    font-size: 1rem;
+	    font-size: 0.7rem;
 	    color: #7C9877;
 	   	font-weight: 500;
 	}
 	
 	.main_mid_big_text {
-	    font-size: 2.9rem;
+	    font-size: 2.2rem;
 	    position: relative;
 	    font-weight: 500;
 	}
@@ -7306,11 +7310,15 @@
 	    color: #333;
 	}
 	
+	.main_usable_time_table thead tr th:nth-child(2) {
+		font-size: 0.2rem;
+	}
+	
 	.main_usable_time_table tbody tr td:nth-child(1),
 	.main_usable_time_table tbody tr td:nth-child(2) {
 	    padding-top: 10px;
 	    padding-bottom: 10px;
-	    font-size: 13px;
+	    font-size: 0.2rem;
 	    font-weight: 400;
 	    transition: font-size 0.5s ease-in-out;
 	    color: #333;
@@ -7319,7 +7327,7 @@
 	.main_usable_time_table tbody tr td:nth-child(3),
 	.main_usable_time_table tbody tr td:nth-child(4){
 	    font-weight: 400;
-	    font-size: 13px;
+	    font-size: 0.2rem;
 	    text-align: center;
 	    transition: font-size 0.5s ease-in-out;
 	    color: #333;
@@ -7407,16 +7415,16 @@
 	.main_openspace_board_table tbody tr td:nth-child(3) {
 	    padding-top: 10px;
 	    padding-bottom: 10px;
-	    font-size: 13px;
+	    font-size: 0.2rem;
 	    font-weight: 400;
 	    transition: font-size 0.5s ease-in-out;
 	    color: #333;
 	}
 	
 	.main_openspace_board_table tbody tr td:nth-child(2) {
-	    padding-top: 10px;
-	    padding-bottom: 10px;
-	    font-size: 13px;
+	    padding-top: 5px;
+	    padding-bottom: 5px;
+	    font-size: 0.2rem;
 	    font-weight: 400;
 	    transition: font-size 0.5s ease-in-out;
 	    color: #333;
@@ -7482,8 +7490,8 @@
 	}
 	
 	.main_free_board_table thead tr th{
-	    padding-top: 10px;
-	    padding-bottom: 10px;
+	    padding-top: 15px;
+	    padding-bottom: 15px;
 	    font-size: 13px;
 	    font-weight: 400;
 	    transition: font-size 0.5s ease-in-out;
@@ -7494,7 +7502,7 @@
 	.main_free_board_table tbody tr td:nth-child(3) {
 	    padding-top: 10px;
 	    padding-bottom: 10px;
-	    font-size: 13px;
+	    font-size: 0.2rem;
 	    font-weight: 400;
 	    transition: font-size 0.5s ease-in-out;
 	    color: #333;
@@ -7503,7 +7511,7 @@
 	.main_free_board_table tbody tr td:nth-child(2) {
 	    padding-top: 10px;
 	    padding-bottom: 10px;
-	    font-size: 13px;
+	    font-size: 0.2rem;
 	    font-weight: 400;
 	    transition: font-size 0.5s ease-in-out;
 	    color: #333;
@@ -10449,18 +10457,18 @@
 	}
 	
 	.main_usable_time_table thead tr th{
-	    padding-top: 15px;
-	    padding-bottom: 15px;
-	    font-size: 13px;
+	    padding-top: 10px;
+	    padding-bottom: 10px;
+	    font-size: 10px;
 	    font-weight: 400;
 	    color: #333;
 	}
 	
 	.main_usable_time_table tbody tr td:nth-child(1),
 	.main_usable_time_table tbody tr td:nth-child(2) {
-	    padding-top: 10px;
-	    padding-bottom: 10px;
-	    font-size: 13px;
+	    padding-top: 5px;
+	    padding-bottom: 5px;
+	    font-size: 7px;
 	    font-weight: 400;
 	    transition: font-size 0.5s ease-in-out;
 	    color: #333;
@@ -10469,7 +10477,7 @@
 	.main_usable_time_table tbody tr td:nth-child(3),
 	.main_usable_time_table tbody tr td:nth-child(4){
 	    font-weight: 400;
-	    font-size: 13px;
+	    font-size: 7px;
 	    text-align: center;
 	    transition: font-size 0.5s ease-in-out;
 	    color: #333;
@@ -10517,6 +10525,12 @@
 	    transition: font-size 0.5s ease-in-out;
 	}
 	
+	.main_mid_openspace:hover .main_openspace_board_table tbody tr td a{
+	    font-size: 13px;
+	    color: #753; 
+	    transition: font-size 0.5s ease-in-out;
+	}
+	
 	.main_mid_openspace:hover .main_openspace_title {
 	    font-size: 0.1rem;
 	    transition: font-size 0.5s ease-in-out;
@@ -10549,29 +10563,38 @@
 	}
 	
 	.main_openspace_board_table thead tr th{
-	    padding-top: 15px;
-	    padding-bottom: 15px;
-	    font-size: 13px;
+	    padding-top: 10px;
+	    padding-bottom: 10px;
+	    font-size: 10px;
 	    font-weight: 400;
 	    color: #333;
 	}
 	
 	.main_openspace_board_table tbody tr td:nth-child(1),
 	.main_openspace_board_table tbody tr td:nth-child(3) {
-	    padding-top: 8px;
-	    padding-bottom: 8px;
-	    font-size: 0.2rem;
+	    padding-top: 5px;
+	    padding-bottom: 5px;
+	    font-size: 7px;
 	    font-weight: 500;
 	    transition: font-size 0.5s ease-in-out;
 	}
 	
 	.main_openspace_board_table tbody tr td:nth-child(2) {
-	    padding-top: 10px;
-	    padding-bottom: 10px;
-	    font-size: 13px;
+	    padding-top: 5px;
+	    padding-bottom: 5px;
+	    font-size: 7px;
 	    font-weight: 400;
 	    transition: font-size 0.5s ease-in-out;
 	    color: #333;
+	}
+	
+	.main_openspace_board_table tbody tr td:nth-child(2) a {
+	    padding-top: 5px;
+	    padding-bottom: 5px;
+	    font-size: 10px;
+	    font-weight: 400;
+	    transition: font-size 0.5s ease-in-out;
+	    color: #753;
 	}
 	
 	/* main_mid_free */
@@ -10645,18 +10668,18 @@
 	
 	.main_free_board_table tbody tr td:nth-child(1),
 	.main_free_board_table tbody tr td:nth-child(3) {
-	    padding-top: 10px;
-	    padding-bottom: 10px;
-	    font-size: 13px;
+	    padding-top: 5px;
+	    padding-bottom: 5px;
+	    font-size: 7px;
 	    font-weight: 400;
 	    transition: font-size 0.5s ease-in-out;
 	    color: #333;
 	}
 	
 	.main_free_board_table tbody tr td:nth-child(2) {
-	    padding-top: 10px;
-	    padding-bottom: 10px;
-	    font-size: 13px;
+	    padding-top: 5px;
+	    padding-bottom: 5px;
+	    font-size: 7px;
 	    font-weight: 400;
 	    transition: font-size 0.5s ease-in-out;
 	    color: #333;
