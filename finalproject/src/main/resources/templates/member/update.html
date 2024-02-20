@@ -193,9 +193,7 @@
         });
 
         $(document).ready(function() {
-            // 폼이 제출될 때의 이벤트 핸들러
             $("form").submit(function(event) {
-                // 비밀번호 유효성 검사를 수행합니다.
                 let password = $("#password").val();
                 let passwordMessage = $("#passwordMessage");
                 let passwordRegex = /^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[@#$%^&+=!*]).*$/;
@@ -208,13 +206,11 @@
                 if (password.length < 8 || password.length > 20) {
                     passwordMessage.text("비밀번호는 8글자 이상 20글자 이하여야 합니다.");
                     passwordMessage.css("color", "red");
-                    // 폼 제출을 막습니다.
                     event.preventDefault();
                     return;
                 } else if (!passwordRegex.test(password)) {
                     passwordMessage.text("비밀번호는 영문, 숫자, 특수문자를 모두 포함해야 합니다.");
                     passwordMessage.css("color", "red");
-                    // 폼 제출을 막습니다.
                     event.preventDefault();
                     return;
                 } else {

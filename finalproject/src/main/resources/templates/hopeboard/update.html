@@ -40,7 +40,7 @@
 						<div class="nav_content_mid">
 							<div class="nav_links">
 								<a class="nav_menu" th:href="@{/freeboard/pagelist}">자유게시판</a>
-								<a class="nav_menu" th:href="@{#}">독서이벤트</a>
+								<a class="nav_menu" th:href="@{/event/pagelist}">독서이벤트</a>
 								<a class="nav_menu selected_menu" th:href="@{/hopeboard/pagelist}">도서관에바란다</a>
 								<a class="nav_menu" th:href="@{/faq/pagelist}">자주하는질문</a>
 							</div>
@@ -76,7 +76,7 @@
 											<td>
 												<textarea rows="5" cols="30" name="hbcontent" th:text="${hopeBoard.hbcontent}"></textarea>
 												<div class="page_textarea_img_box">
-													<img th:if="${hopeBoard.hopeFilename != null}" th:src="${hopeBoard.hopeFilename}"/>
+													<img th:if="${hopeBoard.hopeFilename != null}" th:src="|/upload/${hopeBoard.hopeFilename}|"/>
 
 												</div>
 											</td>
