@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -129,7 +130,8 @@ public class MemberController {
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         boolean result = memberService.withdrawal(userDetails.getUsername(), password);
         if(result){
-            return "redirect:/logout";
+        	SecurityContextHolder.clearContext();
+            return "redirect:/member/withdrawal2";
         }else{
             redirectAttributes.addFlashAttribute("wrongPassword", "비밀번호가 일치하지 않습니다.");
             return "redirect:/member/withdrawal/" + memberDTO.getMemberId();
