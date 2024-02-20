@@ -18,6 +18,10 @@
 	   @media (max-width: 767px) {}
  */
 
+.main_input_btn {
+	border:none;
+}
+
 /* =================================== pc버전(큰화면) =================================== */
 @media (min-width: 1440px){
 /* =================================== 공통 =================================== */
@@ -600,7 +604,8 @@
 		display: flex;
 		justify-content: space-around;
 		position: fixed;
-		z-index: 1;
+		z-index: 2;
+
 	}
 	
 	.header {
@@ -789,7 +794,7 @@
 	/* main_top */
 	.main_top {
 	    width: 88.5%;
-	    height: 700px;
+	    height: 600px;
 	    background-color: #ccc;
 	    margin: 0 auto;
 	    position: relative;
@@ -799,13 +804,13 @@
 	/* main_pic */
 	.main_pic_box {
 	    width: 100%;
-	    height: 700px;
+	    height: 600px;
 	    position: relative;
 	}
 	
 	.main_pic {
 	    width: 100%;
-	    height: 700px;
+	    height: 600px;
 	    border-radius: 50px;
 	    position: absolute;
 	    opacity: 0;
@@ -3123,6 +3128,7 @@
 
 
 
+
 /* =================================== pc버전 (보통) =================================== */
 @media (min-width: 1025px) and (max-width: 1439px) {
 /* =================================== 공통 =================================== */
@@ -3707,7 +3713,9 @@
 		display: flex;
 		justify-content: space-around;
 		position: fixed;
-		z-index: 1;
+
+		z-index: 2;
+
 	}
 	
 	.header {
@@ -6803,7 +6811,8 @@
 		display: flex;
 		justify-content: space-around;
 		position: fixed;
-		z-index: 1;
+		z-index: 2;
+
 	}
 	
 	.header {
@@ -7121,7 +7130,7 @@
 	    width: 40%;
 	    height: 100px;
 	    position: absolute;
-	    bottom: 100px;
+	    bottom: 50px;
 	    right: 100px;
 	}
 	
@@ -7129,13 +7138,13 @@
 	    width: 50px;
 	    width: 50px;
 	    position: absolute;
-	    top: 27.5px;
+	    top: 13px;
 	    left: 27.5px;
 	}
 	
 	.main_search_input {
 	    width: 100%;
-	    height: 100px;
+	    height: 75px;
 	    border: 3px solid #fff;
 	    border-radius: 50px;
 	    background: none;
@@ -8624,13 +8633,15 @@
 	member_update_confirm {
 		border: 1px solid #E1E1E1;
 		background-color: white;
+
 	}
 	
 	.member_update_cancel {
 		border: 1px solid #E1E1E1;
 		background-color: white;
 	}
-	
+
+ 
 	.member_update_leave {
 		border: 1px solid #E1E1E1;
 		background-color: white;
@@ -9905,7 +9916,7 @@
 		display: flex;
 		justify-content: space-around;
 		position: fixed;
-		z-index: 1;
+		z-index: 2;
 	}
 	
 	.header {
@@ -10179,13 +10190,13 @@
 	
 	.main_big_welcome {
 		color: #fff;
-		font-size: 3.5rem;
+		font-size: 2.2rem;
 		line-height: 64px;
 	}
 	
 	.main_small_welcom {
 		color: #fff;
-		font-size: 1.2rem;
+		font-size: 0.9rem;
 		line-height: 48px;
 	}
 	
@@ -10268,21 +10279,20 @@
 	    width: 40%;
 	    height: 100px;
 	    position: absolute;
-	    bottom: 50px;
+	    bottom: 10px;
 	    right: 50px;
 	}
 	
 	.main_search_icon {
-	    width: 50px;
-	    width: 50px;
+	    width: 30px;
 	    position: absolute;
-	    top: 27.5px;
+	    top: 10px;
 	    left: 27.5px;
 	}
 	
 	.main_search_input {
 	    width: 100%;
-	    height: 100px;
+	    height: 50px;
 	    border: 3px solid #fff;
 	    border-radius: 50px;
 	    background: none;
@@ -10326,7 +10336,7 @@
 	.welcome_box_visible {
 	    opacity: 1;
 	    transform: translateY(0);
-	    transition: opacity 1s ease, transform 1s ease;
+	    transition: opacity 2s ease, transform 2s ease;
 	}
 	
 	.welcome_box_hidden {
@@ -10343,7 +10353,7 @@
 	}
 	
 	.main_mid_big_text {
-	    font-size: 2.9rem;
+	    font-size: 2.2rem;
 	    position: relative;
 	    font-weight: 500;
 	}
@@ -10366,7 +10376,7 @@
 	.board_box_visible {
 	    opacity: 1;
 	    transform: translateY(0);
-	    transition: opacity 1s ease, transform 1s ease;
+	    transition: opacity 2s ease, transform 2s ease;
 	}
 	
 	.board_box_hidden {
@@ -10798,7 +10808,7 @@
 	.book_text_box_visible {
 	    opacity: 1;
 	    transform: translateY(0);
-	    transition: opacity 1s ease, transform 1s ease;
+	    transition: opacity 2s ease, transform 2s ease;
 	}
 	
 	.book_text_box_hidden {
@@ -10874,7 +10884,7 @@
 	.book1_visible {
 	    opacity: 1;
 	    transform: translateY(0);
-	    transition: opacity 1s ease, transform 1s ease;
+	    transition: opacity 1.5s ease, transform 1.5s ease;
 	}
 	.book1_hidden {
 	    opacity: 0;
@@ -10885,7 +10895,7 @@
 	.book2_visible {
 	    opacity: 1;
 	    transform: translateY(0);
-	    transition: opacity 1s ease, transform 1s ease;
+	    transition: opacity 1.5s ease, transform 1.5s ease;
 	    transition-delay: 0.4s;
 	}
 	.book2_hidden {
@@ -10899,7 +10909,7 @@
 	.book3_visible {
 	    opacity: 1;
 	    transform: translateY(0);
-	    transition: opacity 1s ease, transform 1s ease;
+	    transition: opacity 1.5s ease, transform 1.5s ease;
 	    transition-delay: 0.8s;
 	    
 	}
@@ -10914,7 +10924,7 @@
 	.book4_visible {
 	    opacity: 1;
 	    transform: translateY(0);
-	    transition: opacity 1s ease, transform 1s ease;
+	    transition: opacity 1.5s ease, transform 1.5s ease;
 	    transition-delay: 1.2s;
 	}
 	.book4_hidden {
@@ -10928,7 +10938,7 @@
 	.book5_visible {
 	    opacity: 1;
 	    transform: translateY(0);
-	    transition: opacity 1s ease, transform 1s ease;
+	    transition: opacity 1.5s ease, transform 1.5s ease;
 	    transition-delay: 1.6s;
 	}
 	.book5_hidden {
