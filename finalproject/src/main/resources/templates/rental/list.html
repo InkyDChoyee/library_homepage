@@ -21,9 +21,9 @@
 
         <div class="page_top">
             <div class="page_top_imgbox">
-                <div class="page_img">
-                    <img src="/img/main_library_picture1.PNG" alt="img">
-                </div>
+					<div class="page_img">
+						<img th:src="@{/images/images/header-image2.jpg}" alt="img">
+					</div>
                 <div class="page_title">
                     <p>대출 정보 목록</p>
                 </div>
@@ -96,7 +96,8 @@
                                                 <td th:text="${#dates.format(rental.rentalDate, 'yyyy-MM-dd')}">2024.02.12</td>
                                                 <td th:text="${#dates.format(rental.deadlineDate, 'yyyy-MM-dd')}">2024.02.19</td>
                                                 <td th:if="${rental.deadlineDate < #dates.createNow()}" th:text="연체"></td>
-                                                <td th:unless="${rental.deadlineDate < #dates.createNow()}" th:text="대출중"></td>
+                                                <td th:if="${rental.returnDate == null}" th:text="대출중"></td>
+                                                <td th:unless="${rental.returnDate == null}" th:text="반납완료"></td>
                                                 <td th:if="${rental.returnDate != null}" th:text="반납완료"></td>
                                                 <td>
                                                     <input th:if="${rental.returnDate == null}" type="submit" th:value="반납" th:data-rental-id="${rental.rentalId}" class="returnBtn">
