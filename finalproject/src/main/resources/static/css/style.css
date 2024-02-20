@@ -72,7 +72,7 @@
 	.join_logo{
 	    width: 160px;
 	    position: absolute;
-	    left: 0;
+	    left: 40%;
 	    top: 0;
 	}
 	
@@ -91,10 +91,11 @@
 	    line-height: 60px;
 	    text-align: center;
 	    width: 100%;
+	    padding-right: 50px;
 	    position: relative;
 	    display: flex;
 	    align-items: center;
-	    justify-content: center;
+	    justify-content: flex-end;
 	}
 	
 	#top {
@@ -3179,7 +3180,7 @@
 	.join_logo{
 	    width: 160px;
 	    position: absolute;
-	    left: 0;
+	    left: 40%;
 	    top: 0;
 	}
 	
@@ -3198,10 +3199,11 @@
 	    line-height: 60px;
 	    text-align: center;
 	    width: 100%;
+	    padding-right: 50px;
 	    position: relative;
 	    display: flex;
 	    align-items: center;
-	    justify-content: center;
+	    justify-content: flex-end;
 	}
 	
 	#top {
@@ -6281,7 +6283,7 @@
 	.join_logo{
 	    width: 160px;
 	    position: absolute;
-	    left: 0;
+	    left: 40%;
 	    top: 0;
 	}
 	
@@ -6302,8 +6304,9 @@
 	    width: 100%;
 	    position: relative;
 	    display: flex;
+	    padding-right: 50px;
 	    align-items: center;
-	    justify-content: center;
+	    justify-content: flex-end;
 	}
 	
 	#top {
@@ -9389,7 +9392,7 @@
 	.join_logo{
 	    width: 160px;
 	    position: absolute;
-	    left: 0;
+	    left: 40%;
 	    top: 0;
 	}
 	
@@ -9410,8 +9413,9 @@
 	    width: 100%;
 	    position: relative;
 	    display: flex;
+	    padding-right: 50px;
 	    align-items: center;
-	    justify-content: center;
+	    justify-content: flex-end;
 	}
 	
 	#top {
