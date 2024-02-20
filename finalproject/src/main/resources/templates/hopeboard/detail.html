@@ -142,8 +142,8 @@ crossorigin="anonymous"></script>
                         <div class="hope_reply_insert">
                             <input type="hidden" id="board_id" th:value="${hopeBoard.hbid}">
                             <div class="reply_textarea_box">
-                                <textarea id="reply_content" rows="3" cols="50" placeholder="댓글을 남겨주세요"></textarea>
-                           		<button id="save_reply_btn">댓글 등록</button>
+                                <textarea id="reply_content" rows="3" cols="50" placeholder="댓글을 남겨주세요" sec:authorize="hasAnyAuthority('Admin')"></textarea>
+                           		<button id="save_reply_btn" sec:authorize="hasAnyAuthority('Admin')">댓글 등록</button>
                             </div>
                         </div>
                     </div>

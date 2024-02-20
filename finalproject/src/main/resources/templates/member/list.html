@@ -118,14 +118,14 @@
                         </div>
                     </div>
                     <!-- 페이지네이션 -->
-<!-- 					<div class="pagination">
+					<!--<div class="pagination">
 						<ul>
-							이전 페이지
+							&lt;!&ndash; 이전 페이지 &ndash;&gt;
 							<li th:if="${memberPage.hasPrevious()}"><a
 								th:href="@{|/member/list?page=${memberPage.pageable.pageNumber-1}|}">
 									< </a></li>
 
-							페이지 번호
+							&lt;!&ndash; 페이지 번호 &ndash;&gt;
 							<li
 								th:each="pageNum : ${#numbers.sequence(0, memberPage.totalPages-1)}">
 								<a th:href="@{|/member/list?page=${pageNum}|}"
@@ -134,12 +134,12 @@
 							</a>
 							</li>
 
-							다음 페이지
+							&lt;!&ndash; 다음 페이지 &ndash;&gt;
 							<li th:if="${memberPage.hasNext()}"><a
 								th:href="@{|/member/list?page=${memberPage.pageable.pageNumber+1}|}">
 									> </a></li>
 						</ul>
-					</div> -->
+					</div>-->
 					<!-- 페이지네이션 끝 -->
 
                 </div>

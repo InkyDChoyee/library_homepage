@@ -7,9 +7,8 @@
 <link rel="stylesheet" th:href="@{/css/style.css}">
 <link rel="preconnect" href="@{https://fonts.googleapis.com">
 <link rel="preconnect" href="@{https://fonts.gstatic.com}" crossorigin>
-<link
-	href="@{https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap}"
-	rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.0/moment.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 <script th:src="@{/js/script.js}"></script>
 <script>
 	// 검색어 입력란에서 Enter 키를 누르면 네이버 검색 페이지로 이동하는 함수
@@ -44,6 +43,40 @@
             searchForm.submit();
         }
     }
+
+    $.ajax({
+        url: "/notice/main",
+        method : "GET",
+        success : function (data) {
+            console.log(data)
+            for(let i = 0; i < data.length; i++) {
+                $(".main_openspace_board_table").find("tbody").append(
+                    "<tr>" +
+                    "<td>" + data[i].nbid + "</td>" +
+                    "<td><a href='/notice/" + data[i].nbid + "'>" + data[i].nbtitle + "</a></td>" +
+                    "<td>" + moment(data[i].createdDate).format("YYYY-MM-DD") + "</td>" +
+                    "</tr>"
+                )
+            }
+        }
+    })
+
+    $.ajax({
+        url: "/freeboard/main",
+        method : "GET",
+        success : function (data) {
+            console.log(data)
+            for(let i = 0; i < data.length; i++) {
+                $(".main_free_board_table").find("tbody").append(
+                    "<tr>" +
+                    "<td>" + data[i].fbid + "</td>" +
+                    "<td><a href='/freeboard/" + data[i].fbid + "'>" + data[i].fbtitle + "</a></td>" +
+                    "<td>" + moment(data[i].createdDate).format("YYYY-MM-DD") + "</td>" +
+                    "</tr>"
+                )
+            }
+        }
+    })
 </script>
 <style type="text/css">
 </style>
@@ -150,9 +183,8 @@
 					</div>
 
 					<div class="main_mid_openspace">
-						<p class="main_openspace_title">
-							공지 사항 <img class="main_openspace_mark"
-								th:src="@{/images/main_boardimg.png}" alt="">
+						<p class="main_openspace_title"> 공지 사항
+                            <img class="main_openspace_mark" th:src="@{/images/main_boardimg.png}" alt="">
 						</p>
 						<div class="main_openspace_board">
 							<table class="main_openspace_board_table">
@@ -165,31 +197,6 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td>17</td>
-										<td>독서이벤트! 사자성어 퀴즈 왕~</td>
-										<td>2024.01.31</td>
-									</tr>
-									<tr>
-										<td>16</td>
-										<td>화장실 단수 공지</td>
-										<td>2024.01.29</td>
-									</tr>
-									<tr>
-										<td>15</td>
-										<td>휴게실 보수 공사 안내</td>
-										<td>2024.01.25</td>
-									</tr>
-									<tr>
-										<td>14</td>
-										<td>유선전화 상담 시 주의사항 안내</td>
-										<td>2024.01.21</td>
-									</tr>
-									<tr>
-										<td>13</td>
-										<td>분실물 습득시 행동요령</td>
-										<td>2024.01.15</td>
-									</tr>
 								</tbody>
 							</table>
 						</div>
@@ -211,31 +218,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td>68</td>
-										<td>공사 언제 끝나나요..</td>
-										<td>2024.01.31</td>
-									</tr>
-									<tr>
-										<td>67</td>
-										<td>혹시 지갑 줏으신분 ㅠㅠ</td>
-										<td>2024.01.30</td>
-									</tr>
-									<tr>
-										<td>66</td>
-										<td>점심 같이 드실분?</td>
-										<td>2024.01.30</td>
-									</tr>
-									<tr>
-										<td>65</td>
-										<td>혹시...........</td>
-										<td>2024.01.29</td>
-									</tr>
-									<tr>
-										<td>64</td>
-										<td>코딩 넘 잼따 히히히힣</td>
-										<td>2024.01.28</td>
-									</tr>
+                                </tbody>
 							</table>
 						</div>
 					</div>

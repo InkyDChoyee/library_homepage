@@ -95,10 +95,11 @@
                                                 <td th:text="${rental.book.bname}">오직 나를 위한 미술관</td>
                                                 <td th:text="${#dates.format(rental.rentalDate, 'yyyy-MM-dd')}">2024.02.12</td>
                                                 <td th:text="${#dates.format(rental.deadlineDate, 'yyyy-MM-dd')}">2024.02.19</td>
-                                                <td th:if="${rental.returnDate == null}" th:text="대출중"></td>
-                                                <td th:unless="${rental.returnDate == null}" th:text="반납완료"></td>
+                                                <td th:if="${rental.deadlineDate < #dates.createNow()}" th:text="연체"></td>
+                                                <td th:unless="${rental.deadlineDate < #dates.createNow()}" th:text="대출중"></td>
+                                                <td th:if="${rental.returnDate != null}" th:text="반납완료"></td>
                                                 <td>
-                                                    <input type="submit" th:value="반납" th:data-rental-id="${rental.rentalId}" class="returnBtn">
+                                                    <input th:if="${rental.returnDate == null}" type="submit" th:value="반납" th:data-rental-id="${rental.rentalId}" class="returnBtn">
                                                 </td>
                                             </tr>
                                             </tbody>
