@@ -3,16 +3,13 @@ package com.khit.library.controller;
 import java.io.IOException;
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.khit.library.config.SecurityUser;
@@ -27,6 +24,7 @@ import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequiredArgsConstructor
+@Slf4j
 public class NoticeBoardController {
 	
     private final NoticeBoardService noticeBoardService;
@@ -118,12 +116,16 @@ public class NoticeBoardController {
             return "notice/detail";
         }
     }
-	
 	//삭제
 	@GetMapping("/notice/delete/{nbid}")
 	public String deleteHopeBoard(@PathVariable Long nbid) {
     	noticeBoardService.deleteById(nbid);
     	return "redirect:/notice/pagelist";
+    }
+
+    @GetMapping("/notice/main") @ResponseBody
+    public List<NoticeBoard> mainList(){
+        return noticeBoardService.mainList();
     }
 			
 }
