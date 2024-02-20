@@ -601,6 +601,7 @@
 		justify-content: space-around;
 		position: fixed;
 		z-index: 2;
+
 	}
 	
 	.header {
@@ -3108,6 +3109,7 @@
 
 
 
+
 /* =================================== pc버전 (보통) =================================== */
 @media (min-width: 1025px) and (max-width: 1439px) {
 /* =================================== 공통 =================================== */
@@ -3692,7 +3694,9 @@
 		display: flex;
 		justify-content: space-around;
 		position: fixed;
+
 		z-index: 2;
+
 	}
 	
 	.header {
@@ -6777,6 +6781,7 @@
 		justify-content: space-around;
 		position: fixed;
 		z-index: 2;
+
 	}
 	
 	.header {
