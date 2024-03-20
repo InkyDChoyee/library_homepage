@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>회원수정</title>
+<link rel="stylesheet" th:href="@{/css/join1.css}">
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+</head>
+<body>
+	<div id="container">
+        <div id="top">
+            <div class="join_header_wrap">
+                <div class="join_header_inner">
+                    <a th:href="@{/}" title="홈으로"><img class="join_logo" th:src="@{/images/join-logo1.png}"></a>
+                    회원수정
+                </div>
+            </div>
+        </div>
+		<div class="detail">
+			<form th:action="@{/member/update}" method="post" class="joinform">
+			<input type="hidden" name="memberId" th:value="${member.memberId}">
+			<input type="hidden" name="rentalCount" id="rentalCount" th:value="${member.rentalCount}" readonly>
+			<input type="hidden" name="rentalAble" id="rentalAble" th:value="${member.rentalAble}" readonly>
+				<fieldset>
+					<ul class="input-wrapper">
+						<li>
+							<label for="mid">아이디</label>
+							<input type="text" name="mid" id="mid" th:value="${member.mid}" readonly>
+						</li>
+						<li>
+							<label for="password">비밀번호</label>
+							<input type="text" name="password" id="password" placeholder="비밀번호를 입력해주세요." required>
+						</li>
+						<li>
+							<label for="name">이름</label>
+							<input type="text" name="name" id="name" th:value="${member.name}">
+						</li>
+						<li>
+							<label for="email">이메일</label>
+							<input type="text" name="email" id="email" th:value="${member.email}">
+						</li>
+						<li>
+							<label for="role">권한</label>
+							<input type="text" name="role" id="role" th:value="${member.role}" readonly>
+						</li>
+						<li>
+							<button type="submit">수정</button>
+							<a th:href="@{/}"><button type="button">취소</button></a>
+						</li>
+					</ul>
+				</fieldset>		
+			</form>
+		</div>
+	</div>
+	<script>
+    const hideErrorMessage = (inputField) => {
+        inputField.siblings(".error").css("display", "none");
+    };
+    $("input[type='text'], input[type='password']").focus(function() {
+        hideErrorMessage($(this));
+    });
+    
+    $("#passwordConfirm").on("keyup", function() {
+        let password = $("#password").val();
+        let passwordConfirm = $(this).val();
+        let errorMessage = $("#passwordConfirm-error");
+        let successMessage = $("#passwordConfirm-success");
+
+        if (password === passwordConfirm) {
+            errorMessage.text("");
+            successMessage.text("비밀번호가 일치합니다.");
+            successMessage.css("color", "green");
+            $(this).css("border-color", "green");
+            successMessage.removeClass("check_password");
+        } else {
+            errorMessage.text("비밀번호가 일치하지 않습니다.");
+            errorMessage.css("color", "red");
+            $(this).css("border-color", "red");
+            successMessage.text("");
+            errorMessage.removeClass("check_password");
+        }
+    });
+
+    $("#password").on("keyup", function (){
+        let password = $(this).val();
+        let passwordMessage = $("#passwordMessage");
+
+        if (password.trim() === '') {
+            passwordMessage.text("");
+            return;
+        }
+        let passwordRegex = /^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[@#$%^&+=!*]).*$/;
+
+        if (password.length < 8 || password.length > 20) {
+            passwordMessage.text("비밀번호는 8글자 이상 20글자 이하여야 합니다.");
+            passwordMessage.css("color", "red");
+        } else if (!passwordRegex.test(password)) {
+            passwordMessage.text("비밀번호는 영문, 숫자, 특수문자를 모두 포함해야 합니다.");
+            passwordMessage.css("color", "red");
+        } else {
+            passwordMessage.text("비밀번호가 유효합니다.");
+            passwordMessage.css("color", "green");
+        }
+    })
+
+    $("#email").on("keyup", function (){
+        let email = $(this).val();
+        let emailMessage = $("#emailMessage");
+
+        if (email.trim() === '') {
+            emailMessage.text("");
+            return;
+        }
+
+        let emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+        if (!emailRegex.test(email)) {
+            emailMessage.text("올바른 이메일 형식이 아닙니다.");
+            emailMessage.css("color", "red");
+        } else {
+            emailMessage.text("유효한 이메일입니다.");
+            emailMessage.css("color", "green");
+        }
+    })
+
+</script>
+</body>
+</html>
