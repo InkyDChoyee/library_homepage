@@ -103,7 +103,6 @@
 #
 
 6. 유효성 검사
-![유효성1](https://github.com/InkyDChoyee/library_homepage/blob/main/architecture/%EB%B9%84%EB%B0%80%EB%B2%88%ED%98%B8.PNG?raw=true)
 ![유효성2](https://github.com/InkyDChoyee/library_homepage/blob/main/architecture/%EC%9C%A0%ED%9A%A8%EC%84%B1.PNG?raw=true)
 #
 
