@@ -130,8 +130,7 @@ public class MemberController {
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         boolean result = memberService.withdrawal(userDetails.getUsername(), password);
         if(result){
-        	SecurityContextHolder.clearContext();
-            return "redirect:/member/withdrawal2";
+            return "redirect:/logout";
         }else{
             redirectAttributes.addFlashAttribute("wrongPassword", "비밀번호가 일치하지 않습니다.");
             return "redirect:/member/withdrawal/" + memberDTO.getMemberId();

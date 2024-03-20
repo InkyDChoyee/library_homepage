@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="com.khit.library.service.MemberService"/>
+    <fullyQualifiedTypeName name="org.springframework.security.core.annotation.AuthenticationPrincipal"/>
+    <fullyQualifiedTypeName name="com.khit.library.config.SecurityUser"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.OrderBy"/>
+    <fullyQualifiedTypeName name="com.khit.library.service.FreeReplyService"/>
+    <fullyQualifiedTypeName name="com.khit.library.entity.FreeReply"/>
+    <fullyQualifiedTypeName name="com.khit.library.entity.FreeBoard"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
+    <fullyQualifiedTypeName name="org.springframework.data.domain.Pageable"/>
+    <fullyQualifiedTypeName name="org.springframework.data.domain.Page"/>
+    <fullyQualifiedTypeName name="jakarta.validation.constraints.NotEmpty"/>
+    <fullyQualifiedTypeName name="jakarta.validation.constraints.Size"/>
+    <fullyQualifiedTypeName name="jakarta.validation.constraints.Pattern"/>
+    <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.Modifying"/>
+    <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.Query"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
+    <fullyQualifiedTypeName name="com.khit.library.service.NaverService"/>
+    <fullyQualifiedTypeName name="org.springframework.data.domain.PageRequest"/>
+</qualifiedTypeNameHistroy>
