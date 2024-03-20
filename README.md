@@ -118,8 +118,7 @@
 ![댓글 기능](https://github.com/InkyDChoyee/library_homepage/blob/main/architecture/C_%EB%8C%93%EA%B8%80%EA%B8%B0%EB%8A%A5_%ED%95%A9%EB%B3%B8.PNG?raw=true)
 
 10. 열람실
-![열람실](https://github.com/InkyDChoyee/onlinePetShop/blob/master/architecture/petshop_sidebar.PNG?raw=true)
-![열람실](https://github.com/InkyDChoyee/onlinePetShop/blob/master/architecture/petshop_sidebar.PNG?raw=true)
+![열람실](https://github.com/InkyDChoyee/library_homepage/blob/main/architecture/%EC%97%B4%EB%9E%8C%EC%8B%A42.PNG?raw=true)
 #
 
 11. 깃 사용
