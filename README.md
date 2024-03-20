@@ -83,46 +83,53 @@
 
 ### 🗺️ 프로젝트 아키텍처
 1. ERD
-![ERD](https://github.com/InkyDChoyee/onlinePetShop/blob/master/architecture/petshop_erd.PNG?raw=true)
+![ERD](https://github.com/InkyDChoyee/library_homepage/blob/main/architecture/ERD.PNG?raw=true)
 #
 
-2. 메인 화면
-![페이지 화면](https://github.com/InkyDChoyee/onlinePetShop/blob/master/architecture/petshop_main.PNG?raw=true)
+2. 메인 화면 ( 반응형 )
+![메인 화면](https://github.com/InkyDChoyee/library_homepage/blob/main/architecture/D_%EB%B0%98%EC%9D%91%ED%98%95.PNG?raw=true)
 #
 
-3. navbar
-![사이드 바](https://github.com/InkyDChoyee/onlinePetShop/blob/master/architecture/petshop_sidebar.PNG?raw=true)
+3. 회원가입
+![회원 가입](https://github.com/InkyDChoyee/library_homepage/blob/main/architecture/%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85.PNG?raw=true)
 #
 
-4. 회원 가입
-![회원 가입](https://github.com/InkyDChoyee/onlinePetShop/blob/master/architecture/petshop_join.PNG?raw=true)
+4. 모두 동의 토글
+![동의 토글](https://github.com/InkyDChoyee/library_homepage/blob/main/architecture/%EB%AA%A8%EB%91%90%EB%8F%99%EC%9D%98%ED%86%A0%EA%B8%80.PNG?raw=true)
 #
 
-5. 로그인
-![로그인](https://github.com/InkyDChoyee/onlinePetShop/blob/master/architecture/petshop_login.PNG?raw=true)
+5. 중복 검사
+![중복 검사](https://github.com/InkyDChoyee/library_homepage/blob/main/architecture/%EC%A4%91%EB%B3%B5%EA%B2%80%EC%82%AC.PNG?raw=true)
 #
 
-6. 상품 목록
-![상품 목록](https://github.com/InkyDChoyee/onlinePetShop/blob/master/architecture/petshop_product.PNG?raw=true)
+6. 유효성 검사
+![유효성1](https://github.com/InkyDChoyee/library_homepage/blob/main/architecture/%EB%B9%84%EB%B0%80%EB%B2%88%ED%98%B8.PNG?raw=true)
+![유효성2](https://github.com/InkyDChoyee/library_homepage/blob/main/architecture/%EC%9C%A0%ED%9A%A8%EC%84%B1.PNG?raw=true)
 #
 
-7. 상품 상세
-![상품 상세1](https://github.com/InkyDChoyee/onlinePetShop/blob/master/architecture/petshop_productview1.PNG?raw=true)
-![상품 상세2](https://github.com/InkyDChoyee/onlinePetShop/blob/master/architecture/petshop_productview2.PNG?raw=true)
+7. 게시판
+![게시판](https://github.com/InkyDChoyee/library_homepage/blob/main/architecture/E_%EA%B2%8C%EC%8B%9C%ED%8C%90.PNG?raw=true)
 #
 
-8. 장바구니
-![장바구니](https://github.com/InkyDChoyee/onlinePetShop/blob/master/architecture/petshop_basket.PNG?raw=true)
+8. 파일 첨부 기능
+![파일첨부](https://github.com/InkyDChoyee/library_homepage/blob/main/architecture/B_%ED%8C%8C%EC%9D%BC%EC%B2%A8%EB%B6%80.PNG?raw=true)
 #
 
-9. 상품 구매
-![상품 구매](https://github.com/InkyDChoyee/onlinePetShop/blob/master/architecture/petshop_order.PNG?raw=true)
+9. 댓글 기능
+![댓글 기능](https://github.com/InkyDChoyee/library_homepage/blob/main/architecture/C_%EB%8C%93%EA%B8%80%EA%B8%B0%EB%8A%A5_%ED%95%A9%EB%B3%B8.PNG?raw=true)
+
+10. 열람실
+![열람실](https://github.com/InkyDChoyee/onlinePetShop/blob/master/architecture/petshop_sidebar.PNG?raw=true)
+![열람실](https://github.com/InkyDChoyee/onlinePetShop/blob/master/architecture/petshop_sidebar.PNG?raw=true)
 #
 
-
+11. 깃 사용
+![깃 허브](https://github.com/InkyDChoyee/library_homepage/blob/main/architecture/A_%EA%B9%83_%ED%86%B5%ED%95%A9.PNG?raw=true)
+#
 
 ---
 
 ### 🔗 링크
 * [노션](https://far-sphynx-da9.notion.site/Final-Project-Team-a11642536ba9415d92a34192971aee89, "노션")
+
 ---
